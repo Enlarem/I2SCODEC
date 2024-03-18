@@ -1,0 +1,22 @@
+#-----------------------------------------------------------
+# xsim v2023.2.1 (64-bit)
+# SW Build 4081461 on Thu Dec 14 12:22:04 MST 2023
+# IP Build 4080415 on Thu Dec 14 21:01:57 MST 2023
+# SharedData Build 4077621 on Mon Dec 11 00:23:44 MST 2023
+# Start of session at: Mon Feb 26 22:36:07 2024
+# Process ID: 60996
+# Current directory: /home/remi/Documents/Etudes/S8/Embedded System Design/SpedenSpelitGame/simulations
+# Command line: xsim -nolog -source {xsim.dir/xil_defaultlib.randomNumberGeneration_tb/xsim_script.tcl}
+# Log file: 
+# Journal file: /home/remi/Documents/Etudes/S8/Embedded System Design/SpedenSpelitGame/simulations/xsim.jou
+# Running On: remi-HP-ENVY-x360-Convertible-15-ds0xxx, OS: Linux, CPU Frequency: 3435.861 MHz, CPU Physical cores: 8, Host memory: 14509 MB
+#-----------------------------------------------------------
+start_gui
+source xsim.dir/xil_defaultlib.randomNumberGeneration_tb/xsim_script.tcl
+create_wave_config; add_wave /; set_property needs_save false [current_wave_config]
+run 200 ns
+restart
+run 200 ns
+restart
+run 200 ns
+close_sim

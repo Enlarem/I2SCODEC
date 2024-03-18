@@ -1,0 +1,1 @@
+"xil_defaultlib.timer_tb" -prj "spedenspelit.prj" -debug "all" --nolog 

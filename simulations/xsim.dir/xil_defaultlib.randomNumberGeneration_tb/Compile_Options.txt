@@ -1,0 +1,1 @@
+"xil_defaultlib.randomNumberGeneration_tb" -prj "spedenspelit.prj" -debug "all" --nolog 

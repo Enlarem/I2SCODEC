@@ -1,0 +1,6 @@
+vhdl xil_defaultlib "../src/vhdl/randomNumberGenerator.vhd"
+vhdl xil_defaultlib "../src/vhdl/gameStateMachine.vhd"
+vhdl xil_defaultlib "../src/vhdl/timer.vhd"
+vhdl xil_defaultlib "../src/testbench/gameStateMachine_tb.vhd"
+vhdl xil_defaultlib "../src/testbench/timer_tb.vhd"
+vhdl xil_defaultlib "../src/testbench/randomNumberGeneration_tb.vhd"
