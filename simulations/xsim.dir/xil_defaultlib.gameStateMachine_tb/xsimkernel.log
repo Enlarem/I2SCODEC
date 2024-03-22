@@ -1,7 +1,0 @@
-Running: xsim.dir/xil_defaultlib.gameStateMachine_tb/xsimk -simmode gui -wdb xil_defaultlib.gameStateMachine_tb.wdb -simrunnum 0 -socket 42593
-Design successfully loaded
-Design Loading Memory Usage: 23120 KB (Peak: 23708 KB)
-Design Loading CPU Usage: 50 ms
-Simulation completed
-Simulation Memory Usage: 104856 KB (Peak: 162388 KB)
-Simulation CPU Usage: 8290 ms

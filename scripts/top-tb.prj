@@ -1,5 +1,3 @@
 vhdl xil_defaultlib "../src/vhdl/top.vhd"
-vhdl xil_defaultlib "../src/vhdl/mclk_gen.vhd"
-vhdl xil_defaultlib "../src/vhdl/ac_control.vhd"
-vhdl xil_defaultlib "../src/vhdl/ac_audio.vhd"
+vhdl xil_defaultlib "../src/vhdl/i2c_configurator.vhd"
 vhdl xil_defaultlib "../src/testbench/top_tb.vhd"
