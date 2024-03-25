@@ -36,6 +36,6 @@ for %%f in (!FILES!) do (
 
 echo [Pre-implementation] Files updated !
 
-CALL xvhdl --nolog -prj top-tb.prj 
-CALL xelab xil_defaultlib."%~1" -prj top-tb.prj -debug all --nolog
-CALL xsim --nolog -g -view Waveforms\basic_config.wcfg xil_defaultlib."%~1"
+CALL xvhdl --nolog -prj top-tb.prj
+CALL xelab xil_defaultlib."%~1" -prj top-tb.prj -debug all --nolog 
+CALL xsim --nolog -g -view Waveforms\basic_config.wcfg xil_defaultlib."%~1" --xsimdir ..\simulations

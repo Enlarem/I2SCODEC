@@ -37,14 +37,14 @@ s_sw(0) <= '1';
 
 clkGen: process begin
     s_sysclk <= '0';
-    wait for 4ns;
+    wait for 4 ns;
     s_sysclk <= '1';
-    wait for 4ns;
+    wait for 4 ns;
 end process;
 
 rstGen: process begin
     s_btn(0) <= '1';
-    wait for 10ns;
+    wait for 10 ns;
     s_btn(0) <= '0';
     wait;
 end process;

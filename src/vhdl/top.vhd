@@ -32,6 +32,7 @@ component i2c_configurator
     );
 end component;
 
+
 signal clk_mclk : std_logic := '0'; -- SSM2603 MCLK. 12.5 MHz
 signal clk_bclk : std_logic := '0'; -- SSM2603 BCLK. 3.125 MHz
 

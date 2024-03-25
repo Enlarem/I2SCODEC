@@ -1,3 +1,12 @@
 .Xil/*
 *.backup.jou
 *.log
+*.reloc
+*.dbg
+*.mem
+*.rtti
+*.svtype
+*.type
+*.xdbg
+*.ini
+simulation/*

@@ -1,1 +1,0 @@
--prj "top-tb.prj" -s "top_tb_simulation_snapshot" "xil_defaultlib.top_tb" --nolog -debug "all" 
