@@ -1,6 +1,7 @@
 
-vhdl xil_defaultlib "../src/testbench/top_tb.vhd" 
-vhdl xil_defaultlib "../src/testbench/i2s_tb.vhd" 
-vhdl xil_defaultlib "../src/vhdl/i2s.vhd" 
-vhdl xil_defaultlib "../src/vhdl/top.vhd" 
-vhdl xil_defaultlib "../src/vhdl/i2c_configurator.vhd" 
+
+vhdl xil_defaultlib 'C:\Users\remil\Documents\Etudes\S8\I2SCODEC\src\testbench\i2s_tb.vhd' 
+vhdl xil_defaultlib 'C:\Users\remil\Documents\Etudes\S8\I2SCODEC\src\testbench\top_tb.vhd' 
+vhdl xil_defaultlib 'C:\Users\remil\Documents\Etudes\S8\I2SCODEC\src\vhdl\i2c_configurator.vhd' 
+vhdl xil_defaultlib 'C:\Users\remil\Documents\Etudes\S8\I2SCODEC\src\vhdl\i2s_layer.vhd' 
+vhdl xil_defaultlib 'C:\Users\remil\Documents\Etudes\S8\I2SCODEC\src\vhdl\top.vhd' 
