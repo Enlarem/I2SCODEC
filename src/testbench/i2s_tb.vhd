@@ -23,7 +23,7 @@ begin
       ac_pbdat  => s_ac_pbdat,
       ac_scl    => s_ac_scl,
       ac_mclk   => s_ac_mclk
-    );
+    );  
 
     tests : process
     begin
