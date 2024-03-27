@@ -4,6 +4,9 @@ use IEEE.STD_LOGIC_1164.all;
 entity i2s_layer is
   port
   (
+
+  filter_mode : in std_logic;
+
     --Input ports
     ac_bclk   : in std_logic;
     ac_muten  : in std_logic;

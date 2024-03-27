@@ -61,7 +61,7 @@ architecture Behavioral of i2c_configurator is
         , R03 & B"1_0111_1001"
         , R05 & B"0_0000_0000"
         , R07 & B"0_0100_1010"  --Master mode
-        , R08 & B"0_0000_0000"
+        , R08 & B"0_0000_0000" -- Means a 48 khz PBLRC and RECLRC frequencies
         , R16 & B"0_0111_1011"
         , R17 & B"0_0000_0000"
         , R18 & B"0_1111_0011"
