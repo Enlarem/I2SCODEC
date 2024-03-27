@@ -1,2 +1,7 @@
 
-\n vhdl xil_defaultlib 'C:\Users\Tonda\Desktop\ækola\ERASMUS\Embedded system design\Assignment_2\src\testbench\i2s_tb.vhd' \n vhdl xil_defaultlib 'C:\Users\Tonda\Desktop\ækola\ERASMUS\Embedded system design\Assignment_2\src\testbench\top_tb.vhd' \n vhdl xil_defaultlib 'C:\Users\Tonda\Desktop\ækola\ERASMUS\Embedded system design\Assignment_2\src\vhdl\i2c_configurator.vhd' \n vhdl xil_defaultlib 'C:\Users\Tonda\Desktop\ækola\ERASMUS\Embedded system design\Assignment_2\src\vhdl\i2s_layer.vhd' \n vhdl xil_defaultlib 'C:\Users\Tonda\Desktop\ækola\ERASMUS\Embedded system design\Assignment_2\src\vhdl\top.vhd' 
+
+vhdl xil_defaultlib 'C:\Users\remil\Documents\Etudes\S8\I2SCODEC\src\testbench\i2s_tb.vhd' 
+vhdl xil_defaultlib 'C:\Users\remil\Documents\Etudes\S8\I2SCODEC\src\testbench\top_tb.vhd' 
+vhdl xil_defaultlib 'C:\Users\remil\Documents\Etudes\S8\I2SCODEC\src\vhdl\i2c_configurator.vhd' 
+vhdl xil_defaultlib 'C:\Users\remil\Documents\Etudes\S8\I2SCODEC\src\vhdl\i2s_layer.vhd' 
+vhdl xil_defaultlib 'C:\Users\remil\Documents\Etudes\S8\I2SCODEC\src\vhdl\top.vhd' 

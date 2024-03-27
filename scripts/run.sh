@@ -22,9 +22,9 @@ echo "[Pre-implementation] Files updated !"
 
 #Build the simulation
 echo "[Implementation] Building the simulation"
-cd ../simulations/ ; xelab -prj ../scripts/top-tb.prj -s "$1_simulation_snapshot" "xil_defaultlib.$1" --nolog -debug all
+cd "../simulations/" ; xelab -prj ../scripts/top-tb.prj -s "$1_simulation_snapshot" "xil_defaultlib.$1" --nolog -debug all
 
 echo "[Implementation] Runing the simulation"
 #Run the simulation
-cd ../scripts/
+cd "../scripts/"
 xsim "$1_simulation_snapshot" -gui -wdb "../simulations/simulate_xsim.wdb" -view "Waveforms/basic_config.wcfg" --nolog --xsimdir ../simulations
