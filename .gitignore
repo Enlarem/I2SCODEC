@@ -10,3 +10,4 @@
 *.xdbg
 *.ini
 simulation/*
+scripts/top-tb.prj
