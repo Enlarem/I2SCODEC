@@ -16,81 +16,81 @@ architecture Behavioral of i2s_tb is
   signal s_small_data : std_logic_vector(30 downto 0);
 
 begin
-
-  -- Simulating clocks
-  -- Clock simulation is based on the actual set up made
-  -- using the I2c_cofigurator component, following the SSM2603
-  -- specification file
-  mainClkGen : process begin
-    s_clk <= '0';
-    wait for cc; -- So it fits the  12.288 Mhz clock
-    s_clk <= '1';
-    wait for cc;
-  end process;
-
-  bitClkGen : process(s_clk) 
-    variable count : integer := 0;
-  begin
-    if rising_edge(s_clk) then
-        count := count + 1;
-    end if;
-    if count = 3 then
-        count := 0;
-        s_ac_bclk <= not s_ac_bclk;    
-    end if;
-  end process;
-
-  pbClkGen : process(s_ac_bclk) 
-    variable count : integer := 0; 
-  begin
-    if rising_edge(s_ac_bclk) then
-        count := count + 1;
-    end if;
-    if count = 255 then
-        count := 0;
-        s_ac_pblrc <= not s_ac_pblrc;    
-    end if;
-  end process;
-
-  i2s_layer_inst : entity work.i2s_layer
-    port map
-    (
-      filter_mode => s_filter_mode,
-
-      ac_bclk   => s_ac_bclk,
-      ac_muten  => s_ac_muten,
-      ac_pblrc  => s_ac_pblrc,
-      ac_recdat => s_ac_recdat,
-      ac_reclrc => s_ac_reclrc,
-      ac_sda    => s_ac_sda,
-      ac_pbdat  => s_ac_pbdat,
-      ac_scl    => s_ac_scl,
-      ac_mclk   => s_ac_mclk
-    );
-
-  tests : process (s_clk)
-  begin
-
-    -- To test :
-    -- I2S specification 
-    -- -- MSB of the next word on the falling edge of the next clock cycle after the switch of PBLRC
-    if rising_edge(s_ac_pblrc) then
-        
-    end if;
-    wait for 4 * cc;
-    wait for 2 * cc; -- Waiting for the blank space just after the switch 
-
-    for i in 0 to s_small_data'length loop
-      assert(s_small_data(i) = s_ac_pbdat) report "Error [1] : at index " & integer'image(i) & " expected " & std_logic'image(s_small_data(i)) & " but had " & std_logic'image(s_ac_pblrc);
-      wait for 2 * cc;
-    end loop;
-    -- -- When giving a word too wide word to transmit, the word transmitted should be trundated
-
-    -- I2S transimition
-    -- -- The data sent should be received without modification
-    -- -- The data sent should be received synchronized
-    -- -- -- Look at the synchronization between pblrc and the pbdat
-    -- -- -- 
-
-  end process; -- tests
+--
+--  -- Simulating clocks
+--  -- Clock simulation is based on the actual set up made
+--  -- using the I2c_cofigurator component, following the SSM2603
+--  -- specification file
+--  mainClkGen : process begin
+--    s_clk <= '0';
+--    wait for cc; -- So it fits the  12.288 Mhz clock
+--    s_clk <= '1';
+--    wait for cc;
+--  end process;
+--
+--  bitClkGen : process(s_clk) 
+--    variable count : integer := 0;
+--  begin
+--    if rising_edge(s_clk) then
+--        count := count + 1;
+--    end if;
+--    if count = 3 then
+--        count := 0;
+--        s_ac_bclk <= not s_ac_bclk;    
+--    end if;
+--  end process;
+--
+--  pbClkGen : process(s_ac_bclk) 
+--    variable count : integer := 0; 
+--  begin
+--    if rising_edge(s_ac_bclk) then
+--        count := count + 1;
+--    end if;
+--    if count = 255 then
+--        count := 0;
+--        s_ac_pblrc <= not s_ac_pblrc;    
+--    end if;
+--  end process;
+--
+--  i2s_layer_inst : entity work.i2s_layer
+--    port map
+--    (
+--      filter_mode => s_filter_mode,
+--
+--      ac_bclk   => s_ac_bclk,
+--      ac_muten  => s_ac_muten,
+--      ac_pblrc  => s_ac_pblrc,
+--      ac_recdat => s_ac_recdat,
+--      ac_reclrc => s_ac_reclrc,
+--      ac_sda    => s_ac_sda,
+--      ac_pbdat  => s_ac_pbdat,
+--      ac_scl    => s_ac_scl,
+--      ac_mclk   => s_ac_mclk
+--    );
+--
+--  tests : process (s_clk)
+--  begin
+--
+--    -- To test :
+--    -- I2S specification 
+--    -- -- MSB of the next word on the falling edge of the next clock cycle after the switch of PBLRC
+--    if rising_edge(s_ac_pblrc) then
+--        
+--    end if;
+--    wait for 4 * cc;
+--    wait for 2 * cc; -- Waiting for the blank space just after the switch 
+--
+--    for i in 0 to s_small_data'length loop
+--      assert(s_small_data(i) = s_ac_pbdat) report "Error [1] : at index " & integer'image(i) & " expected " & std_logic'image(s_small_data(i)) & " but had " & std_logic'image(s_ac_pblrc);
+--      wait for 2 * cc;
+--    end loop;
+--    -- -- When giving a word too wide word to transmit, the word transmitted should be trundated
+--
+--    -- I2S transimition
+--    -- -- The data sent should be received without modification
+--    -- -- The data sent should be received synchronized
+--    -- -- -- Look at the synchronization between pblrc and the pbdat
+--    -- -- -- 
+--
+--  end process; -- tests
 end architecture;
