@@ -93,23 +93,36 @@
   <FileSets Version="1" Minor="32">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/new/top.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../Xilinx_stuff/AudioCodecDemo/AudioCodecDemo.srcs/sources_1/new/top.vhd"/>
-          <Attr Name="ImportTime" Val="1616498016"/>
+      <File Path="$PSRCDIR/sources_1/imports/Embedded_system_design/Assignment_2/archive_project_summary.txt">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/archive_project_summary.txt"/>
+          <Attr Name="ImportTime" Val="1712131063"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../temp/vhdl/top.vhd"/>
+          <Attr Name="ImportTime" Val="1712131030"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/i2c_configurator.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../Xilinx_stuff/AudioCodecDemo/AudioCodecDemo.srcs/sources_1/new/i2c_configurator.vhd"/>
-          <Attr Name="ImportTime" Val="1616497957"/>
+      <File Path="$PSRCDIR/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../temp/vhdl/i2s_layer.vhd"/>
+          <Attr Name="ImportTime" Val="1712131030"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/archive_project_summary.txt"/>
+      <File Path="$PSRCDIR/sources_1/imports/Embedded_system_design/temp/vhdl/i2c_configurator.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../temp/vhdl/i2c_configurator.vhd"/>
+          <Attr Name="ImportTime" Val="1712131030"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="top"/>
@@ -159,6 +172,22 @@
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../../Xilinx_stuff/AudioCodecDemo/AudioCodecDemo.srcs/topsim/new/top_tb.vhd"/>
           <Attr Name="ImportTime" Val="1616490297"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/topsim/imports/testbench/i2s_tb.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../temp/testbench/i2s_tb.vhd"/>
+          <Attr Name="ImportTime" Val="1712131030"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/topsim/imports/testbench/top_tb.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../temp/testbench/top_tb.vhd"/>
+          <Attr Name="ImportTime" Val="1712131030"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
