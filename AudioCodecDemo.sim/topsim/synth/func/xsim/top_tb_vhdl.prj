@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"top_tb_func_synth.vhd" \
+"../../../../../AudioCodecDemo.srcs/topsim/new/top_tb.vhd" \
+
+# Do not sort compile order
+nosort

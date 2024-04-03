@@ -1,9 +1,0 @@
-0.7
-2020.2
-Oct 13 2023
-20:47:58
-C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/src/testbench/i2s_tb.vhd,1711462217,vhdl,,,,i2s_tb,,,,,,,,
-C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/src/testbench/top_tb.vhd,1711442225,vhdl,,,,top_tb,,,,,,,,
-C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/src/vhdl/i2c_configurator.vhd,1710938677,vhdl,,,,i2c_configurator,,,,,,,,
-C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/src/vhdl/i2s_layer.vhd,1711442225,vhdl,C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/src/testbench/i2s_tb.vhd,,,i2s_layer,,,,,,,,
-C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/src/vhdl/top.vhd,1711442225,vhdl,C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/src/testbench/top_tb.vhd,,,top,,,,,,,,

@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl2008 xil_defaultlib  \
+"../../../../AudioCodecDemo.srcs/sources_1/new/top.vhd" \
+"../../../../AudioCodecDemo.srcs/sources_1/new/i2c_configurator.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../AudioCodecDemo.srcs/topsim/new/top_tb.vhd" \
+
+# Do not sort compile order
+nosort
