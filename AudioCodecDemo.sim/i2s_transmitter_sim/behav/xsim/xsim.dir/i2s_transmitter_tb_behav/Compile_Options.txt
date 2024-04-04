@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "i2s_transmitter_tb_behav" "xil_defaultlib.i2s_transmitter_tb" -log "elaborate.log" 
