@@ -67,10 +67,10 @@ begin
   pblrcGen : process(s_ac_bclk) 
     variable count : integer := 0; 
   begin
-    if rising_edge(s_ac_bclk) then
+    if falling_edge(s_ac_bclk) then
         count := count + 1;
     end if;
-    if count = 127 then
+    if count = 128 then
         count := 0;
         s_ac_pblrc <= not s_ac_pblrc;    
     end if;

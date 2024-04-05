@@ -47,6 +47,7 @@ architecture Behavioral of i2s_transmitter_tb is
         -- Relted to internal data management
                t_buf: std_logic_vector( 2* w_width -1 downto 0);
                word_received: std_logic;
+               rst: std_logic;
         -- Related to the Codec interface
                pblrc : in STD_LOGIC;
                mclk : in STD_LOGIC;
@@ -78,7 +79,7 @@ architecture Behavioral of i2s_transmitter_tb is
       return slv;
     end function;
 
-    signal s_mclk, s_ac_bclk, s_ac_pblrc, s_word_received, s_pbdat : std_logic := '0';
+    signal s_mclk, s_rst, s_ac_bclk, s_ac_pblrc, s_word_received, s_pbdat : std_logic := '0';
     signal s_t_buf : std_logic_vector(w_width*2-1 downto 0) := (others => '0');
 
 begin
@@ -100,6 +101,7 @@ begin
     port map(
         t_buf => s_t_buf,
         word_received => s_word_received,
+        rst => s_rst,
         
         mclk => s_mclk,
         bclk => s_ac_bclk,
@@ -110,10 +112,10 @@ begin
     test: process
     begin
         -- Loading data into the buffer
-        s_t_buf <= rand_slv(w_width*2);
+        s_t_buf <= "111" & rand_slv(w_width*2 - 3 );
         
         -- Testing the data transfer
-        wait until falling_edge(s_ac_bclk);
+        wait until falling_edge(s_ac_pblrc);
         s_word_received <= '1';    
         wait for mclk_period * ns;
         s_word_received <= '0';    
@@ -122,11 +124,45 @@ begin
         wait until falling_edge(s_ac_bclk);
         wait until rising_edge(s_ac_bclk);
         -- Should have sent the first bit
-        for i in s_t_buf'range loop
+        
+        report "------ [Test] Sending Left";
+        for i in 2*w_width - 1 downto w_width loop
             assert(s_pbdat = s_t_buf(i)) report "Error["& integer'image(i) &"] : value given is " & std_logic'image(s_pbdat) & " whereas it should be " & std_logic'image(s_t_buf(i));
             wait until rising_edge(s_ac_bclk);
         end loop;
+        
+        wait until rising_edge(s_ac_pblrc);
+        wait until falling_edge(s_ac_bclk);
+        wait until rising_edge(s_ac_bclk);
+        report "------ [Test] Sending Right";
+
+        for i in w_width - 1 downto 0 loop
+            assert(s_pbdat = s_t_buf(i)) report "Error["& integer'image(i) &"] : value given is " & std_logic'image(s_pbdat) & " whereas it should be " & std_logic'image(s_t_buf(i));
+            wait until rising_edge(s_ac_bclk);
+        end loop;
+      -- Testing if the transmitter can handle playing multiple words
+        report "------ [Test] Changing the word";
+
+        s_t_buf(w_width*2-1) <= not s_t_buf(w_width*2-1);
+        
+        wait until falling_edge(s_ac_pblrc); 
+        wait until falling_edge(s_ac_bclk);
+        wait until rising_edge(s_ac_bclk);
        
+        assert(s_pbdat = s_t_buf(w_width*2-1)) report "Error["& integer'image(w_width*2) &"] : value given is " & std_logic'image(s_pbdat) & " whereas it should be " & std_logic'image(s_t_buf(w_width*2-1));
+
+        -- Test reset
+        report "------ [Test] Testing Reset";
+        
+        -- Waiting for the next bit to be sent because it'll be a 1, and the value sent after a reset is 0.
+        wait until rising_edge(s_ac_bclk);
+
+        s_rst <= '1';
+        wait for mclk_period * ns;
+        assert(s_pbdat = '0') report "Error["& integer'image(w_width*2 + 1) &"] : value given is " & std_logic'image(s_pbdat) & " whereas it should be 0";
+        s_rst <= '0';
+        wait for mclk_period * ns;
+        
     end process;
     
 end Behavioral;
