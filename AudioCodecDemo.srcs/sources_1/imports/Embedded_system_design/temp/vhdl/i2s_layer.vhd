@@ -24,25 +24,8 @@ entity i2s_layer is
 end i2s_layer;
 architecture Behavioral of i2s_layer is
 
-signal mclk : std_logic := '0';--25 Mhz master clock 
 
 begin
-
-process (sysclk)
-  constant cntm_max : integer := 20; -- 20 rising edges, half a period
-  variable cntm : integer range 0 to cntm_max :=0;
-
-begin
-  if rising_edge(sysclk) then
-    if cntm < cntm_max - 1 then
-      cntm := cntm + 1;
-    else 
-      cntm := 0;
-      mclk <= not mclk;
-    end if ;
-  end if;
-end process;
-
 
 
 

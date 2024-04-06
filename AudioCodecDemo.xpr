@@ -135,6 +135,12 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/new/I2s_receiver.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="top"/>
@@ -228,6 +234,13 @@
     <FileSet Name="i2s_transmitter_sim" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/i2s_transmitter_sim" RelGenDir="$PGENDIR/i2s_transmitter_sim">
       <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/i2s_transmitter_sim/new/i2s_transmitter_tb.vhd">
+      <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+    <FileSet Name="sim_reciever" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_reciever" RelGenDir="$PGENDIR/sim_reciever">
+      <File Path="$PSRCDIR/sim_reciever/new/I2s_receiver_tb.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
