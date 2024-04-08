@@ -239,6 +239,8 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+    </FileSet>
+    
     <FileSet Name="sim_reciever" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_reciever" RelGenDir="$PGENDIR/sim_reciever">
       <File Path="$PSRCDIR/sim_reciever/new/I2s_receiver_tb.vhd">
         <FileInfo>
