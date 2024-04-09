@@ -49,11 +49,12 @@ entity i2s_transmitter is
 end i2s_transmitter;
 
 architecture Behavioral of i2s_transmitter is
-    type i2s_transmitter_states is (s_Init, s_Transmit, s_Wait_for_Left, s_Wait_for_Right, s_NextEdge, s_Stores);
+    type i2s_transmitter_states is (s_Init, s_Transmit, s_Wait_for_Transmitting, s_Wait_for_Left, s_Wait_for_Right, s_NextEdge, s_Stores);
     signal currentState : i2s_transmitter_states := s_Init;
     signal t_buf_temp : std_logic_vector(t_buf'range) := (others => '0');
     signal bits_sent : integer := 0;
-    signal left_right : std_logic := '0';
+    signal last_falling_edge : integer := 0;
+    signal start_counting, stop_counting : std_logic :='0';
 begin
 
     state_process : process(mclk)
@@ -63,9 +64,19 @@ begin
             else
                 case currentState is
                     when s_Init => 
+                        
                         if (word_received = '1') then 
+                            if start_counting  = '1' and last_falling_edge < 4 then
+                                currentState <= s_Stores; -- The falling edge of the playback clock just passed, and we currently are in the bit that shouldn't be taken into account
+                            else
+                                currentState <= s_Wait_for_Transmitting;
+                            end if;
+                        end if;
+                        
+                    when s_Wait_for_Transmitting => 
+                        if pblrc = '0' then
                             currentState <= s_Stores;
-                        end if;             
+                        end if;
                     when s_Stores => 
                         t_buf_temp <= t_buf;
                         currentState <= s_Transmit;
@@ -85,7 +96,13 @@ begin
                         end if;
                     when others => null;
                 end case;   
-            end if;         
+            end if;
+            if rising_edge(mclk) and start_counting = '1' and stop_counting = '0' and last_falling_edge < 4 then
+                last_falling_edge <= last_falling_edge + 1 ;
+            elsif last_falling_edge >= 4 then
+                last_falling_edge <= 0;
+                stop_counting <= '1';
+            end if;
         end process;
     
     data_process: process(bclk, rst)
@@ -106,5 +123,13 @@ begin
         end if;
     end process;
         
-
+    pb_process: process(pblrc)
+    begin
+        if falling_edge(pblrc) then 
+            start_counting <= '1';
+        elsif rising_edge(pblrc) then
+            start_counting <= '0';
+        end if;
+    end process;
+ 
 end Behavioral;
