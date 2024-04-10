@@ -8,7 +8,6 @@ entity I2s_receiver is
             );
     
     Port ( 
-        sysclk      : in std_logic;
         ac_bclk     : in std_logic;
         ac_mclk     : in std_logic;
         ac_recdat   : in std_logic;

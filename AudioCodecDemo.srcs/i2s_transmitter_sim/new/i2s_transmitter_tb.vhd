@@ -116,6 +116,8 @@ begin
         
         -- Testing the data transfer
         wait until falling_edge(s_ac_pblrc);
+        -- wait for 3 * mclk_period * ns;
+
         s_word_received <= '1';    
         wait for mclk_period * ns;
         s_word_received <= '0';    
