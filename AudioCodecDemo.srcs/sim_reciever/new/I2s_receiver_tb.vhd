@@ -18,6 +18,7 @@ component I2s_receiver
         ac_mclk     : in std_logic;
         ac_recdat   : in std_logic;
         ac_reclrc   : in std_logic;
+        reset       : in std_logic := '0';
         rec_done    : out std_logic;
         r_buff      : out std_logic_vector((2*width-1) downto 0) := (others => '0')
         );
@@ -35,8 +36,19 @@ end component;
     constant width : integer := 32;
 
     signal sim_clk, sim_bclk, sim_mclk, sim_reclrc, sim_recdat : std_logic;
-    signal sim_buff :  std_logic_vector ((2*width-1) downto 0) := (others => '0');
-    signal sim_done : std_logic := '0';
+    signal sim_buff, temp :  std_logic_vector ((2*width-1) downto 0) := (others => '0');
+    signal sim_done, sim_reset : std_logic := '0';
+    
+    function to_string (a : std_logic_vector) return string is
+        variable b            : string (1 to a'length) := (others => NUL);
+        variable stri         : integer                := 1;
+      begin
+        for i in a'range loop
+          b(stri) := std_logic'image(a((i)))(2);
+          stri    := stri + 1;
+        end loop;
+        return b;
+      end function;
 
 begin
 
@@ -58,6 +70,7 @@ port map (  sysclk => sim_clk,
             ac_mclk => sim_mclk,
             ac_recdat => sim_recdat,
             ac_reclrc => sim_reclrc,
+            reset => sim_reset,
             r_buff => sim_buff,
             rec_done => sim_done
             );
@@ -79,27 +92,66 @@ end process;
     
 test : process
 begin
-    wait until falling_edge(sim_reclrc); -- waiting to activate left channel
-    report "------ [Test] Recording Left";
     
+    wait until falling_edge(sim_bclk);
     wait until rising_edge(sim_bclk);
-    for i in width-1 downto 0 loop
-        assert (sim_buff(i) = sim_recdat) report "Error ["& integer'image(i) &"] :value given is " & std_logic'image(sim_buff(i)) & " whereas it should be " & std_logic'image(sim_recdat);
+    for i in 63 downto 32 loop
+        temp(i) <= sim_recdat;
         wait until rising_edge(sim_bclk);
     end loop;
-    
     wait until rising_edge(sim_reclrc);
     wait until falling_edge(sim_bclk);
     wait until rising_edge(sim_bclk);
-    report "------ [Test] Recording Right";
-    
-    wait until rising_edge(sim_bclk);
-    for i in (2*width-1) downto width loop
-        assert (sim_buff(i) = sim_recdat) report "Error ["& integer'image(i) &"] :value given is " & std_logic'image(sim_buff(i)) & " whereas it should be " & std_logic'image(sim_recdat);
+    for i in 31 downto 0 loop
+        temp(i) <= sim_recdat;
         wait until rising_edge(sim_bclk);
-    end loop;    
+    end loop;
+    wait on sim_done;
+    assert (sim_buff = temp) report "Error [1] :value given is " & to_string(sim_buff) & " whereas it should be " & to_string(temp);
     
-    assert (sim_done = '1') report "Error value is " & std_logic'image(sim_done) & " whereas it should be " & std_logic'image('1');
+    -- Another counting cycle, but this time with restart after recording
+    wait until falling_edge(sim_bclk);
+    sim_reset <= '1';
+    wait for mclk_period * ns;
+    assert (sim_buff = temp) report "Error [2] :value given is " & to_string(sim_buff) & " whereas it should be " & to_string(temp);
+    wait until rising_edge(sim_reclrc);
+    sim_reset <= '0';
+    
+    -- Restart during counting
+    wait until falling_edge(sim_reclrc);
+    wait until falling_edge(sim_bclk);
+    wait until rising_edge(sim_bclk);
+    for i in 63 downto 40 loop
+        temp(i) <= sim_recdat;
+        wait until rising_edge(sim_bclk);
+    end loop;
+    sim_reset <= '1';
+    wait for mclk_period * ns;
+    sim_reset <= '0';
+    wait until falling_edge(sim_bclk);
+    wait until rising_edge(sim_bclk);
+    wait until falling_edge(sim_bclk);    
+    assert (sim_buff = temp) report "Error [3] :value given is " & to_string(sim_buff) & " whereas it should be " & to_string(temp);
+    
+    -- Counting without interuption
+    wait until falling_edge(sim_reclrc);
+    wait until falling_edge(sim_bclk);
+    wait until rising_edge(sim_bclk);
+    for i in 63 downto 32 loop
+        temp(i) <= sim_recdat;
+        wait until rising_edge(sim_bclk);
+    end loop;
+    wait until rising_edge(sim_reclrc);
+    wait until falling_edge(sim_bclk);
+    wait until rising_edge(sim_bclk);
+    for i in 31 downto 0 loop
+        temp(i) <= sim_recdat;
+        wait until rising_edge(sim_bclk);
+    end loop;
+    wait on sim_done;
+    assert (sim_buff = temp) report "Error [4] :value given is " & to_string(sim_buff) & " whereas it should be " & to_string(temp);
+
+    wait;
     
 end process;
 end Behavioral;
