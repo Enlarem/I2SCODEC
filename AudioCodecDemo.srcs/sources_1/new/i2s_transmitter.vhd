@@ -33,13 +33,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity i2s_transmitter is
     Generic(
-        w_width: integer
+        w_width: integer := 32
     );
     Port ( 
     -- Relted to internal data management
-           t_buf: std_logic_vector( 2* w_width -1 downto 0);
-           word_received: std_logic;
-           rst: std_logic;
+           t_buf: in std_logic_vector( 2* w_width -1 downto 0);
+           word_received: in std_logic;
+           rst: in std_logic;
 
     -- Related to the Codec interface
            pblrc : in STD_LOGIC;
