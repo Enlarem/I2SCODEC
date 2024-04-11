@@ -56,7 +56,7 @@ architecture Behavioral of i2s_layer is
             );
     end component ;
     
-    type general_state is (s_Init, s_Pause, s_Idle, s_WordReceived);
+    type general_state is (s_Init, s_Wait_First_Word, s_Idle, s_Word_Received);
     signal currentState : general_state := s_Init;
     signal t_word_received, t_rst, r_rec_done, t_ac_pbdat : std_logic := '0';
     signal r_buff, t_buff : std_logic_vector(width*2 -1 downto 0) := (others => '0');
@@ -85,9 +85,16 @@ begin
     
     state_process: process (top_mclk)
     begin
-        if onoff = '0' then 
+        if onoff = '1' then 
             case currentState is
-                when s_WordReceived => 
+                when s_Init => 
+                    t_rst <= '0';
+                    currentState <= s_Wait_First_Word;
+                when s_Wait_First_Word =>
+                    if r_rec_done = '1' then
+                        currentState <= s_Word_Received;
+                    end if;
+                when s_Word_Received => 
                     t_buff <= r_buff;
                     t_word_received <= '1';
                     currentState <= s_Idle;
@@ -96,8 +103,14 @@ begin
                     if r_rec_done = '1' then
                         t_buff <= r_buff;
                     end if;
-                when others => ;
+                when others => null;
             end case;
+        else 
+            currentState <= s_Init;
+            t_rst <= '1';
+            t_word_received <= '0';
+            t_ac_pbdat <= '0';
+            t_buff <= (others => '0');
         end if;
     end process;
     
