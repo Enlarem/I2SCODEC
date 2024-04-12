@@ -26,7 +26,7 @@ architecture Behavioral of I2s_receiver is
     signal done_c : std_logic := '0';
     signal buff : std_logic_vector ((2*width-1) downto 0) := (others => '0');
     signal r_done : std_logic := '0';
-    signal bit_c : integer := 64;
+    signal bit_c : integer := 2 * width;
 begin
 
 
@@ -76,7 +76,7 @@ uart : process (ac_bclk, reset)
     begin
         if falling_edge(ac_bclk) and reset = '0' then
             if state = Count_L then
-                if bit_c > 63 then
+                if bit_c > 2*width-1 then
                     bit_c <= bit_c - 1;
                 else
                     buff(bit_c) <= data;
@@ -90,12 +90,12 @@ uart : process (ac_bclk, reset)
                     bit_c <= bit_c - 1;
                 end if;
             elsif state = Init then
-                bit_c <= 64;
+                bit_c <= 2*width;
                 r_done <= '0';
             elsif state = Send then
                 r_done <= '1';
             elsif state = Pause then
-                bit_c <= 64;
+                bit_c <= 2*width;
             else
             end if;
         elsif reset = '1' then

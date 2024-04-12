@@ -58,7 +58,9 @@ architecture Behavioral of i2s_layer is
     
 begin
 
-    receiver: I2s_receiver port map(
+    receiver: I2s_receiver 
+    generic map( width => width )
+    port map(
         ac_reclrc => ac_reclrc,
         ac_mclk => top_mclk,
         ac_bclk => ac_bclk,
@@ -68,7 +70,9 @@ begin
         rec_done => r_rec_done
     );
     
-    transmitter: i2s_transmitter port map(
+    transmitter: i2s_transmitter 
+    generic map( w_width => width )
+    port map(
         t_buf => t_buff,
         word_received => t_word_received,
         rst => t_rst,

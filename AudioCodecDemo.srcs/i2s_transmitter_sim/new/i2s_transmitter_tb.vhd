@@ -37,7 +37,7 @@ end i2s_transmitter_tb;
 
 architecture Behavioral of i2s_transmitter_tb is
     constant mclk_period : integer := 80;
-    constant w_width: integer := 32;
+    constant w_width: integer := 24;
 
     component i2s_transmitter is
         Generic(
@@ -81,6 +81,7 @@ architecture Behavioral of i2s_transmitter_tb is
 
     signal s_mclk, s_rst, s_ac_bclk, s_ac_pblrc, s_word_received, s_pbdat : std_logic := '0';
     signal s_t_buf : std_logic_vector(w_width*2-1 downto 0) := (others => '0');
+    
 
 begin
 

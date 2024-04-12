@@ -38,7 +38,7 @@ end i2s_layer_tb;
 
 architecture Behavioral of i2s_layer_tb is
     constant mclk_period : integer := 80;
-    constant w_width: integer := 32;
+    constant w_width: integer := 24;
 
     component clockSim is
         Generic( mclk_period : integer);
@@ -92,6 +92,18 @@ architecture Behavioral of i2s_layer_tb is
         end loop;
         return b;
       end function;
+    
+    function is_null_vector(vector : std_logic_vector) return boolean is
+        variable result : boolean := true;
+    begin
+        for i in vector'range loop
+            if vector(i) /= '0' then
+                result := false;
+                exit;
+            end if;
+        end loop;
+        return result;
+    end function is_null_vector;
 
     signal s_mclk,  s_ac_bclk, s_ac_recdat, s_ac_pblrc, s_ac_reclrc, s_word_received, s_ac_pbdat : std_logic := '0';
     signal s_onoff: std_logic := '1';
@@ -115,7 +127,7 @@ begin
         width => w_width
     )
     port map(
-        onoff => '1',
+        onoff => s_onoff,
         
         top_mclk => s_mclk,
         ac_bclk => s_ac_bclk,
@@ -128,13 +140,13 @@ begin
 
     test : process
     begin
-        -- s_onoff <= '1';
         s_r_buf <= "111" & rand_slv(2*w_width -3);
-    
+        s_onoff <= '1';
+
         -- Sending the left bits
         -- wait until falling_edge(s_ac_reclrc);
         wait until falling_edge(s_ac_bclk);
-        for i in 63 downto 32 loop
+        for i in w_width*2-1 downto w_width loop
             s_ac_recdat <= s_r_buf(i);
             wait until falling_edge(s_ac_bclk);
         end loop;
@@ -142,7 +154,7 @@ begin
         -- Sending the right bits
         wait until rising_edge(s_ac_reclrc);
         wait until falling_edge(s_ac_bclk);
-        for i in 31 downto 0 loop
+        for i in w_width -1  downto 0 loop
             s_ac_recdat <= s_r_buf(i);
             wait until falling_edge(s_ac_bclk);
         end loop;
@@ -151,7 +163,7 @@ begin
         wait until falling_edge(s_ac_pblrc);
         wait until falling_edge(s_ac_bclk);
         wait until rising_edge(s_ac_bclk);
-        for i in 63 downto 32 loop
+        for i in w_width*2-1 downto w_width loop
             s_t_buf(i) <= s_ac_pbdat;
             wait until rising_edge(s_ac_bclk);
         end loop;
@@ -159,13 +171,53 @@ begin
         wait until rising_edge(s_ac_pblrc);
         wait until falling_edge(s_ac_bclk);
         wait until rising_edge(s_ac_bclk);
-        for i in 31 downto 0 loop
+        for i in w_width -1  downto 0 loop
             s_t_buf(i) <= s_ac_pbdat;
             wait until rising_edge(s_ac_bclk);
         end loop;
         
         assert (s_t_buf = s_r_buf) report "Error [1] :value given is " & to_string(s_t_buf) & " whereas it should be " & to_string(s_r_buf);
         
+        s_onoff <= '0';
+        -- Sending the left bits
+        wait until falling_edge(s_ac_reclrc);
+        wait until falling_edge(s_ac_bclk);
+        for i in w_width*2-1 downto w_width loop
+            s_ac_recdat <= s_r_buf(i);
+            wait until falling_edge(s_ac_bclk);
+        end loop;
+        
+        -- Sending the right bits
+        wait until rising_edge(s_ac_reclrc);
+        wait until falling_edge(s_ac_bclk);
+        for i in w_width -1  downto 0 loop
+            s_ac_recdat <= s_r_buf(i);
+            wait until falling_edge(s_ac_bclk);
+        end loop;
+        
+        -- Listening the left bits
+        wait until falling_edge(s_ac_pblrc);
+        wait until falling_edge(s_ac_bclk);
+        wait until rising_edge(s_ac_bclk);
+        for i in w_width*2-1 downto w_width loop
+            s_t_buf(i) <= s_ac_pbdat;
+            wait until rising_edge(s_ac_bclk);
+        end loop;
+        -- Listening the right bits
+        wait until rising_edge(s_ac_pblrc);
+        wait until falling_edge(s_ac_bclk);
+        wait until rising_edge(s_ac_bclk);
+        for i in w_width -1  downto 0 loop
+            s_t_buf(i) <= s_ac_pbdat;
+            wait until rising_edge(s_ac_bclk);
+        end loop;
+        
+        assert (is_null_vector(s_t_buf)) report "Error [2] :value given is " & to_string(s_t_buf) & " whereas it should be " & to_string(s_r_buf);
+
+        s_onoff <= '1';
+
+        wait until falling_edge(s_ac_reclrc);
+
     end process;
 
 end Behavioral;
