@@ -5,23 +5,17 @@ entity i2s_layer is
   generic( width: integer := 32);
   port
   (
-
-    filter_mode : in std_logic;
     onoff: in std_logic;
 
     --Input ports
     top_mclk    : in std_logic;
     ac_bclk   : in std_logic;
-    ac_muten  : in std_logic;
     ac_pblrc  : in std_logic;
     ac_recdat : in std_logic;
     ac_reclrc : in std_logic;
-    ac_sda    : inout std_logic;
 
     -- Output ports
-    ac_pbdat  : out std_logic;
-    ac_scl    : out std_logic;
-    ac_mclk   : out std_logic
+    ac_pbdat  : out std_logic
   );
 end i2s_layer;
 architecture Behavioral of i2s_layer is
@@ -51,6 +45,7 @@ architecture Behavioral of i2s_layer is
             ac_mclk     : in std_logic;
             ac_recdat   : in std_logic;
             ac_reclrc   : in std_logic;
+            reset       : in std_logic := '0';
             r_buff      : out std_logic_vector((2*width-1) downto 0) := (others => '0');
             rec_done    : out std_logic
             );
@@ -58,7 +53,7 @@ architecture Behavioral of i2s_layer is
     
     type general_state is (s_Init, s_Wait_First_Word, s_Idle, s_Word_Received);
     signal currentState : general_state := s_Init;
-    signal t_word_received, t_rst, r_rec_done, t_ac_pbdat : std_logic := '0';
+    signal t_word_received, t_rst, r_rst, r_rec_done, t_ac_pbdat : std_logic := '0';
     signal r_buff, t_buff : std_logic_vector(width*2 -1 downto 0) := (others => '0');
     
 begin
@@ -69,6 +64,7 @@ begin
         ac_bclk => ac_bclk,
         ac_recdat => ac_recdat,
         r_buff => r_buff,
+        reset => r_rst,
         rec_done => r_rec_done
     );
     
@@ -89,6 +85,7 @@ begin
             case currentState is
                 when s_Init => 
                     t_rst <= '0';
+                    r_rst <= '0';
                     currentState <= s_Wait_First_Word;
                 when s_Wait_First_Word =>
                     if r_rec_done = '1' then
@@ -105,11 +102,13 @@ begin
                     end if;
                 when others => null;
             end case;
+            ac_pbdat <= t_ac_pbdat;
         else 
             currentState <= s_Init;
             t_rst <= '1';
+            r_rst <= '1';
             t_word_received <= '0';
-            t_ac_pbdat <= '0';
+            ac_pbdat <= '0';
             t_buff <= (others => '0');
         end if;
     end process;

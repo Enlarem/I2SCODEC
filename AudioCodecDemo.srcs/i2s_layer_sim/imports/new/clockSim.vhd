@@ -41,7 +41,6 @@ end clockSim;
 
 architecture Behavioral of clockSim is
    constant cc : time := (mclk_period/2) * ns;
-
   signal s_clk, s_ac_bclk, s_ac_pblrc : std_logic := '0';
 
 begin
@@ -71,7 +70,7 @@ begin
     if falling_edge(s_ac_bclk) then
         count := count + 1;
     end if;
-    if count = 127 then
+    if count = 128 then
         count := 0;
         s_ac_pblrc <= not s_ac_pblrc;    
     end if;

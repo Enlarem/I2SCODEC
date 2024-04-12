@@ -6,8 +6,8 @@ vhdl xil_defaultlib  \
 "../../../../AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd" \
 "../../../../AudioCodecDemo.srcs/sources_1/new/mclk_comp.vhd" \
 "../../../../AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd" \
-"../../../../AudioCodecDemo.srcs/i2s_transmitter_sim/new/i2s_transmitter_tb.vhd" \
-"../../../../AudioCodecDemo.srcs/topsim/new/clockSim.vhd" \
+"../../../../AudioCodecDemo.srcs/i2s_layer_sim/new/i2s_layer_tb.vhd" \
+"../../../../AudioCodecDemo.srcs/i2s_layer_sim/imports/new/clockSim.vhd" \
 
 # Do not sort compile order
 nosort
