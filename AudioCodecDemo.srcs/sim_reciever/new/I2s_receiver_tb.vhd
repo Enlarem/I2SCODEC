@@ -13,7 +13,6 @@ component I2s_receiver
             );
     
     Port ( 
-        sysclk      : in std_logic;
         ac_bclk     : in std_logic;
         ac_mclk     : in std_logic;
         ac_recdat   : in std_logic;
@@ -65,7 +64,7 @@ clocks: clockSim
 
 uut: I2s_receiver
 generic map (width => width)
-port map (  sysclk => sim_clk,
+port map ( 
             ac_bclk => sim_bclk,
             ac_mclk => sim_mclk,
             ac_recdat => sim_recdat,
