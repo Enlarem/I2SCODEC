@@ -96,7 +96,7 @@ begin
                     if r_rec_done = '1' then
                         t_buff <= r_buff;
                     end if;
-                when others => ;
+                when others => 
             end case;
         end if;
     end process;
