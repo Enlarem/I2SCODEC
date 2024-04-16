@@ -134,6 +134,6 @@ begin
     ac_mclk <= clk_mclk;
     
     ac_muten <= sw(0);   -- mute switch
-    led6_r <= not onoff; -- red when muted
+    led6_r <= not sw(0) when onoff = '1' else '0'; -- red when muted
 
 end Behavioral;

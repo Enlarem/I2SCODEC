@@ -4,10 +4,10 @@ use IEEE.Numeric_std.all;
 
 
 entity FIR is
-    Generic (width : integer := 32;
+    Generic (width : integer := 24;
             taps : integer := 17;
-            in_width : integer range 8 to 32 := 32;
-            out_width : integer range 8 to 32 := 32;
+            in_width : integer range 8 to 32 := 24;
+            out_width : integer range 8 to 32 := 24;
             coef_width : integer range 8 to 32 := 16
             );
     Port (  
@@ -31,14 +31,14 @@ type input_registers is array(0 to taps-1) of signed(width-1 downto 0);
 signal delay_line_l  : input_registers := (others=>(others=>'0'));
 signal delay_line_r  : input_registers := (others=>(others=>'0'));
   
-type coefficients is array (0 to 17) of signed( 15 downto 0);
+type coefficients is array (0 to taps) of signed((coef_width - 1) downto 0);
 signal coeff_s: coefficients :=( 
 ---- 500Hz Blackman LPF
-x"0000", x"0001", x"0005", x"000C", 
-x"0016", x"0025", x"0037", x"004E", 
-x"0069", x"008B", x"00B2", x"00E0", 
-x"00B2", x"00E0", x"00B2", x"00E0"
-, x"00B2");
+x"06A0", x"0B20", x"FC8F", x"FB22", 
+x"09A3", x"FCD0", x"F061", x"24E3", 
+x"51C3", x"24E3", x"F061", x"FCD0", 
+x"09A3", x"FB22", x"FC8F", x"0B23",
+x"06A0");
 
 signal bclk : std_logic := '0';
   

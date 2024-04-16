@@ -44,3 +44,4 @@ restart
 run 10 ms
 restart
 run 3 ms
+close_sim

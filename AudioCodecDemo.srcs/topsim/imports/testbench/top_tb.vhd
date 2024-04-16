@@ -10,7 +10,6 @@ end entity;
 architecture Behavioral of top_tb is
 
     -- Functions
-
     function rand_slv(len : integer) return std_logic_vector is
       variable r : real;
       variable slv : std_logic_vector(len - 1 downto 0);
