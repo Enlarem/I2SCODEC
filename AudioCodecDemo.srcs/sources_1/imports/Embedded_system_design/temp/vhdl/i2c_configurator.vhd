@@ -8,7 +8,8 @@ entity i2c_configurator is
         sysclk  : in std_logic;
         rst     : in std_logic;
         scl     : out std_logic;
-        sda     : inout std_logic
+        sda     : inout std_logic;
+        s_done  : out std_logic
     );
 end i2c_configurator;
 
@@ -301,5 +302,5 @@ begin
 
     scl <= '0' when scl_out = '0' else 'Z';
     sda <= '0' when sda_out = '0' else 'Z';
-
+    s_done   <= '1' when i2c_sm = done else '0';
 end Behavioral;

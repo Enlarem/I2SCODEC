@@ -26,17 +26,13 @@ begin
   i2s_layer_inst : entity work.i2s_layer
     port map
     (
-      filter_mode => s_filter_mode,
 
       ac_bclk   => s_ac_bclk,
-      ac_muten  => s_ac_muten,
       ac_pblrc  => s_ac_pblrc,
       ac_recdat => s_ac_recdat,
       ac_reclrc => s_ac_reclrc,
-      ac_sda    => s_ac_sda,
       ac_pbdat  => s_ac_pbdat,
-      ac_scl    => s_ac_scl,
-      ac_mclk   => s_ac_mclk
+      top_mclk   => s_ac_mclk
     );
 
   tests : process (s_clk)

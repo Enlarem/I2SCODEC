@@ -9,6 +9,8 @@ entity i2s_layer is
 
     --Input ports
     top_mclk    : in std_logic;
+    top_mute    : in std_logic;
+
     ac_bclk   : in std_logic;
     ac_pblrc  : in std_logic;
     ac_recdat : in std_logic;
@@ -106,7 +108,11 @@ begin
                     end if;
                 when others => null;
             end case;
-            ac_pbdat <= t_ac_pbdat;
+            if top_mute = '0' then
+                ac_pbdat <= t_ac_pbdat;
+            else
+                ac_pbdat <= '0';
+            end if;
         else 
             currentState <= s_Init;
             t_rst <= '1';

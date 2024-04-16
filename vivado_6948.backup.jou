@@ -1,0 +1,55 @@
+#-----------------------------------------------------------
+# Vivado v2023.2.1 (64-bit)
+# SW Build 4081461 on Thu Dec 14 12:22:04 MST 2023
+# IP Build 4080415 on Thu Dec 14 21:01:57 MST 2023
+# SharedData Build 4077621 on Mon Dec 11 00:23:44 MST 2023
+# Start of session at: Tue Apr 16 18:26:10 2024
+# Process ID: 6948
+# Current directory: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC
+# Command line: vivado
+# Log file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/vivado.log
+# Journal file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/vivado.jou
+# Running On: remi-HP-ENVY-x360-Convertible-15-ds0xxx, OS: Linux, CPU Frequency: 1200.079 MHz, CPU Physical cores: 8, Host memory: 14509 MB
+#-----------------------------------------------------------
+start_gui
+open_project {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.xpr}
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top top_tb [get_filesets topsim]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode DisplayOnly [current_project]
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode DisplayOnly [current_project]
+export_ip_user_files -of_objects  [get_files {{/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/topsim/new/top_tb.vhd}}] -no_script -reset -force -quiet
+remove_files  -fileset topsim {{/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/topsim/new/top_tb.vhd}}
+launch_simulation -simset [get_filesets topsim ]
+source top_tb.tcl
+restart
+run 10 ms
+relaunch_sim
+restart
+run 10 ms
+restart
+run 10 ms
+relaunch_sim
+restart
+run 10 ms
+relaunch_sim
+restart
+run 10 ms
+relaunch_sim
+restart
+run 10 ms
+relaunch_sim
+restart
+run 10 ms
+relaunch_sim
+restart
+run 10 ms
+relaunch_sim
+restart
+run 10 ms
+relaunch_sim
+close_sim

@@ -1,10 +1,14 @@
 # compile vhdl design source files
-vhdl2008 xil_defaultlib  \
-"../../../../AudioCodecDemo.srcs/sources_1/new/top.vhd" \
-"../../../../AudioCodecDemo.srcs/sources_1/new/i2c_configurator.vhd" \
-
 vhdl xil_defaultlib  \
-"../../../../AudioCodecDemo.srcs/topsim/new/top_tb.vhd" \
+"../../../../AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd" \
+"../../../../AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd" \
+"../../../../AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2c_configurator.vhd" \
+"../../../../AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd" \
+"../../../../AudioCodecDemo.srcs/sources_1/new/mclk_comp.vhd" \
+"../../../../AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd" \
+"../../../../AudioCodecDemo.srcs/sources_1/new/FIR.vhd" \
+"../../../../AudioCodecDemo.srcs/topsim/imports/testbench/top_tb.vhd" \
+"../../../../AudioCodecDemo.srcs/topsim/new/clockSim.vhd" \
 
 # Do not sort compile order
 nosort
