@@ -4,7 +4,7 @@ use IEEE.Numeric_std.all;
 
 
 entity I2s_receiver is
-    Generic (width : integer := 32
+    Generic (width : integer := 24
             );
     
     Port ( 
@@ -99,7 +99,7 @@ uart : process (ac_bclk, reset)
             else
             end if;
         elsif reset = '1' then
-            bit_c <= 64;
+            bit_c <= 48;
         end if;
     end process;
 

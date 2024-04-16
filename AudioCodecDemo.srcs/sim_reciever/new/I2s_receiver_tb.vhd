@@ -9,7 +9,7 @@ end I2s_receiver_tb;
 architecture Behavioral of I2s_receiver_tb is
 
 component I2s_receiver
-    Generic (width : integer := 32
+    Generic (width : integer := 24
             );
     
     Port ( 
@@ -32,7 +32,7 @@ component clockSim is
 end component;
 
     constant mclk_period : integer := 80;
-    constant width : integer := 32;
+    constant width : integer := 24;
 
     signal sim_clk, sim_bclk, sim_mclk, sim_reclrc, sim_recdat : std_logic;
     signal sim_buff, temp :  std_logic_vector ((2*width-1) downto 0) := (others => '0');
@@ -94,14 +94,14 @@ begin
     
     wait until falling_edge(sim_bclk);
     wait until rising_edge(sim_bclk);
-    for i in 63 downto 32 loop
+    for i in (2*width-1) downto width loop
         temp(i) <= sim_recdat;
         wait until rising_edge(sim_bclk);
     end loop;
     wait until rising_edge(sim_reclrc);
     wait until falling_edge(sim_bclk);
     wait until rising_edge(sim_bclk);
-    for i in 31 downto 0 loop
+    for i in (width - 1) downto 0 loop
         temp(i) <= sim_recdat;
         wait until rising_edge(sim_bclk);
     end loop;
@@ -120,7 +120,7 @@ begin
     wait until falling_edge(sim_reclrc);
     wait until falling_edge(sim_bclk);
     wait until rising_edge(sim_bclk);
-    for i in 63 downto 40 loop
+    for i in (2*width-1) downto (2*width-16) loop
         temp(i) <= sim_recdat;
         wait until rising_edge(sim_bclk);
     end loop;
@@ -136,19 +136,37 @@ begin
     wait until falling_edge(sim_reclrc);
     wait until falling_edge(sim_bclk);
     wait until rising_edge(sim_bclk);
-    for i in 63 downto 32 loop
+    for i in (2*width-1) downto width loop
         temp(i) <= sim_recdat;
         wait until rising_edge(sim_bclk);
     end loop;
     wait until rising_edge(sim_reclrc);
     wait until falling_edge(sim_bclk);
     wait until rising_edge(sim_bclk);
-    for i in 31 downto 0 loop
+    for i in (width-1) downto 0 loop
         temp(i) <= sim_recdat;
         wait until rising_edge(sim_bclk);
     end loop;
     wait on sim_done;
     assert (sim_buff = temp) report "Error [4] :value given is " & to_string(sim_buff) & " whereas it should be " & to_string(temp);
+    
+    --Another counting
+    wait until falling_edge(sim_reclrc);
+    wait until falling_edge(sim_bclk);
+    wait until rising_edge(sim_bclk);
+    for i in (2*width-1) downto width loop
+        temp(i) <= sim_recdat;
+        wait until rising_edge(sim_bclk);
+    end loop;
+    wait until rising_edge(sim_reclrc);
+    wait until falling_edge(sim_bclk);
+    wait until rising_edge(sim_bclk);
+    for i in (width-1) downto 0 loop
+        temp(i) <= sim_recdat;
+        wait until rising_edge(sim_bclk);
+    end loop;
+    wait on sim_done;
+    assert (sim_buff = temp) report "Error [5] :value given is " & to_string(sim_buff) & " whereas it should be " & to_string(temp);
 
     wait;
     
