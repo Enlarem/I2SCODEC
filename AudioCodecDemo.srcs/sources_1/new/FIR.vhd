@@ -5,7 +5,7 @@ use IEEE.Numeric_std.all;
 
 entity FIR is
     Generic (width : integer := 24;
-            taps : integer := 17;
+            taps : integer := 19;
             in_width : integer range 8 to 32 := 24;
             out_width : integer range 8 to 32 := 24;
             coef_width : integer range 8 to 32 := 16
@@ -31,14 +31,14 @@ type input_registers is array(0 to taps-1) of signed(width-1 downto 0);
 signal delay_line_l  : input_registers := (others=>(others=>'0'));
 signal delay_line_r  : input_registers := (others=>(others=>'0'));
   
-type coefficients is array (0 to taps) of signed((coef_width - 1) downto 0);
+type coefficients is array (0 to 18) of signed((coef_width - 1) downto 0);
 signal coeff_s: coefficients :=( 
 ---- 500Hz Blackman LPF
-x"06A0", x"0B20", x"FC8F", x"FB22", 
-x"09A3", x"FCD0", x"F061", x"24E3", 
-x"51C3", x"24E3", x"F061", x"FCD0", 
-x"09A3", x"FB22", x"FC8F", x"0B23",
-x"06A0");
+x"FCD7", x"FDB1", x"0435", x"0B08", 
+x"07A2", x"FABB", x"F5E8", x"0875", 
+x"2864", x"3868", x"2864", x"0875", 
+x"F5E8", x"FABB", x"07A2", x"0B08",
+x"0435", x"FDB1", x"FCD7"); -- x"FDB1", x"FCD7"
 
 signal bclk : std_logic := '0';
   
