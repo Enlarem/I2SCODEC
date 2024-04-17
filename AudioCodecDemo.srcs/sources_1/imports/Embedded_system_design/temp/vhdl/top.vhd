@@ -38,6 +38,7 @@ component i2s_layer is
   port
   (
     onoff: in std_logic;
+    sysclk: in std_logic;
 
     --Input ports
     top_mclk    : in std_logic;
@@ -65,6 +66,7 @@ begin
     i2cConf: i2c_configurator port map(sysclk, ic2_rst, ac_scl, ac_sda, i2c_done);    
     i2sLayer: i2s_layer generic map( width => 24)
         port map (
+        sysclk => sysclk,
         top_mclk => clk_mclk,
         ac_bclk => ac_bclk,
         ac_pblrc => ac_pblrc,
