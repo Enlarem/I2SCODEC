@@ -78,7 +78,7 @@ variable sum_r : signed(width+coef_width-1 downto 0) := (others=>'0');
               
             case state is
             when idle_st => 
-                if ac_bclk = '1' and bclk = '0' then
+                if ac_bclk = '1' and bclk = '0' and rec_done = '1' then
                     state <= active_st;
                 end if;
                   

@@ -134,7 +134,7 @@ variable l, r, l_fir, r_fir : integer;
                 out_buff(2*width-1 downto width) <= firL_buff;
                 out_buff(width-1 downto 0) <= firR_buff;
                 
-                wait on sim_done;
+                wait until rising_edge(sim_done);
             end loop;
             
             assert((sim_fil_buff = out_buff)) report "error" severity error;   -- add output of the filter     
