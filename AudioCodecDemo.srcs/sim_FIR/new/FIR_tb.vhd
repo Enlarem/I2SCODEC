@@ -12,7 +12,7 @@ architecture Behavioral of FIR_tb is
 
 component FIR
     Generic (width      : integer := 24;
-            taps        : integer := 19;
+            taps        : integer := 20;
             coef_width  : integer range 8 to 32 := 16
             );
     Port (  
@@ -36,7 +36,7 @@ end component;
 
     constant mclk_period : integer := 80;
     constant width : integer := 24;
-    constant taps : integer := 19;
+    constant taps : integer := 20;
     constant coef_width : integer := 16;
 
     signal sim_clk, sim_bclk, sim_mclk, sim_reclrc, sim_recdat : std_logic := '0';
@@ -134,7 +134,7 @@ variable l, r, l_fir, r_fir : integer;
                 out_buff(2*width-1 downto width) <= firL_buff;
                 out_buff(width-1 downto 0) <= firR_buff;
                 
-                wait on sim_done;
+                wait until rising_edge(sim_done);
             end loop;
             
             assert((sim_fil_buff = out_buff)) report "error" severity error;   -- add output of the filter     

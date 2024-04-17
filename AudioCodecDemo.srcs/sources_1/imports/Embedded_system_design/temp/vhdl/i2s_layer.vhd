@@ -77,8 +77,8 @@ architecture Behavioral of i2s_layer is
     
     type general_state is (s_Init, s_Wait_First_Word, s_Idle, s_Filter, s_Word_Received);
     signal currentState : general_state := s_Init;
-    signal t_word_received, t_rst, r_rst, r_rec_done, t_ac_pbdat : std_logic := '0';
-    signal r_buff, t_buff, temp : std_logic_vector(width*2 -1 downto 0) := (others => '0');
+    signal t_word_received, t_rst, r_rst, r_rec_done, rec_done, t_ac_pbdat : std_logic := '0';
+    signal r_buff, t_buff : std_logic_vector(width*2 -1 downto 0) := (others => '0');
     
 begin
 
