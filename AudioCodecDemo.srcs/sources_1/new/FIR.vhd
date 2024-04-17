@@ -5,7 +5,7 @@ use IEEE.Numeric_std.all;
 
 entity FIR is
     Generic (width : integer := 24;
-            taps : integer := 19;
+            taps : integer := 20;
             in_width : integer range 8 to 32 := 24;
             out_width : integer range 8 to 32 := 24;
             coef_width : integer range 8 to 32 := 16
@@ -18,7 +18,8 @@ entity FIR is
         rec_done    : in std_logic;
         r_buff      : in std_logic_vector((2*width-1) downto 0) := (others => '0');
         fil_buff    : out std_logic_vector((2*width-1) downto 0) := (others => '0');
-        ac_pbdat    : out std_logic
+        ac_pbdat    : out std_logic;
+        fil_done    : out std_logic
             );
 end FIR;
 
@@ -31,14 +32,13 @@ type input_registers is array(0 to taps-1) of signed(width-1 downto 0);
 signal delay_line_l  : input_registers := (others=>(others=>'0'));
 signal delay_line_r  : input_registers := (others=>(others=>'0'));
   
-type coefficients is array (0 to 18) of signed((coef_width - 1) downto 0);
+type coefficients is array (0 to taps-1) of signed((coef_width - 1) downto 0);
 signal coeff_s: coefficients :=( 
----- 500Hz Blackman LPF
-x"FCD7", x"FDB1", x"0435", x"0B08", 
-x"07A2", x"FABB", x"F5E8", x"0875", 
-x"2864", x"3868", x"2864", x"0875", 
-x"F5E8", x"FABB", x"07A2", x"0B08",
-x"0435", x"FDB1", x"FCD7"); -- x"FDB1", x"FCD7"
+x"FFFF", x"FFF6", x"FFEF", x"006C", 
+x"0111", x"FEDD", x"FA09", x"FE7A", 
+x"164A", x"30F5", x"30F5", x"164A", 
+x"FE7A", x"FA09", x"FEDD", x"0111", 
+x"006C", x"FFEF", x"FFF6", x"FFFF");
 
 signal bclk : std_logic := '0';
   
@@ -74,11 +74,10 @@ variable sum_r : signed(width+coef_width-1 downto 0) := (others=>'0');
     begin
       
         if rising_edge(sysclk) then
-            bclk <= ac_bclk;
-              
             case state is
             when idle_st => 
-                if ac_bclk = '1' and bclk = '0' and rec_done = '1' then
+                fil_done <= '0';
+                if rec_done = '1' then
                     state <= active_st;
                 end if;
                   
