@@ -33,12 +33,18 @@ component i2c_configurator
     );
 end component;
 
+component mclk_comp is
+    Port ( sysclk : in STD_LOGIC;
+            mclk : out std_logic);
+end component;
+
 component i2s_layer is
   generic( width: integer := 32);
   port
   (
     onoff: in std_logic;
     sysclk: in std_logic;
+    filter_switch: in std_logic;
 
     --Input ports
     top_mclk    : in std_logic;
@@ -66,6 +72,7 @@ begin
     i2cConf: i2c_configurator port map(sysclk, ic2_rst, ac_scl, ac_sda, i2c_done);    
     i2sLayer: i2s_layer generic map( width => 24)
         port map (
+        filter_switch => sw(1),
         sysclk => sysclk,
         top_mclk => clk_mclk,
         ac_bclk => ac_bclk,
@@ -77,25 +84,10 @@ begin
         top_mute => sw(0)
     ); 
     
-    -- The SSM2603 needs mclk to work. Maximum frequency is about 18 MHz.
-    -- Let's divide the 125 MHz clock by 10.
-    codecMCLKClockGen: process(sysclk)
-        constant cnt_max : integer := 10/2;
-        variable cnt : integer range 0 to cnt_max := 0; 
-    begin
-        if rising_edge(sysclk) then
-            if btn(0) = '1' then
-                cnt := 0;
-            end if;
-            
-            if cnt < cnt_max-1 then
-                cnt := cnt + 1;
-            else
-                cnt := 0;
-                clk_mclk <= not clk_mclk;
-            end if;
-        end if;
-    end process;
+    clock: mclk_comp port map(
+        sysclk => sysclk,
+        mclk => clk_mclk
+    );
     
     state_process: process(sysclk)
     begin

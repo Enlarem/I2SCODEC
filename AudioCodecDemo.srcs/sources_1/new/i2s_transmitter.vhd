@@ -49,7 +49,21 @@ entity i2s_transmitter is
 end i2s_transmitter;
 
 architecture Behavioral of i2s_transmitter is
-    type i2s_transmitter_states is (s_Init, s_Transmit, s_Wait_for_Transmitting, s_Wait_for_Left, s_Wait_for_Right, s_NextEdge, s_Stores);
+    
+    function is_Z_vector(vector : std_logic_vector) return boolean is
+        variable result : boolean := true;
+    begin
+        for i in vector'range loop
+            if vector(i) /= 'Z' then
+                result := false;
+                exit;
+            end if;
+        end loop;
+        return result;
+    end function is_Z_vector;
+
+
+    type i2s_transmitter_states is (s_Init, s_Transmit, s_Wait_for_Transmitting, s_Wait_for_Left, s_Wait_for_Right, s_Early_wait_for_Left, s_Early_wait_for_Right, s_NextEdge, s_Stores);
     signal currentState : i2s_transmitter_states := s_Init;
     signal t_buf_temp : std_logic_vector(t_buf'range) := (others => '0');
     signal bits_sent : integer := 0;
@@ -64,7 +78,6 @@ begin
             else
                 case currentState is
                     when s_Init => 
-                        
                         if (word_received = '1') then 
                             if start_counting  = '1' and last_falling_edge < 4 then
                                 currentState <= s_Stores; -- The falling edge of the playback clock just passed, and we currently are in the bit that shouldn't be taken into account
@@ -87,10 +100,26 @@ begin
                             currentState <= s_Wait_for_Left;
                         end if;
                     when s_Wait_for_Left => 
+                        if  not is_Z_vector(t_buf) then
+                            currentState <= s_Early_wait_for_left;
+                            t_buf_temp <= t_buf;
+                        end if;
                         if(pblrc = '0') then
                             currentState <= s_Stores;
                         end if;
-                    when s_Wait_for_Right => 
+                    when s_Wait_for_Right =>
+                        if not is_Z_vector(t_buf) then
+                            currentState <= s_Early_wait_for_right;
+                            t_buf_temp <= t_buf;
+                        end if;
+                        if(pblrc = '1') then
+                            currentState <= s_Transmit;
+                        end if;
+                    when s_Early_wait_for_Left => 
+                        if(pblrc = '0') then
+                            currentState <= s_Transmit;
+                        end if;
+                    when s_Early_wait_for_Right => 
                         if(pblrc = '1') then
                             currentState <= s_Transmit;
                         end if;

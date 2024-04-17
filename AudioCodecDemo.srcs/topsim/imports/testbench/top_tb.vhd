@@ -237,7 +237,16 @@ begin
     toggle_receive <= not toggle_receive;
     wait on finish_receive;
     assert (is_null_vector(s_t_buf)) report "Error [3] :value given is " & to_string(s_t_buf) & " whereas it should be 0";
+    
+    report "[Test] Test Filter turned on";
+    s_sw(0) <= '0';
+    s_sw(1) <= '1';
 
+    toggle_send <= not toggle_send;
+    wait on finish_send;
+    toggle_receive <= not toggle_receive;
+    wait on finish_receive;
+    
     
 --    file_open(input_buf, "digital.csv",  read_mode);
 --    readline(input_buf, inLine); -- 1.st line has the column names

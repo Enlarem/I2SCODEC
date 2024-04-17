@@ -8,6 +8,7 @@ entity I2s_receiver is
             );
     
     Port ( 
+        top_mute    : in std_logic;
         ac_bclk     : in std_logic;
         ac_mclk     : in std_logic;
         ac_recdat   : in std_logic;
@@ -99,7 +100,7 @@ uart : process (ac_bclk, reset)
             else
             end if;
         elsif reset = '1' then
-            bit_c <= 48;
+            bit_c <= 2*width;
         end if;
     end process;
 

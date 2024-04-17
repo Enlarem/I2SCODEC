@@ -6,6 +6,7 @@ entity i2s_layer is
   port
   (
     onoff: in std_logic;
+    filter_switch: in std_logic;
     sysclk: in std_logic;
 
     --Input ports
@@ -48,6 +49,8 @@ architecture Behavioral of i2s_layer is
             ac_mclk     : in std_logic;
             ac_recdat   : in std_logic;
             ac_reclrc   : in std_logic;
+            top_mute    : in std_logic;
+
             reset       : in std_logic := '0';
             r_buff      : out std_logic_vector((2*width-1) downto 0) := (others => '0');
             rec_done    : out std_logic
@@ -68,15 +71,14 @@ architecture Behavioral of i2s_layer is
             ac_reclrc   : in std_logic;
             rec_done    : in std_logic;
             r_buff      : in std_logic_vector((2*width-1) downto 0) := (others => '0');
-            fil_buff    : out std_logic_vector((2*width-1) downto 0) := (others => '0');
-            ac_pbdat    : out std_logic
+            fil_buff    : out std_logic_vector((2*width-1) downto 0) := (others => '0')
                 );
     end component;
     
-    type general_state is (s_Init, s_Wait_First_Word, s_Idle, s_Word_Received);
+    type general_state is (s_Init, s_Wait_First_Word, s_Idle, s_Filter, s_Word_Received);
     signal currentState : general_state := s_Init;
     signal t_word_received, t_rst, r_rst, r_rec_done, t_ac_pbdat : std_logic := '0';
-    signal r_buff, t_buff : std_logic_vector(width*2 -1 downto 0) := (others => '0');
+    signal r_buff, t_buff, temp : std_logic_vector(width*2 -1 downto 0) := (others => '0');
     
 begin
 
@@ -89,6 +91,7 @@ begin
         ac_recdat => ac_recdat,
         r_buff => r_buff,
         reset => r_rst,
+        top_mute => top_mute,
         rec_done => r_rec_done
     );
     
@@ -111,11 +114,11 @@ begin
         ac_bclk     => ac_bclk,
         ac_mclk     => top_mclk,
         ac_reclrc   => ac_reclrc,
-        rec_done    => rec_done,
+        rec_done    => r_rec_done,
         r_buff      => r_buff,
-        fil_buff    => t_buff,
-        ac_pbdat    => ac_pbdat
+        fil_buff    => temp
     );
+    
     
     state_process: process (top_mclk)
     begin
@@ -130,13 +133,29 @@ begin
                         currentState <= s_Word_Received;
                     end if;
                 when s_Word_Received => 
-                    t_buff <= r_buff;
+                    if filter_switch = '1' then
+                        t_buff <= temp;
+                    else
+                        t_buff <= r_buff;
+                    end if;
                     t_word_received <= '1';
                     currentState <= s_Idle;
                 when s_Idle => 
                     t_word_received <= '0';
                     if r_rec_done = '1' then
-                        t_buff <= r_buff;
+                        if filter_switch = '1' then
+                            currentState <= s_Filter;
+                            temp <= r_buff;
+                        else
+                            t_buff <= r_buff;
+                        end if;
+                    else
+                        t_buff <= (others => 'Z');
+                    end if;
+                when s_Filter =>
+                    t_buff <= temp;
+                    if true then
+                        currentState <= s_Idle;
                     end if;
                 when others => null;
             end case;
@@ -155,5 +174,4 @@ begin
         end if;
     end process;
     
-
 end Behavioral; -- Behavioral
