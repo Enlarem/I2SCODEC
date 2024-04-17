@@ -6,6 +6,7 @@ entity i2s_layer is
   port
   (
     onoff: in std_logic;
+    sysclk: in std_logic;
 
     --Input ports
     top_mclk    : in std_logic;
@@ -53,6 +54,25 @@ architecture Behavioral of i2s_layer is
             );
     end component ;
     
+    component FIR is
+    Generic (width : integer := 24;
+            taps : integer := 17;
+            in_width : integer range 8 to 32 := 24;
+            out_width : integer range 8 to 32 := 24;
+            coef_width : integer range 8 to 32 := 16
+            );
+    Port (  
+            sysclk      : in std_logic;
+            ac_bclk     : in std_logic;
+            ac_mclk     : in std_logic;
+            ac_reclrc   : in std_logic;
+            rec_done    : in std_logic;
+            r_buff      : in std_logic_vector((2*width-1) downto 0) := (others => '0');
+            fil_buff    : out std_logic_vector((2*width-1) downto 0) := (others => '0');
+            ac_pbdat    : out std_logic
+                );
+    end component;
+    
     type general_state is (s_Init, s_Wait_First_Word, s_Idle, s_Word_Received);
     signal currentState : general_state := s_Init;
     signal t_word_received, t_rst, r_rst, r_rec_done, t_ac_pbdat : std_logic := '0';
@@ -83,6 +103,18 @@ begin
         bclk => ac_bclk,
         
         pbdat => t_ac_pbdat
+    );
+    
+    filter: FIR
+    port map (
+        sysclk      => sysclk,
+        ac_bclk     => ac_bclk,
+        ac_mclk     => top_mclk,
+        ac_reclrc   => ac_reclrc,
+        rec_done    => rec_done,
+        r_buff      => r_buff,
+        fil_buff    => t_buff,
+        ac_pbdat    => ac_pbdat
     );
     
     state_process: process (top_mclk)
