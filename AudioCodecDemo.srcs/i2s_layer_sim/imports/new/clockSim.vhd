@@ -33,7 +33,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity clockSim is
     Generic( mclk_period : integer);
-    Port ( mclk : out STD_LOGIC;
+    Port ( 
+    sysclk : out STD_LOGIC;
+    mclk    : out STD_LOGIC;
            bclk : out STD_LOGIC;
            pblrc : out STD_LOGIC;
            reclrc : out STD_LOGIC);
@@ -41,21 +43,28 @@ end clockSim;
 
 architecture Behavioral of clockSim is
    constant cc : time := (mclk_period/2) * ns;
-  signal s_clk, s_ac_bclk, s_ac_pblrc : std_logic := '0';
+  signal s_sysclk, s_mclk, s_ac_bclk, s_ac_pblrc : std_logic := '0';
 
 begin
 
+  sysClkGen : process begin
+    s_sysclk <= '0';
+    wait for 4 ns; -- So it fits the  12.288 Mhz clock
+    s_sysclk <= '1';
+    wait for 4 ns;
+  end process;
+
   mainClkGen : process begin
-    s_clk <= '0';
+    s_mclk <= '0';
     wait for cc; -- So it fits the  12.288 Mhz clock
-    s_clk <= '1';
+    s_mclk <= '1';
     wait for cc;
   end process;
 
-  bclkGen : process(s_clk) 
+  bclkGen : process(s_mclk) 
     variable count : integer := 0;
   begin
-    if falling_edge(s_clk) then
+    if falling_edge(s_mclk) then
         count := count + 1;
     end if;
     if count = 2 then
@@ -64,10 +73,10 @@ begin
     end if;
   end process;
 
-  pblrcGen : process(s_clk) 
+  pblrcGen : process(s_mclk) 
     variable count : integer := 0; 
   begin
-    if falling_edge(s_clk) then
+    if falling_edge(s_mclk) then
         count := count + 1;
     end if;
     if count = 128 then
@@ -76,7 +85,8 @@ begin
     end if;
   end process;
   
-  mclk <= s_clk;
+    sysclk <= s_sysclk;
+  mclk <= s_mclk;
   bclk <= s_ac_bclk;
   pblrc <= s_ac_pblrc;
   reclrc <= s_ac_pblrc;

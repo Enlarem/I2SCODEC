@@ -3,12 +3,12 @@
 # SW Build 4081461 on Thu Dec 14 12:22:04 MST 2023
 # IP Build 4080415 on Thu Dec 14 21:01:57 MST 2023
 # SharedData Build 4077621 on Mon Dec 11 00:23:44 MST 2023
-# Start of session at: Wed Apr 17 21:24:12 2024
-# Process ID: 21078
+# Start of session at: Wed Apr 17 22:17:32 2024
+# Process ID: 50940
 # Current directory: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/impl_1
 # Command line: vivado -log top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top.tcl -notrace
 # Log file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/impl_1/top.vdi
 # Journal file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/impl_1/vivado.jou
-# Running On: remi-HP-ENVY-x360-Convertible-15-ds0xxx, OS: Linux, CPU Frequency: 1378.445 MHz, CPU Physical cores: 8, Host memory: 14509 MB
+# Running On: remi-HP-ENVY-x360-Convertible-15-ds0xxx, OS: Linux, CPU Frequency: 1396.621 MHz, CPU Physical cores: 8, Host memory: 14509 MB
 #-----------------------------------------------------------
 source top.tcl -notrace

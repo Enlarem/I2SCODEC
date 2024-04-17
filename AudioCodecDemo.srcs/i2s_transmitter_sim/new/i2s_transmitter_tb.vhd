@@ -166,6 +166,7 @@ begin
         s_rst <= '0';
         wait for mclk_period * ns;
         
+        wait;
     end process;
     
 end Behavioral;

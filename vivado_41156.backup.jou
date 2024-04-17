@@ -3,45 +3,23 @@
 # SW Build 4081461 on Thu Dec 14 12:22:04 MST 2023
 # IP Build 4080415 on Thu Dec 14 21:01:57 MST 2023
 # SharedData Build 4077621 on Mon Dec 11 00:23:44 MST 2023
-# Start of session at: Tue Apr 16 18:54:55 2024
-# Process ID: 14310
+# Start of session at: Wed Apr 17 22:14:51 2024
+# Process ID: 41156
 # Current directory: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC
 # Command line: vivado
 # Log file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/vivado.log
 # Journal file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/vivado.jou
-# Running On: remi-HP-ENVY-x360-Convertible-15-ds0xxx, OS: Linux, CPU Frequency: 1197.614 MHz, CPU Physical cores: 8, Host memory: 14509 MB
+# Running On: remi-HP-ENVY-x360-Convertible-15-ds0xxx, OS: Linux, CPU Frequency: 2300.000 MHz, CPU Physical cores: 8, Host memory: 14509 MB
 #-----------------------------------------------------------
 start_gui
 open_project {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.xpr}
-launch_simulation -simset [get_filesets topsim ]
-source top_tb.tcl
-restart
-run 10 ms
-restart
-run 10 ms
-relaunch_sim
-restart
-run 10 ms
-relaunch_sim
-relaunch_sim
-run 10 ms
-set_property SOURCE_SET sources_1 [get_filesets topsim]
-import_files -fileset topsim -norecurse /home/remi/Downloads/digital.csv
-relaunch_sim
-restart
-run 10 ms
-relaunch_sim
-restart
-run 10 ms
-relaunch_sim
-relaunch_sim
-restart
-run 10 ms
-relaunch_sim
-relaunch_sim
-relaunch_sim
-restart
-run 10 ms
-restart
-run 3 ms
-close_sim
+reset_run impl_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_run impl_1
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag

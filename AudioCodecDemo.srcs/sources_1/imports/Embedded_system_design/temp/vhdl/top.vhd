@@ -106,25 +106,6 @@ begin
         end case;
     end process;
     
---    -- For 48kHz in/out the BCLK must be MCLK/4
---    codecBCLKClockGen: process(clk_mclk)
---        constant cnt_max : integer := 4/2;
---        variable cnt : integer range 0 to cnt_max := 0; 
---    begin
---        if rising_edge(clk_mclk) then
---            if btn(0) = '1' then
---                cnt := 0;
---            end if;
-            
---            if cnt < cnt_max-1 then
---                cnt := cnt + 1;
---            else
---                cnt := 0;
---                clk_bclk <= not clk_bclk;
---            end if;
---        end if;
---    end process;
-    
     ac_mclk <= clk_mclk;
     
     ac_muten <= sw(0);   -- mute switch

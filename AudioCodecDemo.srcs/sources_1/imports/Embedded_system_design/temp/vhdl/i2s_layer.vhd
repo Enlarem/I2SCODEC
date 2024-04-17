@@ -66,9 +66,7 @@ architecture Behavioral of i2s_layer is
             );
     Port (  
             sysclk      : in std_logic;
-            ac_bclk     : in std_logic;
             ac_mclk     : in std_logic;
-            ac_reclrc   : in std_logic;
             rec_done    : in std_logic;
             r_buff      : in std_logic_vector((2*width-1) downto 0) := (others => '0');
             fil_buff    : out std_logic_vector((2*width-1) downto 0) := (others => '0');
@@ -112,9 +110,7 @@ begin
     filter: FIR
     port map (
         sysclk      => sysclk,
-        ac_bclk     => ac_bclk,
         ac_mclk     => top_mclk,
-        ac_reclrc   => ac_reclrc,
         rec_done    => buf_rec_done,
         r_buff      => r_buff_temp,
         fil_buff    => t_buff_temp,
@@ -142,6 +138,8 @@ begin
                 when s_Wait_First_Word =>
                     if r_rec_done = '1' then
                         currentState <= s_Word_Received;
+                        t_word_received <= '1';
+
                     end if;
                 when s_Word_Received => 
                     if filter_switch = '1' then
@@ -151,7 +149,6 @@ begin
                         t_buff <= r_buff;
                         currentState <= s_Idle;
                     end if;
-                    t_word_received <= '1';
                     
                 when s_Idle => 
                     t_word_received <= '0';
@@ -169,10 +166,12 @@ begin
                     if fil_done = '1' then
                         currentState <= s_Finished_filter;
                         t_buff <= t_buff_temp;
+                        t_word_received <= '1';
                     else
                         t_buff <= (others => 'Z');
                     end if;
                 when s_Finished_Filter => 
+                    t_word_received <= '0';
                     if r_rec_done = '0' then
                         currentState <= s_Idle;
                     end if;

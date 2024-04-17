@@ -241,13 +241,20 @@ begin
     report "[Test] Test Filter turned on";
     s_sw(0) <= '0';
     s_sw(1) <= '1';
-
+    
     toggle_send <= not toggle_send;
     wait on finish_send;
     toggle_receive <= not toggle_receive;
     wait on finish_receive;
     
+    report "[Test] Test Send multiple things";
     
+    for i in 15 downto 0 loop
+        toggle_send <= not toggle_send;
+        wait on finish_send;
+        s_r_buf <= rand_slv(2*w_width);
+    end loop;    
+    wait;
 --    file_open(input_buf, "digital.csv",  read_mode);
 --    readline(input_buf, inLine); -- 1.st line has the column names
     
@@ -265,9 +272,9 @@ begin
 
 --    end loop;
 
-    file_close(input_buf);
-    report "Finished";
-    wait;
+--    file_close(input_buf);
+--    report "Finished";
+--    wait;
     
 end process;
 

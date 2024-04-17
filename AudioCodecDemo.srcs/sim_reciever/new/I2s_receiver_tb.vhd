@@ -35,6 +35,7 @@ end component;
     constant width : integer := 24;
 
     signal sim_clk, sim_bclk, sim_mclk, sim_reclrc, sim_recdat : std_logic;
+    signal s_top_mute: std_logic := '0';
     signal sim_buff, temp :  std_logic_vector ((2*width-1) downto 0) := (others => '0');
     signal sim_done, sim_reset : std_logic := '0';
     
