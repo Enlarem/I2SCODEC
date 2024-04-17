@@ -40,9 +40,9 @@ x"164A", x"30F5", x"30F5", x"164A",
 x"FE7A", x"FA09", x"FEDD", x"0111", 
 x"006C", x"FFEF", x"FFF6", x"FFFF");
 
-signal bclk : std_logic := '0';
+signal mclk : std_logic := '0';
   
-type state_machine is (idle_st, active_st);
+type state_machine is (idle_st, active_st, sendresults_st);
 signal state : state_machine := idle_st;
   
 signal counter : integer range 0 to taps-1 := taps-1;
@@ -55,29 +55,29 @@ signal accum_r  : signed(width+coef_width-1 downto 0) := (others=>'0');
  
 begin
 
-vector_sep : process (sysclk)   --separation of input vetor into left and right
-begin
-    if rec_done = '1' then
-        left <= r_buff ((2*width - 1) downto width);
-        right <= r_buff ((width - 1) downto 0);
-    end if;
-end process;
+--    vector_sep : process (sysclk)   --separation of input vetor into left and right
+--    begin
+--        if rec_done = '1' then
+            
+--        end if;
+--    end process;
  
-fil_buff((2*width - 1) downto width) <= std_logic_vector(out_l(width+coef_width-2 downto width+coef_width-width-1));
-fil_buff((width - 1) downto 0) <= std_logic_vector(out_r(width+coef_width-2 downto width+coef_width-width-1));
-  
-process(sysclk)
-  
-variable sum_l : signed(width+coef_width-1 downto 0) := (others=>'0');
-variable sum_r : signed(width+coef_width-1 downto 0) := (others=>'0');
+      
+    process(sysclk)
+        
+        variable sum_l : signed(width+coef_width-1 downto 0) := (others=>'0');
+        variable sum_r : signed(width+coef_width-1 downto 0) := (others=>'0');
   
     begin
-      
-        if rising_edge(sysclk) then
+        mclk <= ac_mclk;
+        
+        if falling_edge(sysclk) then 
             case state is
             when idle_st => 
                 fil_done <= '0';
                 if rec_done = '1' then
+                    left <= r_buff ((2*width - 1) downto width);
+                    right <= r_buff ((width - 1) downto 0);
                     state <= active_st;
                 end if;
                   
@@ -87,7 +87,8 @@ variable sum_r : signed(width+coef_width-1 downto 0) := (others=>'0');
                     counter <= counter - 1;
                 else
                     counter <= taps-1;
-                    state <= idle_st;
+                    state <= sendresults_st;
+                    fil_done <= '1';
                 end if;
                   
                 -- Delay line shifting
@@ -113,9 +114,14 @@ variable sum_r : signed(width+coef_width-1 downto 0) := (others=>'0');
                     out_l <= accum_l + sum_l;
                     out_r <= accum_r + sum_r;  
                 end if;
-                  
+            when sendresults_st =>
+                fil_buff((2*width - 1) downto width) <= std_logic_vector(out_l(width+coef_width-1 downto coef_width));
+                fil_buff((width - 1) downto 0) <= std_logic_vector(out_r(width+coef_width-1 downto coef_width));
+    
+                if ac_mclk = '1' and mclk = '0' then
+                    state <= idle_st;
+                end if ;
             end case;
-        end if;
-      
+      end if;
     end process;
 end Behavioral;

@@ -197,4 +197,4 @@ set_property -dict {PACKAGE_PIN N17 IOSTANDARD LVCMOS33} [get_ports ac_sda]
 
 
 
-create_generated_clock -name mclk -source [get_ports *sysc*] -divide_by 10 -add -master_clock [get_clocks *] [get_ports *mclk*]
+#create_generated_clock -name mclk -source [get_ports *sysc*] -divide_by 10 -add -master_clock [get_clocks *] [get_ports *mclk*]

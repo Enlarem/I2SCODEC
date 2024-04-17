@@ -128,25 +128,28 @@ begin
             end if;
             if rising_edge(mclk) and start_counting = '1' and stop_counting = '0' and last_falling_edge < 4 then
                 last_falling_edge <= last_falling_edge + 1 ;
-            elsif last_falling_edge >= 4 then
+            end if;
+            if last_falling_edge >= 4 then
                 last_falling_edge <= 0;
                 stop_counting <= '1';
             end if;
         end process;
     
-    data_process: process(bclk, rst)
+    data_process: process(bclk)
     begin
-        if (falling_edge(bclk) and rst = '0') then 
-            if currentState = s_Transmit then
-                pbdat <= t_buf_temp(t_buf_temp'length - 1 - bits_sent);
-                bits_sent <= bits_sent + 1;
-            elsif (currentState /= s_Transmit and bits_sent >= 2*w_width)then 
-                bits_sent <= 0;
-                pbdat <= '0';
-            elsif (bits_sent >= 2*w_width and pblrc = '1') or (bits_sent >= w_width and pblrc = '0') then
-                pbdat <= '0';
+        if rst = '0' then 
+            if falling_edge(bclk)  then 
+                if currentState = s_Transmit then
+                    pbdat <= t_buf_temp(t_buf_temp'length - 1 - bits_sent);
+                    bits_sent <= bits_sent + 1;
+                elsif (currentState /= s_Transmit and bits_sent >= 2*w_width)then 
+                    bits_sent <= 0;
+                    pbdat <= '0';
+                elsif (bits_sent >= 2*w_width and pblrc = '1') or (bits_sent >= w_width and pblrc = '0') then
+                    pbdat <= '0';
+                end if;
             end if;
-        elsif rst = '1' then 
+        else
             bits_sent <= 0;
             pbdat <= '0';
         end if;
@@ -154,11 +157,7 @@ begin
         
     pb_process: process(pblrc)
     begin
-        if falling_edge(pblrc) then 
-            start_counting <= '1';
-        elsif rising_edge(pblrc) then
-            start_counting <= '0';
-        end if;
+        start_counting <= not pblrc;
     end process;
  
 end Behavioral;

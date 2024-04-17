@@ -1,0 +1,475 @@
+#-----------------------------------------------------------
+# Vivado v2023.2.1 (64-bit)
+# SW Build 4081461 on Thu Dec 14 12:22:04 MST 2023
+# IP Build 4080415 on Thu Dec 14 21:01:57 MST 2023
+# SharedData Build 4077621 on Mon Dec 11 00:23:44 MST 2023
+# Start of session at: Wed Apr 17 21:23:14 2024
+# Process ID: 20739
+# Current directory: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/synth_1
+# Command line: vivado -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
+# Log file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/synth_1/top.vds
+# Journal file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/synth_1/vivado.jou
+# Running On: remi-HP-ENVY-x360-Convertible-15-ds0xxx, OS: Linux, CPU Frequency: 3485.425 MHz, CPU Physical cores: 8, Host memory: 14509 MB
+#-----------------------------------------------------------
+source top.tcl -notrace
+create_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1314.602 ; gain = 0.027 ; free physical = 2158 ; free virtual = 12481
+Command: synth_design -top top -part xc7z010clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 20794
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2036.590 ; gain = 403.715 ; free physical = 1191 ; free virtual = 11514
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'top' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd:24]
+INFO: [Synth 8-3491] module 'i2c_configurator' declared at '/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2c_configurator.vhd:6' bound to instance 'i2cConf' of component 'i2c_configurator' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd:72]
+INFO: [Synth 8-638] synthesizing module 'i2c_configurator' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2c_configurator.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'i2c_configurator' (0#1) [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2c_configurator.vhd:16]
+	Parameter width bound to: 24 - type: integer 
+INFO: [Synth 8-3491] module 'i2s_layer' declared at '/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:4' bound to instance 'i2sLayer' of component 'i2s_layer' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd:73]
+INFO: [Synth 8-638] synthesizing module 'i2s_layer' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:25]
+	Parameter width bound to: 24 - type: integer 
+	Parameter width bound to: 24 - type: integer 
+INFO: [Synth 8-3491] module 'I2s_receiver' declared at '/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:6' bound to instance 'receiver' of component 'I2s_receiver' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:86]
+INFO: [Synth 8-638] synthesizing module 'I2s_receiver' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:22]
+	Parameter width bound to: 24 - type: integer 
+WARNING: [Synth 8-614] signal 'reset' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:34]
+WARNING: [Synth 8-614] signal 'State' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:34]
+WARNING: [Synth 8-614] signal 'r_done' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:34]
+WARNING: [Synth 8-614] signal 'ac_recdat' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:34]
+WARNING: [Synth 8-614] signal 'bit_c' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:34]
+WARNING: [Synth 8-614] signal 'done_c' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:34]
+WARNING: [Synth 8-614] signal 'buff' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:34]
+INFO: [Synth 8-256] done synthesizing module 'I2s_receiver' (0#1) [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:22]
+	Parameter w_width bound to: 24 - type: integer 
+INFO: [Synth 8-3491] module 'i2s_transmitter' declared at '/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:34' bound to instance 'transmitter' of component 'i2s_transmitter' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:99]
+INFO: [Synth 8-638] synthesizing module 'i2s_transmitter' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:51]
+	Parameter w_width bound to: 24 - type: integer 
+WARNING: [Synth 8-614] signal 'rst' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:74]
+WARNING: [Synth 8-614] signal 'currentState' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:74]
+WARNING: [Synth 8-614] signal 'word_received' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:74]
+WARNING: [Synth 8-614] signal 'start_counting' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:74]
+WARNING: [Synth 8-614] signal 'last_falling_edge' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:74]
+WARNING: [Synth 8-614] signal 'pblrc' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:74]
+WARNING: [Synth 8-614] signal 't_buf' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:74]
+WARNING: [Synth 8-614] signal 'bits_sent' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:74]
+WARNING: [Synth 8-614] signal 'stop_counting' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:74]
+WARNING: [Synth 8-614] signal 'rst' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:138]
+INFO: [Synth 8-256] done synthesizing module 'i2s_transmitter' (0#1) [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:51]
+WARNING: [Synth 8-5640] Port 'ac_pbdat' is missing in component declaration [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:60]
+INFO: [Synth 8-3491] module 'FIR' declared at '/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/FIR.vhd:6' bound to instance 'filter' of component 'FIR' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:112]
+INFO: [Synth 8-638] synthesizing module 'FIR' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/FIR.vhd:26]
+	Parameter width bound to: 24 - type: integer 
+	Parameter taps bound to: 20 - type: integer 
+	Parameter in_width bound to: 24 - type: integer 
+	Parameter out_width bound to: 24 - type: integer 
+	Parameter coef_width bound to: 16 - type: integer 
+WARNING: [Synth 8-614] signal 'ac_mclk' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/FIR.vhd:66]
+INFO: [Synth 8-256] done synthesizing module 'FIR' (0#1) [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/FIR.vhd:26]
+WARNING: [Synth 8-614] signal 'r_rec_done' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:124]
+WARNING: [Synth 8-614] signal 'currentState' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:124]
+WARNING: [Synth 8-614] signal 'fil_done' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:124]
+WARNING: [Synth 8-614] signal 'onoff' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:134]
+WARNING: [Synth 8-614] signal 'currentState' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:134]
+WARNING: [Synth 8-614] signal 'r_rec_done' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:134]
+WARNING: [Synth 8-614] signal 'filter_switch' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:134]
+WARNING: [Synth 8-614] signal 'r_buff' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:134]
+WARNING: [Synth 8-614] signal 'fil_done' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:134]
+WARNING: [Synth 8-614] signal 't_buff_temp' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:134]
+WARNING: [Synth 8-614] signal 'top_mute' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:134]
+WARNING: [Synth 8-614] signal 't_ac_pbdat' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:134]
+INFO: [Synth 8-256] done synthesizing module 'i2s_layer' (0#1) [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:25]
+INFO: [Synth 8-3491] module 'mclk_comp' declared at '/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/mclk_comp.vhd:5' bound to instance 'clock' of component 'mclk_comp' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd:87]
+INFO: [Synth 8-638] synthesizing module 'mclk_comp' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/mclk_comp.vhd:10]
+INFO: [Synth 8-256] done synthesizing module 'mclk_comp' (0#1) [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/mclk_comp.vhd:10]
+WARNING: [Synth 8-614] signal 'top_sm' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd:92]
+WARNING: [Synth 8-614] signal 'i2c_done' is read in the process but is not in the sensitivity list [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd:92]
+INFO: [Synth 8-256] done synthesizing module 'top' (0#1) [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd:24]
+WARNING: [Synth 8-3848] Net ac_pbdat in module/entity FIR does not have driver. [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/FIR.vhd:21]
+WARNING: [Synth 8-7129] Port ac_pbdat in module FIR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ac_bclk in module FIR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ac_reclrc in module FIR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port top_mute in module I2s_receiver is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ac_mclk in module I2s_receiver is either unconnected or has no load
+WARNING: [Synth 8-7129] Port btn[3] in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port btn[2] in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port btn[1] in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port btn[0] in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sw[3] in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sw[2] in module top is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2118.559 ; gain = 485.684 ; free physical = 1088 ; free virtual = 11412
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2133.402 ; gain = 500.527 ; free physical = 1086 ; free virtual = 11410
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2133.402 ; gain = 500.527 ; free physical = 1086 ; free virtual = 11410
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2133.402 ; gain = 0.000 ; free physical = 1086 ; free virtual = 11410
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/constrs_1/imports/Xilinx_stuff/Zybo-Z7-Master.xdc]
+Finished Parsing XDC File [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/constrs_1/imports/Xilinx_stuff/Zybo-Z7-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/constrs_1/imports/Xilinx_stuff/Zybo-Z7-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2281.152 ; gain = 0.000 ; free physical = 1067 ; free virtual = 11391
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2281.188 ; gain = 0.000 ; free physical = 1068 ; free virtual = 11392
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1066 ; free virtual = 11390
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1066 ; free virtual = 11390
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1066 ; free virtual = 11390
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'i2c_sm_reg' in module 'i2c_configurator'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'FIR'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                             0000 |                             0000
+                   start |                             0001 |                             0001
+                   addr1 |                             0010 |                             0010
+                      rw |                             0011 |                             0011
+                    ack1 |                             0100 |                             0100
+                   addr2 |                             0101 |                             0101
+                    ack2 |                             0110 |                             0110
+                    data |                             0111 |                             0111
+                    ack3 |                             1000 |                             1000
+                    stop |                             1001 |                             1001
+                  iSTATE |                             1010 |                             1010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'i2c_sm_reg' using encoding 'sequential' in module 'i2c_configurator'
+WARNING: [Synth 8-327] inferring latch for variable 'r_buff_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:62]
+WARNING: [Synth 8-327] inferring latch for variable 'rec_done_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:41]
+WARNING: [Synth 8-327] inferring latch for variable 'done_c_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:48]
+WARNING: [Synth 8-327] inferring latch for variable 'data_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd:46]
+WARNING: [Synth 8-327] inferring latch for variable 'currentState_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:77]
+WARNING: [Synth 8-327] inferring latch for variable 't_buf_temp_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:94]
+WARNING: [Synth 8-327] inferring latch for variable 'stop_counting_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd:129]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 idle_st |                              001 |                               00
+               active_st |                              010 |                               01
+          sendresults_st |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'FIR'
+WARNING: [Synth 8-327] inferring latch for variable 't_buff_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:102]
+WARNING: [Synth 8-327] inferring latch for variable 't_word_received_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:103]
+WARNING: [Synth 8-327] inferring latch for variable 't_rst_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:94]
+WARNING: [Synth 8-327] inferring latch for variable 'currentState_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:137]
+WARNING: [Synth 8-327] inferring latch for variable 'buf_rec_done_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:118]
+WARNING: [Synth 8-327] inferring latch for variable 'r_buff_temp_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd:119]
+WARNING: [Synth 8-327] inferring latch for variable 'onoff_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd:83]
+WARNING: [Synth 8-327] inferring latch for variable 'top_sm_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd:94]
+WARNING: [Synth 8-327] inferring latch for variable 'ic2_rst_reg' [/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd:72]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1066 ; free virtual = 11391
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 2     
+	   2 Input    6 Bit       Adders := 2     
+	   2 Input    5 Bit       Adders := 3     
+	   2 Input    4 Bit       Adders := 2     
+	   2 Input    3 Bit       Adders := 2     
++---Registers : 
+	               48 Bit    Registers := 2     
+	               40 Bit    Registers := 4     
+	               32 Bit    Registers := 1     
+	               24 Bit    Registers := 2     
+	               16 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 3     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 3     
+	                1 Bit    Registers := 7     
++---RAMs : 
+	              480 Bit	(20 X 24 bit)          RAMs := 2     
++---Muxes : 
+	   2 Input   48 Bit        Muxes := 5     
+	   3 Input   48 Bit        Muxes := 1     
+	   7 Input   48 Bit        Muxes := 2     
+	   2 Input   40 Bit        Muxes := 2     
+	   2 Input   32 Bit        Muxes := 1     
+	   2 Input   24 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 6     
+	  11 Input    4 Bit        Muxes := 2     
+	  10 Input    4 Bit        Muxes := 1     
+	   9 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 7     
+	   3 Input    3 Bit        Muxes := 1     
+	   7 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 21    
+	  11 Input    1 Bit        Muxes := 5     
+	  10 Input    1 Bit        Muxes := 2     
+	   4 Input    1 Bit        Muxes := 6     
+	   3 Input    1 Bit        Muxes := 5     
+	   7 Input    1 Bit        Muxes := 9     
+	   9 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP p_1_out, operation Mode is: C'+A*B.
+DSP Report: register filter/accum_r_reg is absorbed into DSP p_1_out.
+DSP Report: operator p_1_out is absorbed into DSP p_1_out.
+DSP Report: operator p_0_out is absorbed into DSP p_1_out.
+DSP Report: Generating DSP p_1_out, operation Mode is: C'+A*B.
+DSP Report: register filter/accum_l_reg is absorbed into DSP p_1_out.
+DSP Report: operator p_1_out is absorbed into DSP p_1_out.
+DSP Report: operator p_0_out is absorbed into DSP p_1_out.
+WARNING: [Synth 8-7129] Port btn[3] in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port btn[2] in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port btn[1] in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port btn[0] in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sw[3] in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sw[2] in module top is either unconnected or has no load
+WARNING: [Synth 8-3332] Sequential element (i2sLayer/receiver/State_reg[2]_C) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (i2sLayer/receiver/State_reg[1]_C) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (i2sLayer/receiver/State_reg[0]_C) is unused and will be removed from module top.
+WARNING: [Synth 8-264] enable of latch \i2sLayer/receiver/done_c_reg  is always disabled
+WARNING: [Synth 8-264] enable of latch \i2sLayer/receiver/done_c_reg  is always disabled
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1049 ; free virtual = 11379
+---------------------------------------------------------------------------------
+ Sort Area is  p_1_out_0 : 0 0 : 2837 2837 : Used 1 time 0
+ Sort Area is  p_1_out_2 : 0 0 : 2837 2837 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++------------+------------+---------------+----------------+
+|Module Name | RTL Object | Depth x Width | Implemented As | 
++------------+------------+---------------+----------------+
+|FIR         | coeff_s    | 32x14         | LUT            | 
+|i2s_layer   | p_0_out    | 32x14         | LUT            | 
++------------+------------+---------------+----------------+
+
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++------------+----------------------------------+-----------+----------------------+----------------+
+|Module Name | RTL Object                       | Inference | Size (Depth x Width) | Primitives     | 
++------------+----------------------------------+-----------+----------------------+----------------+
+|top         | i2sLayer/filter/delay_line_l_reg | Implied   | 32 x 24              | RAM16X1D x 48  | 
+|top         | i2sLayer/filter/delay_line_r_reg | Implied   | 32 x 24              | RAM16X1D x 48  | 
++------------+----------------------------------+-----------+----------------------+----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|FIR         | C'+A*B      | 24     | 16     | 40     | -      | 40     | 0    | 0    | 1    | -    | -     | 0    | 0    | 
+|FIR         | C'+A*B      | 24     | 16     | 40     | -      | 40     | 0    | 0    | 1    | -    | -     | 0    | 0    | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:26 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1046 ; free virtual = 11376
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-264] enable of latch \i2sLayer/receiver/done_c_reg  is always disabled
+WARNING: [Synth 8-264] enable of latch \i2sLayer/receiver/done_c_reg  is always disabled
+WARNING: [Synth 8-264] enable of latch \i2sLayer/receiver/done_c_reg  is always disabled
+WARNING: [Synth 8-264] enable of latch \i2sLayer/receiver/done_c_reg  is always disabled
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1034 ; free virtual = 11364
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping Report
++------------+----------------------------------+-----------+----------------------+----------------+
+|Module Name | RTL Object                       | Inference | Size (Depth x Width) | Primitives     | 
++------------+----------------------------------+-----------+----------------------+----------------+
+|top         | i2sLayer/filter/delay_line_l_reg | Implied   | 32 x 24              | RAM16X1D x 48  | 
+|top         | i2sLayer/filter/delay_line_r_reg | Implied   | 32 x 24              | RAM16X1D x 48  | 
++------------+----------------------------------+-----------+----------------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (i2sLayer/receiver/done_c_reg) is unused and will be removed from module top.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:27 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1033 ; free virtual = 11363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1033 ; free virtual = 11363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1033 ; free virtual = 11363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1033 ; free virtual = 11363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1033 ; free virtual = 11363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1033 ; free virtual = 11363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1033 ; free virtual = 11363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|FIR         | C'+A*B      | 30     | 18     | 48     | -      | 40     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|FIR         | C'+A*B      | 30     | 18     | 48     | -      | 40     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     8|
+|2     |CARRY4   |    61|
+|3     |DSP48E1  |     2|
+|4     |LUT1     |    46|
+|5     |LUT2     |   327|
+|6     |LUT3     |    75|
+|7     |LUT4     |    84|
+|8     |LUT5     |   133|
+|9     |LUT6     |   137|
+|10    |RAM16X1D |    96|
+|11    |FDCE     |    65|
+|12    |FDPE     |     3|
+|13    |FDRE     |   316|
+|14    |FDSE     |     2|
+|15    |LD       |   159|
+|16    |LDC      |    53|
+|17    |LDP      |     1|
+|18    |IBUF     |     7|
+|19    |OBUF     |     4|
+|20    |OBUFT    |     2|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1033 ; free virtual = 11363
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 33 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2281.188 ; gain = 500.527 ; free physical = 1033 ; free virtual = 11363
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 2281.188 ; gain = 648.312 ; free physical = 1033 ; free virtual = 11363
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2281.188 ; gain = 0.000 ; free physical = 1312 ; free virtual = 11641
+INFO: [Netlist 29-17] Analyzing 372 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 4 inverter(s) to 101 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2281.188 ; gain = 0.000 ; free physical = 1311 ; free virtual = 11641
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 309 instances were transformed.
+  LD => LDCE: 156 instances
+  LD => LDCE (inverted pins: G): 3 instances
+  LDC => LDCE: 53 instances
+  LDP => LDPE: 1 instance 
+  RAM16X1D => RAM32X1D (inverted pins: WCLK) (RAMD32(x2)): 96 instances
+
+Synth Design complete | Checksum: a8a90558
+INFO: [Common 17-83] Releasing license: Synthesis
+39 Infos, 78 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:40 ; elapsed = 00:00:37 . Memory (MB): peak = 2281.188 ; gain = 966.586 ; free physical = 1310 ; free virtual = 11640
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1826.385; main = 1510.502; forked = 366.990
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3226.504; main = 2281.156; forked = 977.363
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2305.164 ; gain = 0.000 ; free physical = 1310 ; free virtual = 11640
+INFO: [Common 17-1381] The checkpoint '/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/synth_1/top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Apr 17 21:24:06 2024...
