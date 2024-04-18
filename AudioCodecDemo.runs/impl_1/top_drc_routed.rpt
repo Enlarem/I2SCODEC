@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2.1 (lin64) Build 4081461 Thu Dec 14 12:22:04 MST 2023
-| Date         : Wed Apr 17 22:17:10 2024
+| Date         : Thu Apr 18 15:54:35 2024
 | Host         : remi-HP-ENVY-x360-Convertible-15-ds0xxx running 64-bit Ubuntu 23.10
 | Command      : report_drc -file top_drc_routed.rpt -pb top_drc_routed.pb -rpx top_drc_routed.rpx
 | Design       : top
@@ -24,11 +24,11 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 24
+             Violations found: 23
 +----------+----------+---------------------------------+------------+
 | Rule     | Severity | Description                     | Violations |
 +----------+----------+---------------------------------+------------+
-| DPIP-1   | Warning  | Input pipelining                | 6          |
+| DPIP-1   | Warning  | Input pipelining                | 5          |
 | DPOP-1   | Warning  | PREG Output pipelining          | 2          |
 | DPOP-2   | Warning  | MREG Output pipelining          | 2          |
 | PDRC-153 | Warning  | Gated clock check               | 10         |
@@ -64,11 +64,6 @@ Input pipelining
 DSP i2sLayer/p_1_out__0 input i2sLayer/p_1_out__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
-DPIP-1#6 Warning
-Input pipelining  
-DSP i2sLayer/p_1_out__0 input i2sLayer/p_1_out__0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
 DPOP-1#1 Warning
 PREG Output pipelining  
 DSP i2sLayer/p_1_out output i2sLayer/p_1_out/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
@@ -96,12 +91,12 @@ Related violations: <none>
 
 PDRC-153#2 Warning
 Gated clock check  
-Net i2sLayer/filter/E[0] is a gated clock net sourced by a combinational pin i2sLayer/filter/currentState_reg[2]_i_2/O, cell i2sLayer/filter/currentState_reg[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net i2sLayer/r_rst__0 is a gated clock net sourced by a combinational pin i2sLayer/t_rst_reg_i_1/O, cell i2sLayer/t_rst_reg_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#3 Warning
 Gated clock check  
-Net i2sLayer/r_rst__0 is a gated clock net sourced by a combinational pin i2sLayer/t_rst_reg_i_1/O, cell i2sLayer/t_rst_reg_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net i2sLayer/receiver/E[0] is a gated clock net sourced by a combinational pin i2sLayer/receiver/currentState_reg[2]_i_2__0/O, cell i2sLayer/receiver/currentState_reg[2]_i_2__0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#4 Warning
@@ -126,17 +121,17 @@ Related violations: <none>
 
 PDRC-153#8 Warning
 Gated clock check  
-Net i2sLayer/receiver/rec_done1_out is a gated clock net sourced by a combinational pin i2sLayer/receiver/rec_done_reg_i_1/O, cell i2sLayer/receiver/rec_done_reg_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net i2sLayer/receiver/fil_done_reg_1 is a gated clock net sourced by a combinational pin i2sLayer/receiver/t_word_received_reg_i_2/O, cell i2sLayer/receiver/t_word_received_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#9 Warning
 Gated clock check  
-Net i2sLayer/t_word_received_reg_i_1_n_2 is a gated clock net sourced by a combinational pin i2sLayer/t_word_received_reg_i_1/O, cell i2sLayer/t_word_received_reg_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net i2sLayer/receiver/rec_done_reg_i_1_n_2 is a gated clock net sourced by a combinational pin i2sLayer/receiver/rec_done_reg_i_1/O, cell i2sLayer/receiver/rec_done_reg_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#10 Warning
 Gated clock check  
-Net i2sLayer/transmitter/currentState_reg[3]_i_2_n_2 is a gated clock net sourced by a combinational pin i2sLayer/transmitter/currentState_reg[3]_i_2/O, cell i2sLayer/transmitter/currentState_reg[3]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net i2sLayer/transmitter/currentState_reg[2]_i_2_n_2 is a gated clock net sourced by a combinational pin i2sLayer/transmitter/currentState_reg[2]_i_2/O, cell i2sLayer/transmitter/currentState_reg[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PLCK-12#1 Warning
@@ -146,7 +141,7 @@ Resolution: Poor placement of an IO pin and a BUFG has resulted in the router us
  This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
 
 	ac_bclk_IBUF_inst (IBUF.O) is locked to R19
-	ac_bclk_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y1
+	ac_bclk_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y0
 
 Related violations: <none>
 
@@ -157,7 +152,7 @@ Resolution: Poor placement of an IO pin and a BUFG has resulted in the router us
  This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
 
 	ac_reclrc_IBUF_inst (IBUF.O) is locked to Y18
-	ac_reclrc_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y7
+	ac_reclrc_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y6
 
 Related violations: <none>
 

@@ -25,3 +25,69 @@ relaunch_sim
 run 200 us
 restart
 run 200 us
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+close_design
+open_run synth_1 -name synth_1
+launch_simulation -simset [get_filesets topsim ]
+source top_tb.tcl
+restart
+run 7 ms
+open_wave_config {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/Waveforms/top_simulation.wcfg}
+restart
+run 7 ms
+restart
+run 7 ms
+restart
+run 7 ms
+relaunch_sim
+relaunch_sim
+restart
+run 7 ms
+relaunch_sim
+restart
+run 7 ms
+relaunch_sim
+restart
+run 7 ms
+launch_simulation -simset [get_filesets sim_reciever ]
+source I2s_receiver_tb.tcl
+restart
+run 300 us
+current_sim simulation_1
+close_sim
+current_sim simulation_3
+close_sim
+restart
+run 7 ms
+restart
+run 7 ms
+relaunch_sim
+restart
+run 7 ms
+relaunch_sim
+restart
+run 7 ms
+relaunch_sim
+relaunch_sim
+restart
+run 7 ms
+relaunch_sim
+restart
+run 7 ms
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/impl_1/top.bit} [get_hw_devices xc7z010_1]
+current_hw_device [get_hw_devices xc7z010_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z010_1] 0]
+reset_run synth_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/impl_1/top.bit} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
+refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]

@@ -212,7 +212,7 @@ tests: process
 begin
     s_r_buf <= "111" & rand_slv(2*w_width -3);
     
-    report "[Test] Should return nothing before setting up";
+    report "[Test 1] Should return nothing before setting up";
     toggle_send <= not toggle_send;
     wait on finish_send;
     toggle_receive <= not toggle_receive;
@@ -221,7 +221,7 @@ begin
 
     -- Wait until it's configured
     wait for 2.25 ms;
-    report "[Test] Test send and receive one word";
+    report "[Test 2] Test send and receive one word";
 
     toggle_send <= not toggle_send;
     wait on finish_send;
@@ -229,7 +229,7 @@ begin
     wait on finish_receive;
 
     assert (s_t_buf = s_r_buf) report "Error [2] :value given is " & to_string(s_t_buf) & " whereas it should be " & to_string(s_r_buf);
-    report "[Test] Test mute";
+    report "[Test 3] Test mute";
     
     s_sw(0) <= '1';
     toggle_send <= not toggle_send;
@@ -238,7 +238,22 @@ begin
     wait on finish_receive;
     assert (is_null_vector(s_t_buf)) report "Error [3] :value given is " & to_string(s_t_buf) & " whereas it should be 0";
     
-    report "[Test] Test Filter turned on";
+    report "[Test 4] Unmute behavior";
+    
+    s_sw(0) <= '1';
+    toggle_send <= not toggle_send;
+    wait on finish_send;
+    toggle_receive <= not toggle_receive;
+    wait until s_ac_pblrc = '0';
+    for i in 3 downto 0 loop 
+        wait until falling_edge(s_ac_bclk);
+    end loop;
+
+    s_sw(0) <= '0';
+    wait on finish_receive;
+    assert (s_t_buf = ("000" & s_r_buf(2*w_width -4 downto 0))) report "Error [4] :value given is " & to_string(s_t_buf) & " whereas it should be " & to_string("000"&s_r_buf(2*w_width -4 downto 0));
+    
+    report "[Simulation] Test Filter turned on";
     s_sw(0) <= '0';
     s_sw(1) <= '1';
     
@@ -247,7 +262,7 @@ begin
     toggle_receive <= not toggle_receive;
     wait on finish_receive;
     
-    report "[Test] Test Send multiple things";
+    report "[Simulation] Test Send multiple things";
     
     for i in 15 downto 0 loop
         toggle_send <= not toggle_send;

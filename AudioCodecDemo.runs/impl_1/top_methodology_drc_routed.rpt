@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2.1 (lin64) Build 4081461 Thu Dec 14 12:22:04 MST 2023
-| Date         : Wed Apr 17 22:17:11 2024
+| Date         : Thu Apr 18 15:54:37 2024
 | Host         : remi-HP-ENVY-x360-Convertible-15-ds0xxx running 64-bit Ubuntu 23.10
 | Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 | Design       : top
@@ -23,15 +23,15 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 423
+             Violations found: 389
 +-----------+------------------+----------------------------------+------------+
 | Rule      | Severity         | Description                      | Violations |
 +-----------+------------------+----------------------------------+------------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell      | 202        |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell      | 170        |
 | HPDR-1    | Warning          | Port pin direction inconsistency | 1          |
 | LUTAR-1   | Warning          | LUT drives async reset alert     | 6          |
 | TIMING-18 | Warning          | Missing input or output delay    | 3          |
-| TIMING-20 | Warning          | Non-clocked latch                | 210        |
+| TIMING-20 | Warning          | Non-clocked latch                | 208        |
 | LATCH-1   | Advisory         | Existing latches in the design   | 1          |
 +-----------+------------------+----------------------------------+------------+
 
@@ -884,166 +884,6 @@ Related violations: <none>
 
 TIMING-17#170 Critical Warning
 Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[0]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#171 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[10]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#172 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[11]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#173 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[12]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#174 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[13]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#175 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[14]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#176 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[15]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#177 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[16]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#178 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[17]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#179 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[18]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#180 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[19]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#181 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#182 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[20]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#183 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[21]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#184 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[22]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#185 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[23]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#186 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[24]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#187 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[25]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#188 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[26]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#189 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[27]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#190 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[28]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#191 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[29]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#192 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[2]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#193 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[30]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#194 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[31]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#195 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[3]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#196 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[4]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#197 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[5]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#198 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[6]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#199 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[7]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#200 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[8]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#201 Critical Warning
-Non-clocked sequential cell  
-The clock pin i2sLayer/transmitter/last_falling_edge_reg[9]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#202 Critical Warning
-Non-clocked sequential cell  
 The clock pin i2sLayer/transmitter/pbdat_reg/C is not reached by a timing clock
 Related violations: <none>
 
@@ -1874,282 +1714,272 @@ Related violations: <none>
 
 TIMING-20#156 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/currentState_reg[3] cannot be properly analyzed as its control pin i2sLayer/transmitter/currentState_reg[3]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[0] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[0]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#157 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/stop_counting_reg cannot be properly analyzed as its control pin i2sLayer/transmitter/stop_counting_reg/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[10] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[10]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#158 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[0] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[0]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[11] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[11]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#159 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[10] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[10]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[12] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[12]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#160 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[11] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[11]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[13] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[13]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#161 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[12] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[12]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[14] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[14]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#162 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[13] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[13]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[15] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[15]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#163 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[14] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[14]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[16] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[16]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#164 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[15] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[15]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[17] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[17]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#165 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[16] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[16]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[18] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[18]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#166 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[17] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[17]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[19] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[19]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#167 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[18] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[18]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[1] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[1]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#168 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[19] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[19]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[20] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[20]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#169 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[1] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[1]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[21] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[21]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#170 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[20] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[20]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[22] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[22]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#171 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[21] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[21]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[23] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[23]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#172 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[22] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[22]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[24] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[24]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#173 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[23] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[23]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[25] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[25]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#174 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[24] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[24]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[26] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[26]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#175 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[25] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[25]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[27] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[27]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#176 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[26] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[26]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[28] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[28]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#177 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[27] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[27]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[29] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[29]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#178 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[28] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[28]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[2] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[2]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#179 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[29] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[29]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[30] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[30]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#180 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[2] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[2]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[31] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[31]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#181 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[30] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[30]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[32] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[32]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#182 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[31] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[31]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[33] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[33]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#183 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[32] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[32]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[34] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[34]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#184 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[33] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[33]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[35] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[35]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#185 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[34] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[34]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[36] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[36]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#186 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[35] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[35]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[37] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[37]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#187 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[36] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[36]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[38] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[38]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#188 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[37] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[37]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[39] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[39]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#189 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[38] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[38]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[3] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[3]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#190 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[39] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[39]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[40] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[40]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#191 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[3] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[3]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[41] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[41]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#192 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[40] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[40]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[42] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[42]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#193 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[41] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[41]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[43] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[43]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#194 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[42] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[42]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[44] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[44]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#195 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[43] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[43]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[45] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[45]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#196 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[44] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[44]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[46] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[46]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#197 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[45] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[45]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[47] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[47]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#198 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[46] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[46]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[4] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[4]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#199 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[47] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[47]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[5] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[5]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#200 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[4] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[4]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[6] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[6]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#201 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[5] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[5]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[7] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[7]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#202 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[6] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[6]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[8] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[8]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#203 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[7] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[7]/G is not reached by a timing clock
+The latch i2sLayer/transmitter/t_buf_temp_reg[9] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[9]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#204 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[8] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[8]/G is not reached by a timing clock
+The latch ic2_rst_reg cannot be properly analyzed as its control pin ic2_rst_reg/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#205 Warning
 Non-clocked latch  
-The latch i2sLayer/transmitter/t_buf_temp_reg[9] cannot be properly analyzed as its control pin i2sLayer/transmitter/t_buf_temp_reg[9]/G is not reached by a timing clock
+The latch onoff_reg cannot be properly analyzed as its control pin onoff_reg/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#206 Warning
 Non-clocked latch  
-The latch ic2_rst_reg cannot be properly analyzed as its control pin ic2_rst_reg/G is not reached by a timing clock
+The latch t_buf_temp_reg[47]_i_3 cannot be properly analyzed as its control pin t_buf_temp_reg[47]_i_3/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#207 Warning
 Non-clocked latch  
-The latch onoff_reg cannot be properly analyzed as its control pin onoff_reg/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#208 Warning
-Non-clocked latch  
-The latch t_buf_temp_reg[47]_i_3 cannot be properly analyzed as its control pin t_buf_temp_reg[47]_i_3/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#209 Warning
-Non-clocked latch  
 The latch top_sm_reg[0] cannot be properly analyzed as its control pin top_sm_reg[0]/G is not reached by a timing clock
 Related violations: <none>
 
-TIMING-20#210 Warning
+TIMING-20#208 Warning
 Non-clocked latch  
 The latch top_sm_reg[1] cannot be properly analyzed as its control pin top_sm_reg[1]/G is not reached by a timing clock
 Related violations: <none>
 
 LATCH-1#1 Advisory
 Existing latches in the design  
-There are 213 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
+There are 211 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
 Related violations: <none>
 
 

@@ -18,7 +18,6 @@
 -- 
 ----------------------------------------------------------------------------------
 
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -31,6 +30,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+
+-- Simple simulation component to simulate the different clocks for the component's testbenches
+-- It aims to simulate the actual configuration described by the 12C component's registers : masterclock around 12.8 Mhz
 entity clockSim is
     Generic( mclk_period : integer);
     Port ( 

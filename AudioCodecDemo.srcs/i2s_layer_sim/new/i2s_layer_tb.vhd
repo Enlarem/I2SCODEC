@@ -266,7 +266,7 @@ begin
 
         assert (is_null_vector(s_t_buf)) report "Error [3] :value given is " & to_string(s_t_buf) & " whereas it should be " & to_string(s_r_buf);
     
-        report "[Test] Enabling the filter";
+        report "[Simulation] Enabling the filter";
 
         s_top_mute <= '0';
         s_filter_switch <= '1';

@@ -75,7 +75,6 @@ port map (
             rec_done => sim_done
             );
 
-
 random_bit : process(sim_bclk) is
     variable seed1, seed2 : positive := 1;
     variable re           : real;
@@ -93,6 +92,7 @@ end process;
 test : process
 begin
     
+    report "[Test 1] Simple word send";
     wait until falling_edge(sim_bclk);
     wait until rising_edge(sim_bclk);
     for i in (2*width-1) downto width loop
@@ -109,6 +109,7 @@ begin
     wait on sim_done;
     assert (sim_buff = temp) report "Error [1] :value given is " & to_string(sim_buff) & " whereas it should be " & to_string(temp);
     
+    report "[Test 2] Restart after recording";
     -- Another counting cycle, but this time with restart after recording
     wait until falling_edge(sim_bclk);
     sim_reset <= '1';
@@ -118,6 +119,8 @@ begin
     sim_reset <= '0';
     
     -- Restart during counting
+    report "[Test 3] Restart during recording";
+
     wait until falling_edge(sim_reclrc);
     wait until falling_edge(sim_bclk);
     wait until rising_edge(sim_bclk);
