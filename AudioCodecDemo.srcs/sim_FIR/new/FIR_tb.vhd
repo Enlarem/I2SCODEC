@@ -85,7 +85,7 @@ end process;
 
 
 
-
+--loading all 241 samples for filtering
 recProcess: process
 begin
     wait until falling_edge(sim_bclk);
@@ -111,7 +111,6 @@ variable l, r, l_fir, r_fir : integer;
     begin
     
         file_open(input_buf, "sound_v.csv",  read_mode);
-       -- readline(input_buf, inLine); -- 1.st line has the column names
         
         while not endfile(input_buf) loop
             for i in (241) downto 0 loop
@@ -136,7 +135,7 @@ variable l, r, l_fir, r_fir : integer;
                 
                 wait until rising_edge(sim_done);
             end loop;
-            
+            --comparing filter output with values from matlab
             assert((sim_fil_buff = out_buff)) report "error" severity error;   -- add output of the filter     
             
         end loop;

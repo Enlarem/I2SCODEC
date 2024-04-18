@@ -75,6 +75,7 @@ port map (
             rec_done => sim_done
             );
 
+-- generating random bits for receiver
 random_bit : process(sim_bclk) is
     variable seed1, seed2 : positive := 1;
     variable re           : real;
