@@ -79,11 +79,7 @@ begin
                 case currentState is
                     when s_Init => 
                         if (word_received = '1') then 
-                            if start_counting  = '1' and last_falling_edge < 4 then
-                                currentState <= s_Stores; -- The falling edge of the playback clock just passed, and we currently are in the bit that shouldn't be taken into account
-                            else
-                                currentState <= s_Wait_for_Left;
-                            end if;
+                            currentState <= s_Wait_for_Left;
                         end if;
                         
                     when s_Stores => 
@@ -122,13 +118,7 @@ begin
                     when others => null;
                 end case;   
             end if;
-            if rising_edge(mclk) and start_counting = '1' and stop_counting = '0' and last_falling_edge < 4 then
-                last_falling_edge <= last_falling_edge + 1 ;
-            end if;
-            if last_falling_edge >= 4 then
-                last_falling_edge <= 0;
-                stop_counting <= '1';
-            end if;
+            
         end process;
     
     data_process: process(bclk, rst)

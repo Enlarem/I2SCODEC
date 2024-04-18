@@ -49,7 +49,6 @@ architecture Behavioral of i2s_layer is
             ac_mclk     : in std_logic;
             ac_recdat   : in std_logic;
             ac_reclrc   : in std_logic;
-            top_mute    : in std_logic;
 
             reset       : in std_logic := '0';
             r_buff      : out std_logic_vector((2*width-1) downto 0) := (others => '0');
@@ -90,7 +89,6 @@ begin
         ac_recdat => ac_recdat,
         r_buff => r_buff,
         reset => r_rst,
-        top_mute => top_mute,
         rec_done => r_rec_done
     );
     
