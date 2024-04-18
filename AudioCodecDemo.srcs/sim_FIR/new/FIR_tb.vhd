@@ -44,7 +44,7 @@ end component;
     signal sim_done, sim_reset : std_logic := '0';
  --   signal sim_left : std_logic_vector (width-1 downto 0) := (others => '0');
  --   signal sim_right : std_logic_vector (width-1 downto 0) := (others => '0');
-    signal recL_buff, recR_buff, firL_buff, firR_buff : std_logic_vector((width-1) downto 0) := (others => '0');
+    signal recL_buff, recR_buff, firL_buff, firR_buff : integer := 0;
     file input_buf : text;
 
 
