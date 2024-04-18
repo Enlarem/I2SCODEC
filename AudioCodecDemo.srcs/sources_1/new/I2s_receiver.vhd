@@ -8,7 +8,6 @@ entity I2s_receiver is
             );
     
     Port ( 
-        top_mute    : in std_logic;
         ac_bclk     : in std_logic;
         ac_mclk     : in std_logic;
         ac_recdat   : in std_logic;
@@ -73,7 +72,7 @@ uart_state : process(ac_mclk, ac_reclrc)
         end if;
     end process;
  
-uart : process (ac_bclk)
+uart : process (ac_bclk, reset)
     begin
         if falling_edge(ac_bclk) then
             if reset = '0' then

@@ -43,6 +43,8 @@ architecture Behavioral of i2s_layer_tb is
     component clockSim is
         Generic( mclk_period : integer);
         Port ( mclk : out STD_LOGIC;
+            sysclk : out STD_LOGIC;
+
                bclk : out STD_LOGIC;
                pblrc : out STD_LOGIC;
                reclrc : out STD_LOGIC);
@@ -53,9 +55,13 @@ architecture Behavioral of i2s_layer_tb is
       port
       (
         onoff: in std_logic;
+        filter_switch: in std_logic;
 
         --Input ports
+        sysclk    : in std_logic;
+
         top_mclk    : in std_logic;
+        top_mute: in std_logic;
         ac_bclk   : in std_logic;
         ac_pblrc  : in std_logic;
         ac_recdat : in std_logic;
@@ -105,7 +111,7 @@ architecture Behavioral of i2s_layer_tb is
         return result;
     end function is_null_vector;
 
-    signal s_mclk,  s_ac_bclk, s_ac_recdat, s_ac_pblrc, s_ac_reclrc, s_word_received, s_ac_pbdat : std_logic := '0';
+    signal s_mclk,  s_ac_bclk, s_ac_recdat, s_ac_pblrc, s_ac_reclrc, s_word_received, s_ac_pbdat, s_filter_switch, s_top_mute, s_sysclk : std_logic := '0';
     signal s_onoff: std_logic := '1';
     signal s_t_buf, s_r_buf, temp  : std_logic_vector(w_width*2-1 downto 0) := (others => '0');
 
@@ -117,6 +123,7 @@ begin
     )
     port map(
         mclk => s_mclk,
+        sysclk => s_sysclk,
         bclk => s_ac_bclk,
         pblrc => s_ac_pblrc,
         reclrc => s_ac_reclrc
@@ -128,8 +135,12 @@ begin
     )
     port map(
         onoff => s_onoff,
+        filter_switch => s_filter_switch,
         
         top_mclk => s_mclk,
+        sysclk => s_sysclk,
+        
+        top_mute => s_top_mute,
         ac_bclk => s_ac_bclk,
         ac_pblrc => s_ac_pblrc,
         ac_reclrc => s_ac_reclrc,
@@ -143,6 +154,7 @@ begin
         s_r_buf <= "111" & rand_slv(2*w_width -3);
         s_onoff <= '1';
 
+        report "[Test] Simple send and return";
         -- Sending the left bits
         -- wait until falling_edge(s_ac_reclrc);
         wait until falling_edge(s_ac_bclk);
@@ -178,6 +190,8 @@ begin
         
         assert (s_t_buf = s_r_buf) report "Error [1] :value given is " & to_string(s_t_buf) & " whereas it should be " & to_string(s_r_buf);
         
+        report "[Test] On/Off feature";
+
         s_onoff <= '0';
         -- Sending the left bits
         wait until falling_edge(s_ac_reclrc);
@@ -213,11 +227,67 @@ begin
         end loop;
         
         assert (is_null_vector(s_t_buf)) report "Error [2] :value given is " & to_string(s_t_buf) & " whereas it should be " & to_string(s_r_buf);
-
+        report "[Test] Mute feature";
+        s_top_mute <= '1';
         s_onoff <= '1';
-
+        
+        -- Sending the left bits
         wait until falling_edge(s_ac_reclrc);
+        wait until falling_edge(s_ac_bclk);
+        for i in w_width*2-1 downto w_width loop
+            s_ac_recdat <= s_r_buf(i);
+            wait until falling_edge(s_ac_bclk);
+        end loop;
+        
+        -- Sending the right bits
+        wait until rising_edge(s_ac_reclrc);
+        wait until falling_edge(s_ac_bclk);
+        for i in w_width -1  downto 0 loop
+            s_ac_recdat <= s_r_buf(i);
+            wait until falling_edge(s_ac_bclk);
+        end loop;
+        
+        -- Listening the left bits
+        wait until falling_edge(s_ac_pblrc);
+        wait until falling_edge(s_ac_bclk);
+        wait until rising_edge(s_ac_bclk);
+        for i in w_width*2-1 downto w_width loop
+            s_t_buf(i) <= s_ac_pbdat;
+            wait until rising_edge(s_ac_bclk);
+        end loop;
+        -- Listening the right bits
+        wait until rising_edge(s_ac_pblrc);
+        wait until falling_edge(s_ac_bclk);
+        wait until rising_edge(s_ac_bclk);
+        for i in w_width -1  downto 0 loop
+            s_t_buf(i) <= s_ac_pbdat;
+            wait until rising_edge(s_ac_bclk);
+        end loop;
 
+        assert (is_null_vector(s_t_buf)) report "Error [3] :value given is " & to_string(s_t_buf) & " whereas it should be " & to_string(s_r_buf);
+    
+        report "[Test] Enabling the filter";
+
+        s_top_mute <= '0';
+        s_filter_switch <= '1';
+        
+        -- Sending the left bits
+        wait until falling_edge(s_ac_reclrc);
+        wait until falling_edge(s_ac_bclk);
+        for i in w_width*2-1 downto w_width loop
+            s_ac_recdat <= s_r_buf(i);
+            wait until falling_edge(s_ac_bclk);
+        end loop;
+        
+        -- Sending the right bits
+        wait until rising_edge(s_ac_reclrc);
+        wait until falling_edge(s_ac_bclk);
+        for i in w_width -1  downto 0 loop
+            s_ac_recdat <= s_r_buf(i);
+            wait until falling_edge(s_ac_bclk);
+        end loop;
+
+        wait;
     end process;
 
 end Behavioral;

@@ -12,13 +12,10 @@ entity FIR is
             );
     Port (  
         sysclk      : in std_logic;
-        ac_bclk     : in std_logic;
         ac_mclk     : in std_logic;
-        ac_reclrc   : in std_logic;
         rec_done    : in std_logic;
         r_buff      : in std_logic_vector((2*width-1) downto 0) := (others => '0');
         fil_buff    : out std_logic_vector((2*width-1) downto 0) := (others => '0');
-        ac_pbdat    : out std_logic;
         fil_done    : out std_logic
             );
 end FIR;

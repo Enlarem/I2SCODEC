@@ -37,3 +37,7 @@ set_property src_info {type:XDC file:1 line:52 export:INPUT save:INPUT read:READ
 set_property -dict {PACKAGE_PIN N18 IOSTANDARD LVCMOS33} [get_ports ac_scl]
 set_property src_info {type:XDC file:1 line:53 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict {PACKAGE_PIN N17 IOSTANDARD LVCMOS33} [get_ports ac_sda]
+set_property src_info {type:XDC file:1 line:54 export:INPUT save:INPUT read:READ} [current_design]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ac_reclrc_IBUF]
+set_property src_info {type:XDC file:1 line:55 export:INPUT save:INPUT read:READ} [current_design]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ac_bclk_IBUF]

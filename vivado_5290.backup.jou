@@ -1,0 +1,123 @@
+#-----------------------------------------------------------
+# Vivado v2023.2.1 (64-bit)
+# SW Build 4081461 on Thu Dec 14 12:22:04 MST 2023
+# IP Build 4080415 on Thu Dec 14 21:01:57 MST 2023
+# SharedData Build 4077621 on Mon Dec 11 00:23:44 MST 2023
+# Start of session at: Wed Apr 17 23:48:34 2024
+# Process ID: 5290
+# Current directory: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC
+# Command line: vivado
+# Log file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/vivado.log
+# Journal file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/vivado.jou
+# Running On: remi-HP-ENVY-x360-Convertible-15-ds0xxx, OS: Linux, CPU Frequency: 1197.557 MHz, CPU Physical cores: 8, Host memory: 14509 MB
+#-----------------------------------------------------------
+start_gui
+open_project {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.xpr}
+launch_simulation -simset [get_filesets topsim ]
+source top_tb.tcl
+restart
+run 3.5 ms
+restart
+run 5 ms
+relaunch_sim
+run 7 ms
+restart
+run 7 ms
+restart
+run 7 ms
+restart
+run 7 ms
+restart
+run 7 ms
+restart
+run 7 ms
+restart
+run 7 ms
+restart
+run 7 ms
+relaunch_sim
+restart
+run 7 ms
+relaunch_sim
+restart
+run 7 ms
+relaunch_sim
+restart
+run 7 ms
+save_wave_config {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/Waveforms/top_simulation.wcfg}
+save_wave_config {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/Waveforms/top_simulation.wcfg}
+launch_simulation -simset [get_filesets i2s_transmitter_sim ]
+source i2s_transmitter_tb.tcl
+restart
+run 7 ms
+restart
+relaunch_sim
+run 7 ms
+restart
+run 7 ms
+close_sim
+launch_simulation -simset [get_filesets i2s_transmitter_sim ]
+source i2s_transmitter_tb.tcl
+restart
+run 7 ms
+restart
+run 7 ms
+relaunch_sim
+restart
+run 7 ms
+launch_simulation -simset [get_filesets i2s_layer_sim ]
+relaunch_sim
+relaunch_sim
+restart
+run 7 ms
+launch_simulation -simset [get_filesets i2s_layer_sim ]
+launch_simulation -simset [get_filesets i2s_layer_sim ]
+source i2s_layer_tb.tcl
+restart
+run 7 ms
+restart
+run 7 ms
+restart
+run 300 us
+restart
+run 100 us
+restart
+run 100 us
+restart
+run 100 us
+restart
+run 100 us
+restart
+run 100 us
+restart
+run 100 us
+relaunch_sim
+restart
+run 100 us
+restart
+run 100 us
+relaunch_sim
+restart
+run 100 us
+relaunch_sim
+restart
+run 300 us
+relaunch_sim
+restart
+run 300 us
+relaunch_sim
+restart
+run 300 us
+launch_simulation -simset [get_filesets sim_reciever ]
+current_sim simulation_1
+close_sim
+relaunch_sim
+launch_simulation -simset [get_filesets sim_reciever ]
+source I2s_receiver_tb.tcl
+restart
+run 300 us
+relaunch_sim
+restart
+run 300 us
+restart
+run 600 us

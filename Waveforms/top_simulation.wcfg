@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="top_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="5,145.000001 us"></ZoomEndTime>
+      <Cursor1Time time="4,060.316000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="177"></NameColumnWidth>
+      <ValueColumnWidth column_width="77"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="17" />
+   <wvobject type="logic" fp_name="/top_tb/s_ac_reclrc">
+      <obj_property name="ElementShortName">s_ac_reclrc</obj_property>
+      <obj_property name="ObjectShortName">s_ac_reclrc</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/s_ac_pblrc">
+      <obj_property name="ElementShortName">s_ac_pblrc</obj_property>
+      <obj_property name="ObjectShortName">s_ac_pblrc</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/s_ac_bclk">
+      <obj_property name="ElementShortName">s_ac_bclk</obj_property>
+      <obj_property name="ObjectShortName">s_ac_bclk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/s_r_led">
+      <obj_property name="ElementShortName">s_r_led</obj_property>
+      <obj_property name="ObjectShortName">s_r_led</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/s_ac_muten">
+      <obj_property name="ElementShortName">s_ac_muten</obj_property>
+      <obj_property name="ObjectShortName">s_ac_muten</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/s_ac_pbdat">
+      <obj_property name="ElementShortName">s_ac_pbdat</obj_property>
+      <obj_property name="ObjectShortName">s_ac_pbdat</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/s_ac_recdat">
+      <obj_property name="ElementShortName">s_ac_recdat</obj_property>
+      <obj_property name="ObjectShortName">s_ac_recdat</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top_tb/uut/top_sm">
+      <obj_property name="ElementShortName">top_sm</obj_property>
+      <obj_property name="ObjectShortName">top_sm</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider34" type="divider">
+      <obj_property name="label">States</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#008080</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top_tb/uut/i2sLayer/transmitter/currentState">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">currentState</obj_property>
+      <obj_property name="ObjectShortName">currentState</obj_property>
+      <obj_property name="label">Transmitter - state</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top_tb/uut/i2sLayer/receiver/State">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">State</obj_property>
+      <obj_property name="ObjectShortName">State</obj_property>
+      <obj_property name="label">Receiver - state</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top_tb/uut/i2sLayer/currentState">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">currentState</obj_property>
+      <obj_property name="ObjectShortName">currentState</obj_property>
+      <obj_property name="label">Top - state</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider34" type="divider">
+      <obj_property name="label">Buffers</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/i2sLayer/transmitter/t_buf_temp">
+      <obj_property name="ElementShortName">t_buf_temp[47:0]</obj_property>
+      <obj_property name="ObjectShortName">t_buf_temp[47:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/i2sLayer/t_buff">
+      <obj_property name="ElementShortName">t_buff[47:0]</obj_property>
+      <obj_property name="ObjectShortName">t_buff[47:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/i2sLayer/receiver/r_buff">
+      <obj_property name="ElementShortName">r_buff[47:0]</obj_property>
+      <obj_property name="ObjectShortName">r_buff[47:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/i2sLayer/receiver/buff">
+      <obj_property name="ElementShortName">buff[47:0]</obj_property>
+      <obj_property name="ObjectShortName">buff[47:0]</obj_property>
+   </wvobject>
+</wave_config>

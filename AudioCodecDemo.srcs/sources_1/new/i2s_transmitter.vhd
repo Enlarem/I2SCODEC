@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity i2s_transmitter is
     Generic(
-        w_width: integer := 32
+        w_width: integer := 24
     );
     Port ( 
     -- Relted to internal data management
@@ -63,7 +63,7 @@ architecture Behavioral of i2s_transmitter is
     end function is_Z_vector;
 
 
-    type i2s_transmitter_states is (s_Init, s_Transmit, s_Wait_for_Transmitting, s_Wait_for_Left, s_Wait_for_Right, s_Early_wait_for_Left, s_Early_wait_for_Right, s_NextEdge, s_Stores);
+    type i2s_transmitter_states is (s_Init, s_Transmit, s_Wait_for_Left, s_Wait_for_Right, s_Early_wait_for_Left, s_Early_wait_for_Right, s_NextEdge, s_Stores);
     signal currentState : i2s_transmitter_states := s_Init;
     signal t_buf_temp : std_logic_vector(t_buf'range) := (others => '0');
     signal bits_sent : integer := 0;
@@ -79,17 +79,9 @@ begin
                 case currentState is
                     when s_Init => 
                         if (word_received = '1') then 
-                            if start_counting  = '1' and last_falling_edge < 4 then
-                                currentState <= s_Stores; -- The falling edge of the playback clock just passed, and we currently are in the bit that shouldn't be taken into account
-                            else
-                                currentState <= s_Wait_for_Transmitting;
-                            end if;
+                            currentState <= s_Wait_for_Left;
                         end if;
                         
-                    when s_Wait_for_Transmitting => 
-                        if pblrc = '0' then
-                            currentState <= s_Stores;
-                        end if;
                     when s_Stores => 
                         t_buf_temp <= t_buf;
                         currentState <= s_Transmit;
@@ -100,7 +92,7 @@ begin
                             currentState <= s_Wait_for_Left;
                         end if;
                     when s_Wait_for_Left => 
-                        if  not is_Z_vector(t_buf) then
+                        if  word_received = '1' then
                             currentState <= s_Early_wait_for_left;
                             t_buf_temp <= t_buf;
                         end if;
@@ -108,7 +100,7 @@ begin
                             currentState <= s_Stores;
                         end if;
                     when s_Wait_for_Right =>
-                        if not is_Z_vector(t_buf) then
+                        if word_received = '1' then
                             currentState <= s_Early_wait_for_right;
                             t_buf_temp <= t_buf;
                         end if;
@@ -126,21 +118,19 @@ begin
                     when others => null;
                 end case;   
             end if;
-            if rising_edge(mclk) and start_counting = '1' and stop_counting = '0' and last_falling_edge < 4 then
-                last_falling_edge <= last_falling_edge + 1 ;
-            end if;
-            if last_falling_edge >= 4 then
-                last_falling_edge <= 0;
-                stop_counting <= '1';
-            end if;
+            
         end process;
     
-    data_process: process(bclk)
+    data_process: process(bclk, rst)
     begin
         if rst = '0' then 
             if falling_edge(bclk)  then 
                 if currentState = s_Transmit then
-                    pbdat <= t_buf_temp(t_buf_temp'length - 1 - bits_sent);
+                    if t_buf_temp(t_buf_temp'length - 1 - bits_sent) /= 'Z' then
+                        pbdat <= t_buf_temp(t_buf_temp'length - 1 - bits_sent);
+                    else
+                        pbdat <= '0';
+                    end if;
                     bits_sent <= bits_sent + 1;
                 elsif (currentState /= s_Transmit and bits_sent >= 2*w_width)then 
                     bits_sent <= 0;

@@ -51,7 +51,8 @@ set_property -dict {PACKAGE_PIN R16 IOSTANDARD LVCMOS33} [get_ports ac_recdat]
 set_property -dict {PACKAGE_PIN Y18 IOSTANDARD LVCMOS33} [get_ports ac_reclrc]
 set_property -dict {PACKAGE_PIN N18 IOSTANDARD LVCMOS33} [get_ports ac_scl]
 set_property -dict {PACKAGE_PIN N17 IOSTANDARD LVCMOS33} [get_ports ac_sda]
-
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ac_reclrc_IBUF]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ac_bclk_IBUF]
 
 ##Additional Ethernet signals
 #set_property -dict { PACKAGE_PIN F16   IOSTANDARD LVCMOS33  PULLUP true    } [get_ports { eth_int_pu_b }]; #IO_L6P_T0_35 Sch=eth_int_pu_b
@@ -197,4 +198,6 @@ set_property -dict {PACKAGE_PIN N17 IOSTANDARD LVCMOS33} [get_ports ac_sda]
 
 
 
-create_generated_clock -name mclk -source [get_ports *sysc*] -divide_by 10 -add -master_clock [get_clocks *] [get_ports *mclk*]
+#create_generated_clock -name mclk -source [get_ports *sysc*] -divide_by 10 -add -master_clock [get_clocks *] [get_ports *mclk*]
+
+

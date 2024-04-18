@@ -1,0 +1,119 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2.1 (lin64) Build 4081461 Thu Dec 14 12:22:04 MST 2023
+| Date         : Wed Apr 17 22:16:40 2024
+| Host         : remi-HP-ENVY-x360-Convertible-15-ds0xxx running 64-bit Ubuntu 23.10
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xc7z010
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    41 |
+|    Minimum number of control sets                        |    41 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   153 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    41 |
+| >= 0 to < 4        |    17 |
+| >= 4 to < 6        |     7 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    14 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             227 |           93 |
+| No           | No                    | Yes                    |               4 |            4 |
+| No           | Yes                   | No                     |              65 |           23 |
+| Yes          | No                    | No                     |             207 |           62 |
+| Yes          | No                    | Yes                    |              64 |           19 |
+| Yes          | Yes                   | No                     |              32 |            8 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++---------------------------------------------------+------------------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
+|                    Clock Signal                   |                     Enable Signal                    |                Set/Reset Signal                | Slice Load Count | Bel Load Count | Bels / Slice |
++---------------------------------------------------+------------------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
+|  i2sLayer/t_word_received_reg_i_1_n_2             |                                                      | i2sLayer/t_buff_reg[47]_i_2_n_2                |                1 |              1 |         1.00 |
+|  n_0_640_BUFG                                     |                                                      |                                                |                1 |              1 |         1.00 |
+| ~i2sLayer/transmitter/last_falling_edge2          |                                                      |                                                |                1 |              1 |         1.00 |
+| ~ac_reclrc_IBUF_BUFG                              |                                                      | i2sLayer/receiver/State_reg[1]_LDC_i_1_n_2     |                1 |              1 |         1.00 |
+| ~ac_reclrc_IBUF_BUFG                              |                                                      | i2sLayer/receiver/State_reg[0]_LDC_i_1_n_2     |                1 |              1 |         1.00 |
+| ~ac_reclrc_IBUF_BUFG                              |                                                      | i2sLayer/receiver/State_reg[2]_LDC_i_1_n_2     |                1 |              1 |         1.00 |
+|  i2sLayer/r_rst__0                                |                                                      | i2sLayer/t_buff_reg[47]_i_2_n_2                |                1 |              1 |         1.00 |
+|  i2sLayer/receiver/State_reg[2]_LDC_i_1_n_2       |                                                      | i2sLayer/receiver/State_reg[2]_LDC_i_2_n_2     |                1 |              1 |         1.00 |
+|  i2sLayer/receiver/buf_rec_done0                  |                                                      | i2sLayer/filter/fil_done                       |                1 |              1 |         1.00 |
+|  i2sLayer/receiver/State_reg[0]_LDC_i_1_n_2       |                                                      | i2sLayer/receiver/State_reg[0]_LDC_i_2_n_2     |                1 |              1 |         1.00 |
+|  i2sLayer/receiver/State_reg[1]_LDC_i_1_n_2       |                                                      | i2sLayer/receiver/State_reg[1]_LDC_i_2_n_2     |                1 |              1 |         1.00 |
+| ~ac_bclk_IBUF_BUFG                                |                                                      | i2sLayer/transmitter/bits_sent[31]_i_3_n_2     |                1 |              1 |         1.00 |
+| ~top_sm[0]                                        |                                                      |                                                |                1 |              1 |         1.00 |
+| ~top_sm[1]                                        |                                                      |                                                |                1 |              1 |         1.00 |
+|  i2cConf/E[0]                                     |                                                      |                                                |                1 |              2 |         2.00 |
+|  i2sLayer/receiver/rec_done1_out                  |                                                      |                                                |                2 |              2 |         1.00 |
+|  i2sLayer/filter/E[0]                             |                                                      |                                                |                1 |              3 |         3.00 |
+|  i2sLayer/transmitter/currentState_reg[3]_i_2_n_2 |                                                      |                                                |                3 |              4 |         1.33 |
+|  sysclk_IBUF_BUFG                                 | i2cConf/cnt2                                         |                                                |                2 |              4 |         2.00 |
+|  sysclk_IBUF_BUFG                                 | i2cConf/FSM_sequential_i2c_sm[3]_i_1_n_2             |                                                |                2 |              4 |         2.00 |
+| ~sysclk_IBUF_BUFG                                 | i2sLayer/filter/delay_line_l                         |                                                |                4 |              4 |         1.00 |
+|  sysclk_IBUF_BUFG                                 |                                                      | clock/clear                                    |                1 |              5 |         5.00 |
+|  sysclk_IBUF_BUFG                                 | i2cConf/run_cnt                                      |                                                |                1 |              5 |         5.00 |
+| ~sysclk_IBUF_BUFG                                 |                                                      |                                                |                2 |              5 |         2.50 |
+|  sysclk_IBUF_BUFG                                 |                                                      | i2cConf/cnt[5]_i_1_n_2                         |                2 |              6 |         3.00 |
+|  sysclk_IBUF_BUFG                                 |                                                      |                                                |                5 |              7 |         1.40 |
+|  clk_data                                         |                                                      |                                                |                2 |              7 |         3.50 |
+|  clock/ac_mclk_BUFG                               | i2sLayer/transmitter/last_falling_edge0              | i2sLayer/transmitter/stop_counting_reg_i_1_n_2 |                8 |             32 |         4.00 |
+| ~ac_bclk_IBUF_BUFG                                | i2sLayer/transmitter/bits_sent[31]_i_1_n_2           | i2sLayer/transmitter/bits_sent[31]_i_3_n_2     |               11 |             32 |         2.91 |
+| ~ac_bclk_IBUF_BUFG                                | i2sLayer/receiver/__7                                | i2sLayer/receiver/clear                        |                8 |             32 |         4.00 |
+|  clk_data                                         | i2cConf/active_reg                                   |                                                |               12 |             46 |         3.83 |
+| ~sysclk_IBUF_BUFG                                 | i2sLayer/filter/out_r[39]_i_1_n_2                    |                                                |               17 |             48 |         2.82 |
+| ~sysclk_IBUF_BUFG                                 | i2sLayer/filter/filter/                              |                                                |               14 |             48 |         3.43 |
+| ~sysclk_IBUF_BUFG                                 | i2sLayer/filter/FSM_onehot_state_reg_n_2_[2]         |                                                |               10 |             48 |         4.80 |
+|  transmitter/t_buf_temp__0                        |                                                      |                                                |               17 |             48 |         2.82 |
+|  r_buff_temp                                      |                                                      |                                                |               20 |             48 |         2.40 |
+|  n_1_253_BUFG                                     |                                                      |                                                |               20 |             48 |         2.40 |
+|  n_0_640_BUFG                                     |                                                      | i2sLayer/t_buff_reg[47]_i_2_n_2                |               14 |             48 |         3.43 |
+| ~ac_bclk_IBUF_BUFG                                |                                                      |                                                |               16 |             49 |         3.06 |
+| ~sysclk_IBUF_BUFG                                 | i2sLayer/filter/delay_line_l_reg_0_15_0_0_i_3_n_2    |                                                |               12 |             96 |         8.00 |
+| ~sysclk_IBUF_BUFG                                 | i2sLayer/filter/delay_line_l_reg_0_15_0_0__0_i_1_n_2 |                                                |               12 |             96 |         8.00 |
++---------------------------------------------------+------------------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
+
+
