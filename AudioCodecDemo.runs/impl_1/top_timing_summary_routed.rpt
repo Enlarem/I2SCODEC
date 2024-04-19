@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.2.1 (lin64) Build 4081461 Thu Dec 14 12:22:04 MST 2023
-| Date         : Thu Apr 18 15:54:38 2024
-| Host         : remi-HP-ENVY-x360-Convertible-15-ds0xxx running 64-bit Ubuntu 23.10
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Fri Apr 19 09:43:07 2024
+| Host         : DESKTOP-1LET3D7 running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file top_timing_summary_routed.rpt -pb top_timing_summary_routed.pb -rpx top_timing_summary_routed.rpx -warn_on_violation
 | Design       : top
 | Device       : 7z010-clg400
@@ -265,7 +265,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-     -0.976      -55.191                    118                 1600        0.071        0.000                      0                 1600        2.750        0.000                       0                   424  
+     -0.920      -67.359                    132                 1598        0.098        0.000                      0                 1598        2.750        0.000                       0                   423  
 
 
 Timing constraints are not met.
@@ -288,7 +288,7 @@ sys_clk_pin  {0.000 4.000}        8.000           125.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-sys_clk_pin        -0.976      -55.191                    118                 1600        0.071        0.000                      0                 1600        2.750        0.000                       0                   424  
+sys_clk_pin        -0.920      -67.359                    132                 1598        0.098        0.000                      0                 1598        2.750        0.000                       0                   423  
 
 
 ------------------------------------------------------------------------------------------------
@@ -319,27 +319,27 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  sys_clk_pin
   To Clock:  sys_clk_pin
 
-Setup :          118  Failing Endpoints,  Worst Slack       -0.976ns,  Total Violation      -55.191ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.071ns,  Total Violation        0.000ns
+Setup :          132  Failing Endpoints,  Worst Slack       -0.920ns,  Total Violation      -67.359ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.098ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        2.750ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (VIOLATED) :        -0.976ns  (required time - arrival time)
-  Source:                 i2sLayer/filter/counter_reg[2]/C
+Slack (VIOLATED) :        -0.920ns  (required time - arrival time)
+  Source:                 i2sLayer/filter/counter_reg[1]_replica/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/p_1_out_i_28_psdsp/D
-                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            i2sLayer/p_1_out/C[35]
+                            (falling edge-triggered cell DSP48E1 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        8.879ns  (logic 4.922ns (55.435%)  route 3.957ns (44.565%))
+  Data Path Delay:        8.718ns  (logic 4.936ns (56.618%)  route 3.782ns (43.382%))
   Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
-  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.897ns = ( 16.897 - 12.000 ) 
-    Source Clock Delay      (SCD):    5.348ns = ( 9.348 - 4.000 ) 
+  Clock Path Skew:        0.067ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.987ns = ( 16.987 - 12.000 ) 
+    Source Clock Delay      (SCD):    5.346ns = ( 9.346 - 4.000 ) 
     Clock Pessimism Removal (CPR):    0.425ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -356,22 +356,22 @@ Slack (VIOLATED) :        -0.976ns  (required time - arrival time)
     K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           2.076     7.568    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.679     9.348    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X13Y36         FDRE                                         r  i2sLayer/filter/counter_reg[2]/C  (IS_INVERTED)
+                         net (fo=424, routed)         1.677     9.346    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.459     9.807 r  i2sLayer/filter/counter_reg[2]/Q
-                         net (fo=309, routed)         1.239    11.046    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/A2
-    SLICE_X16Y36         RAMD32 (Prop_ramd32_RADR2_O)
-                                                      0.150    11.196 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/SP/O
-                         net (fo=1, routed)           0.822    12.018    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11_n_3
-    SLICE_X13Y36         LUT3 (Prop_lut3_I2_O)        0.348    12.366 r  i2sLayer/filter/p_1_out_i_18/O
-                         net (fo=1, routed)           0.535    12.901    i2sLayer/p_4_out[6]
-    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[6]_P[36])
-                                                      3.841    16.742 r  i2sLayer/p_1_out/P[36]
-                         net (fo=2, routed)           0.666    17.407    i2sLayer/filter/out_r_reg[39]_0[36]
-    SLICE_X8Y41          LUT2 (Prop_lut2_I1_O)        0.124    17.531 r  i2sLayer/filter/p_1_out_i_28/O
-                         net (fo=1, routed)           0.695    18.227    i2sLayer/filter/filter_n_71_alias
-    SLICE_X11Y36         FDRE                                         r  i2sLayer/filter/p_1_out_i_28_psdsp/D
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.459     9.805 r  i2sLayer/filter/counter_reg[1]_replica/Q
+                         net (fo=132, routed)         1.080    10.885    i2sLayer/filter/delay_line_r_reg_0_15_0_0__46/A1
+    SLICE_X8Y33          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.157    11.042 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__46/SP/O
+                         net (fo=1, routed)           0.642    11.684    i2sLayer/filter/delay_line_r_reg_0_15_0_0__46_n_3
+    SLICE_X9Y34          LUT3 (Prop_lut3_I0_O)        0.355    12.039 r  i2sLayer/filter/p_1_out_i_1/O
+                         net (fo=7, routed)           0.760    12.799    i2sLayer/p_4_out[23]
+    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[27]_P[35])
+                                                      3.841    16.640 r  i2sLayer/p_1_out/P[35]
+                         net (fo=2, routed)           0.626    17.266    i2sLayer/filter/out_r_reg[39]_0[35]
+    SLICE_X7Y38          LUT2 (Prop_lut2_I1_O)        0.124    17.390 r  i2sLayer/filter/p_1_out_i_29/O
+                         net (fo=1, routed)           0.674    18.064    i2sLayer/filter_n_72
+    DSP48_X0Y14          DSP48E1                                      r  i2sLayer/p_1_out/C[35]
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -381,30 +381,31 @@ Slack (VIOLATED) :        -0.976ns  (required time - arrival time)
     K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.880    15.301    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.505    16.897    i2sLayer/filter/p_1_out_0
-    SLICE_X11Y36         FDRE                                         r  i2sLayer/filter/p_1_out_i_28_psdsp/C  (IS_INVERTED)
-                         clock pessimism              0.425    17.323    
-                         clock uncertainty           -0.035    17.287    
-    SLICE_X11Y36         FDRE (Setup_fdre_C_D)       -0.037    17.250    i2sLayer/filter/p_1_out_i_28_psdsp
+                         net (fo=424, routed)         1.595    16.987    i2sLayer/p_1_out_0
+    DSP48_X0Y14          DSP48E1                                      r  i2sLayer/p_1_out/CLK  (IS_INVERTED)
+                         clock pessimism              0.425    17.412    
+                         clock uncertainty           -0.035    17.377    
+    DSP48_X0Y14          DSP48E1 (Setup_dsp48e1_CLK_C[35])
+                                                     -0.233    17.144    i2sLayer/p_1_out
   -------------------------------------------------------------------
-                         required time                         17.250    
-                         arrival time                         -18.227    
+                         required time                         17.144    
+                         arrival time                         -18.064    
   -------------------------------------------------------------------
-                         slack                                 -0.976    
+                         slack                                 -0.920    
 
-Slack (VIOLATED) :        -0.843ns  (required time - arrival time)
-  Source:                 i2sLayer/filter/counter_reg[2]/C
+Slack (VIOLATED) :        -0.889ns  (required time - arrival time)
+  Source:                 i2sLayer/filter/counter_reg[1]_replica/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/p_1_out_i_55_psdsp/D
+  Destination:            i2sLayer/filter/p_1_out__0_i_55_psdsp/D
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        8.690ns  (logic 4.922ns (56.640%)  route 3.768ns (43.360%))
+  Data Path Delay:        8.759ns  (logic 4.936ns (56.355%)  route 3.823ns (43.645%))
   Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
-  Clock Path Skew:        -0.059ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.898ns = ( 16.897 - 12.000 ) 
-    Source Clock Delay      (SCD):    5.348ns = ( 9.348 - 4.000 ) 
+  Clock Path Skew:        -0.055ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.899ns = ( 16.899 - 12.000 ) 
+    Source Clock Delay      (SCD):    5.346ns = ( 9.346 - 4.000 ) 
     Clock Pessimism Removal (CPR):    0.391ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -421,22 +422,22 @@ Slack (VIOLATED) :        -0.843ns  (required time - arrival time)
     K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           2.076     7.568    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.679     9.348    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X13Y36         FDRE                                         r  i2sLayer/filter/counter_reg[2]/C  (IS_INVERTED)
+                         net (fo=424, routed)         1.677     9.346    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.459     9.807 r  i2sLayer/filter/counter_reg[2]/Q
-                         net (fo=309, routed)         1.239    11.046    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/A2
-    SLICE_X16Y36         RAMD32 (Prop_ramd32_RADR2_O)
-                                                      0.150    11.196 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/SP/O
-                         net (fo=1, routed)           0.822    12.018    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11_n_3
-    SLICE_X13Y36         LUT3 (Prop_lut3_I2_O)        0.348    12.366 r  i2sLayer/filter/p_1_out_i_18/O
-                         net (fo=1, routed)           0.535    12.901    i2sLayer/p_4_out[6]
-    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[6]_P[9])
-                                                      3.841    16.742 r  i2sLayer/p_1_out/P[9]
-                         net (fo=1, routed)           0.644    17.386    i2sLayer/filter/out_r_reg[39]_0[9]
-    SLICE_X8Y37          LUT2 (Prop_lut2_I1_O)        0.124    17.510 r  i2sLayer/filter/p_1_out_i_55/O
-                         net (fo=1, routed)           0.528    18.038    i2sLayer/filter/filter_n_98_alias
-    SLICE_X7Y37          FDRE                                         r  i2sLayer/filter/p_1_out_i_55_psdsp/D
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.459     9.805 r  i2sLayer/filter/counter_reg[1]_replica/Q
+                         net (fo=132, routed)         1.335    11.140    i2sLayer/filter/delay_line_l_reg_0_15_0_0__18/A1
+    SLICE_X8Y35          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.157    11.297 r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__18/SP/O
+                         net (fo=1, routed)           0.644    11.940    i2sLayer/filter/delay_line_l_reg_0_15_0_0__18_n_3
+    SLICE_X9Y35          LUT3 (Prop_lut3_I0_O)        0.355    12.295 r  i2sLayer/filter/p_1_out__0_i_15/O
+                         net (fo=1, routed)           0.658    12.953    i2sLayer/filter_n_17
+    DSP48_X0Y15          DSP48E1 (Prop_dsp48e1_A[9]_P[9])
+                                                      3.841    16.794 r  i2sLayer/p_1_out__0/P[9]
+                         net (fo=1, routed)           0.651    17.445    i2sLayer/filter/P[9]
+    SLICE_X13Y38         LUT2 (Prop_lut2_I1_O)        0.124    17.569 r  i2sLayer/filter/p_1_out__0_i_55/O
+                         net (fo=1, routed)           0.536    18.105    i2sLayer/filter/filter_n_58_alias
+    SLICE_X11Y38         FDRE                                         r  i2sLayer/filter/p_1_out__0_i_55_psdsp/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -446,31 +447,31 @@ Slack (VIOLATED) :        -0.843ns  (required time - arrival time)
     K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.880    15.301    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.505    16.897    i2sLayer/filter/p_1_out_0
-    SLICE_X7Y37          FDRE                                         r  i2sLayer/filter/p_1_out_i_55_psdsp/C  (IS_INVERTED)
-                         clock pessimism              0.391    17.289    
-                         clock uncertainty           -0.035    17.253    
-    SLICE_X7Y37          FDRE (Setup_fdre_C_D)       -0.059    17.194    i2sLayer/filter/p_1_out_i_55_psdsp
+                         net (fo=424, routed)         1.507    16.899    i2sLayer/filter/p_1_out_0
+    SLICE_X11Y38         FDRE                                         r  i2sLayer/filter/p_1_out__0_i_55_psdsp/C  (IS_INVERTED)
+                         clock pessimism              0.391    17.291    
+                         clock uncertainty           -0.035    17.255    
+    SLICE_X11Y38         FDRE (Setup_fdre_C_D)       -0.040    17.215    i2sLayer/filter/p_1_out__0_i_55_psdsp
   -------------------------------------------------------------------
-                         required time                         17.194    
-                         arrival time                         -18.038    
+                         required time                         17.215    
+                         arrival time                         -18.105    
   -------------------------------------------------------------------
-                         slack                                 -0.843    
+                         slack                                 -0.889    
 
-Slack (VIOLATED) :        -0.766ns  (required time - arrival time)
-  Source:                 i2sLayer/filter/counter_reg[2]/C
+Slack (VIOLATED) :        -0.842ns  (required time - arrival time)
+  Source:                 i2sLayer/filter/counter_reg[1]_replica/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/p_1_out_i_45_psdsp/D
-                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            i2sLayer/p_1_out/C[34]
+                            (falling edge-triggered cell DSP48E1 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        8.638ns  (logic 4.922ns (56.980%)  route 3.716ns (43.020%))
+  Data Path Delay:        8.640ns  (logic 4.936ns (57.127%)  route 3.704ns (42.873%))
   Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
-  Clock Path Skew:        -0.056ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.900ns = ( 16.900 - 12.000 ) 
-    Source Clock Delay      (SCD):    5.348ns = ( 9.348 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.391ns
+  Clock Path Skew:        0.067ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.987ns = ( 16.987 - 12.000 ) 
+    Source Clock Delay      (SCD):    5.346ns = ( 9.346 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.425ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -486,22 +487,22 @@ Slack (VIOLATED) :        -0.766ns  (required time - arrival time)
     K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           2.076     7.568    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.679     9.348    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X13Y36         FDRE                                         r  i2sLayer/filter/counter_reg[2]/C  (IS_INVERTED)
+                         net (fo=424, routed)         1.677     9.346    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.459     9.807 r  i2sLayer/filter/counter_reg[2]/Q
-                         net (fo=309, routed)         1.239    11.046    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/A2
-    SLICE_X16Y36         RAMD32 (Prop_ramd32_RADR2_O)
-                                                      0.150    11.196 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/SP/O
-                         net (fo=1, routed)           0.822    12.018    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11_n_3
-    SLICE_X13Y36         LUT3 (Prop_lut3_I2_O)        0.348    12.366 r  i2sLayer/filter/p_1_out_i_18/O
-                         net (fo=1, routed)           0.535    12.901    i2sLayer/p_4_out[6]
-    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[6]_P[19])
-                                                      3.841    16.742 r  i2sLayer/p_1_out/P[19]
-                         net (fo=2, routed)           0.638    17.379    i2sLayer/filter/out_r_reg[39]_0[19]
-    SLICE_X8Y39          LUT2 (Prop_lut2_I1_O)        0.124    17.503 r  i2sLayer/filter/p_1_out_i_45/O
-                         net (fo=1, routed)           0.483    17.986    i2sLayer/filter/filter_n_88_alias
-    SLICE_X7Y41          FDRE                                         r  i2sLayer/filter/p_1_out_i_45_psdsp/D
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.459     9.805 r  i2sLayer/filter/counter_reg[1]_replica/Q
+                         net (fo=132, routed)         1.080    10.885    i2sLayer/filter/delay_line_r_reg_0_15_0_0__46/A1
+    SLICE_X8Y33          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.157    11.042 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__46/SP/O
+                         net (fo=1, routed)           0.642    11.684    i2sLayer/filter/delay_line_r_reg_0_15_0_0__46_n_3
+    SLICE_X9Y34          LUT3 (Prop_lut3_I0_O)        0.355    12.039 r  i2sLayer/filter/p_1_out_i_1/O
+                         net (fo=7, routed)           0.760    12.799    i2sLayer/p_4_out[23]
+    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[27]_P[34])
+                                                      3.841    16.640 r  i2sLayer/p_1_out/P[34]
+                         net (fo=2, routed)           0.680    17.320    i2sLayer/filter/out_r_reg[39]_0[34]
+    SLICE_X10Y40         LUT2 (Prop_lut2_I1_O)        0.124    17.444 r  i2sLayer/filter/p_1_out_i_30/O
+                         net (fo=1, routed)           0.542    17.986    i2sLayer/filter_n_73
+    DSP48_X0Y14          DSP48E1                                      r  i2sLayer/p_1_out/C[34]
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -511,30 +512,31 @@ Slack (VIOLATED) :        -0.766ns  (required time - arrival time)
     K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.880    15.301    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.508    16.900    i2sLayer/filter/p_1_out_0
-    SLICE_X7Y41          FDRE                                         r  i2sLayer/filter/p_1_out_i_45_psdsp/C  (IS_INVERTED)
-                         clock pessimism              0.391    17.292    
-                         clock uncertainty           -0.035    17.256    
-    SLICE_X7Y41          FDRE (Setup_fdre_C_D)       -0.037    17.219    i2sLayer/filter/p_1_out_i_45_psdsp
+                         net (fo=424, routed)         1.595    16.987    i2sLayer/p_1_out_0
+    DSP48_X0Y14          DSP48E1                                      r  i2sLayer/p_1_out/CLK  (IS_INVERTED)
+                         clock pessimism              0.425    17.412    
+                         clock uncertainty           -0.035    17.377    
+    DSP48_X0Y14          DSP48E1 (Setup_dsp48e1_CLK_C[34])
+                                                     -0.233    17.144    i2sLayer/p_1_out
   -------------------------------------------------------------------
-                         required time                         17.219    
+                         required time                         17.144    
                          arrival time                         -17.986    
   -------------------------------------------------------------------
-                         slack                                 -0.766    
+                         slack                                 -0.842    
 
-Slack (VIOLATED) :        -0.756ns  (required time - arrival time)
-  Source:                 i2sLayer/filter/counter_reg[2]/C
+Slack (VIOLATED) :        -0.836ns  (required time - arrival time)
+  Source:                 i2sLayer/filter/counter_reg[1]_replica/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/p_1_out_i_51_psdsp/D
+  Destination:            i2sLayer/filter/p_1_out__0_i_49_psdsp/D
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        8.624ns  (logic 4.922ns (57.072%)  route 3.702ns (42.928%))
+  Data Path Delay:        8.709ns  (logic 4.936ns (56.680%)  route 3.773ns (43.320%))
   Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
-  Clock Path Skew:        -0.059ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.898ns = ( 16.897 - 12.000 ) 
-    Source Clock Delay      (SCD):    5.348ns = ( 9.348 - 4.000 ) 
+  Clock Path Skew:        -0.055ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.899ns = ( 16.899 - 12.000 ) 
+    Source Clock Delay      (SCD):    5.346ns = ( 9.346 - 4.000 ) 
     Clock Pessimism Removal (CPR):    0.391ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -551,22 +553,22 @@ Slack (VIOLATED) :        -0.756ns  (required time - arrival time)
     K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           2.076     7.568    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.679     9.348    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X13Y36         FDRE                                         r  i2sLayer/filter/counter_reg[2]/C  (IS_INVERTED)
+                         net (fo=424, routed)         1.677     9.346    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.459     9.807 r  i2sLayer/filter/counter_reg[2]/Q
-                         net (fo=309, routed)         1.239    11.046    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/A2
-    SLICE_X16Y36         RAMD32 (Prop_ramd32_RADR2_O)
-                                                      0.150    11.196 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/SP/O
-                         net (fo=1, routed)           0.822    12.018    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11_n_3
-    SLICE_X13Y36         LUT3 (Prop_lut3_I2_O)        0.348    12.366 r  i2sLayer/filter/p_1_out_i_18/O
-                         net (fo=1, routed)           0.535    12.901    i2sLayer/p_4_out[6]
-    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[6]_P[13])
-                                                      3.841    16.742 r  i2sLayer/p_1_out/P[13]
-                         net (fo=1, routed)           0.753    17.495    i2sLayer/filter/out_r_reg[39]_0[13]
-    SLICE_X8Y38          LUT2 (Prop_lut2_I1_O)        0.124    17.619 r  i2sLayer/filter/p_1_out_i_51/O
-                         net (fo=1, routed)           0.353    17.972    i2sLayer/filter/filter_n_94_alias
-    SLICE_X7Y37          FDRE                                         r  i2sLayer/filter/p_1_out_i_51_psdsp/D
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.459     9.805 r  i2sLayer/filter/counter_reg[1]_replica/Q
+                         net (fo=132, routed)         1.335    11.140    i2sLayer/filter/delay_line_l_reg_0_15_0_0__18/A1
+    SLICE_X8Y35          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.157    11.297 r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__18/SP/O
+                         net (fo=1, routed)           0.644    11.940    i2sLayer/filter/delay_line_l_reg_0_15_0_0__18_n_3
+    SLICE_X9Y35          LUT3 (Prop_lut3_I0_O)        0.355    12.295 r  i2sLayer/filter/p_1_out__0_i_15/O
+                         net (fo=1, routed)           0.658    12.953    i2sLayer/filter_n_17
+    DSP48_X0Y15          DSP48E1 (Prop_dsp48e1_A[9]_P[15])
+                                                      3.841    16.794 r  i2sLayer/p_1_out__0/P[15]
+                         net (fo=1, routed)           0.812    17.606    i2sLayer/filter/P[15]
+    SLICE_X12Y38         LUT2 (Prop_lut2_I1_O)        0.124    17.730 r  i2sLayer/filter/p_1_out__0_i_49/O
+                         net (fo=1, routed)           0.324    18.054    i2sLayer/filter/filter_n_52_alias
+    SLICE_X11Y38         FDRE                                         r  i2sLayer/filter/p_1_out__0_i_49_psdsp/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -576,30 +578,30 @@ Slack (VIOLATED) :        -0.756ns  (required time - arrival time)
     K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.880    15.301    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.505    16.897    i2sLayer/filter/p_1_out_0
-    SLICE_X7Y37          FDRE                                         r  i2sLayer/filter/p_1_out_i_51_psdsp/C  (IS_INVERTED)
-                         clock pessimism              0.391    17.289    
-                         clock uncertainty           -0.035    17.253    
-    SLICE_X7Y37          FDRE (Setup_fdre_C_D)       -0.037    17.216    i2sLayer/filter/p_1_out_i_51_psdsp
+                         net (fo=424, routed)         1.507    16.899    i2sLayer/filter/p_1_out_0
+    SLICE_X11Y38         FDRE                                         r  i2sLayer/filter/p_1_out__0_i_49_psdsp/C  (IS_INVERTED)
+                         clock pessimism              0.391    17.291    
+                         clock uncertainty           -0.035    17.255    
+    SLICE_X11Y38         FDRE (Setup_fdre_C_D)       -0.037    17.218    i2sLayer/filter/p_1_out__0_i_49_psdsp
   -------------------------------------------------------------------
-                         required time                         17.216    
-                         arrival time                         -17.972    
+                         required time                         17.218    
+                         arrival time                         -18.054    
   -------------------------------------------------------------------
-                         slack                                 -0.756    
+                         slack                                 -0.836    
 
-Slack (VIOLATED) :        -0.748ns  (required time - arrival time)
-  Source:                 i2sLayer/filter/counter_reg[2]/C
+Slack (VIOLATED) :        -0.835ns  (required time - arrival time)
+  Source:                 i2sLayer/filter/counter_reg[1]_replica/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/p_1_out_i_26_psdsp/D
+  Destination:            i2sLayer/filter/p_1_out__0_i_38_psdsp/D
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        8.617ns  (logic 4.922ns (57.121%)  route 3.695ns (42.879%))
+  Data Path Delay:        8.699ns  (logic 4.936ns (56.740%)  route 3.763ns (43.260%))
   Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
   Clock Path Skew:        -0.056ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.900ns = ( 16.900 - 12.000 ) 
-    Source Clock Delay      (SCD):    5.348ns = ( 9.348 - 4.000 ) 
+    Destination Clock Delay (DCD):    4.898ns = ( 16.898 - 12.000 ) 
+    Source Clock Delay      (SCD):    5.346ns = ( 9.346 - 4.000 ) 
     Clock Pessimism Removal (CPR):    0.391ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -616,22 +618,22 @@ Slack (VIOLATED) :        -0.748ns  (required time - arrival time)
     K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           2.076     7.568    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.679     9.348    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X13Y36         FDRE                                         r  i2sLayer/filter/counter_reg[2]/C  (IS_INVERTED)
+                         net (fo=424, routed)         1.677     9.346    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.459     9.807 r  i2sLayer/filter/counter_reg[2]/Q
-                         net (fo=309, routed)         1.239    11.046    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/A2
-    SLICE_X16Y36         RAMD32 (Prop_ramd32_RADR2_O)
-                                                      0.150    11.196 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/SP/O
-                         net (fo=1, routed)           0.822    12.018    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11_n_3
-    SLICE_X13Y36         LUT3 (Prop_lut3_I2_O)        0.348    12.366 r  i2sLayer/filter/p_1_out_i_18/O
-                         net (fo=1, routed)           0.535    12.901    i2sLayer/p_4_out[6]
-    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[6]_P[38])
-                                                      3.841    16.742 r  i2sLayer/p_1_out/P[38]
-                         net (fo=2, routed)           0.743    17.484    i2sLayer/filter/out_r_reg[39]_0[38]
-    SLICE_X9Y40          LUT2 (Prop_lut2_I1_O)        0.124    17.608 r  i2sLayer/filter/p_1_out_i_26/O
-                         net (fo=1, routed)           0.356    17.965    i2sLayer/filter/filter_n_69_alias
-    SLICE_X7Y41          FDRE                                         r  i2sLayer/filter/p_1_out_i_26_psdsp/D
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.459     9.805 r  i2sLayer/filter/counter_reg[1]_replica/Q
+                         net (fo=132, routed)         1.335    11.140    i2sLayer/filter/delay_line_l_reg_0_15_0_0__18/A1
+    SLICE_X8Y35          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.157    11.297 r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__18/SP/O
+                         net (fo=1, routed)           0.644    11.940    i2sLayer/filter/delay_line_l_reg_0_15_0_0__18_n_3
+    SLICE_X9Y35          LUT3 (Prop_lut3_I0_O)        0.355    12.295 r  i2sLayer/filter/p_1_out__0_i_15/O
+                         net (fo=1, routed)           0.658    12.953    i2sLayer/filter_n_17
+    DSP48_X0Y15          DSP48E1 (Prop_dsp48e1_A[9]_P[26])
+                                                      3.841    16.794 r  i2sLayer/p_1_out__0/P[26]
+                         net (fo=2, routed)           0.788    17.582    i2sLayer/filter/P[26]
+    SLICE_X9Y37          LUT2 (Prop_lut2_I1_O)        0.124    17.706 r  i2sLayer/filter/p_1_out__0_i_38/O
+                         net (fo=1, routed)           0.339    18.045    i2sLayer/filter/filter_n_41_alias
+    SLICE_X7Y38          FDRE                                         r  i2sLayer/filter/p_1_out__0_i_38_psdsp/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -641,344 +643,345 @@ Slack (VIOLATED) :        -0.748ns  (required time - arrival time)
     K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.880    15.301    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.508    16.900    i2sLayer/filter/p_1_out_0
-    SLICE_X7Y41          FDRE                                         r  i2sLayer/filter/p_1_out_i_26_psdsp/C  (IS_INVERTED)
+                         net (fo=424, routed)         1.506    16.898    i2sLayer/filter/p_1_out_0
+    SLICE_X7Y38          FDRE                                         r  i2sLayer/filter/p_1_out__0_i_38_psdsp/C  (IS_INVERTED)
+                         clock pessimism              0.391    17.290    
+                         clock uncertainty           -0.035    17.254    
+    SLICE_X7Y38          FDRE (Setup_fdre_C_D)       -0.044    17.210    i2sLayer/filter/p_1_out__0_i_38_psdsp
+  -------------------------------------------------------------------
+                         required time                         17.210    
+                         arrival time                         -18.045    
+  -------------------------------------------------------------------
+                         slack                                 -0.835    
+
+Slack (VIOLATED) :        -0.834ns  (required time - arrival time)
+  Source:                 i2sLayer/filter/counter_reg[1]_replica/C
+                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            i2sLayer/p_1_out/C[40]
+                            (falling edge-triggered cell DSP48E1 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
+  Data Path Delay:        8.632ns  (logic 4.936ns (57.183%)  route 3.696ns (42.817%))
+  Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
+  Clock Path Skew:        0.067ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.987ns = ( 16.987 - 12.000 ) 
+    Source Clock Delay      (SCD):    5.346ns = ( 9.346 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.425ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin fall edge)
+                                                      4.000     4.000 f  
+    K17                                               0.000     4.000 f  sysclk (IN)
+                         net (fo=0)                   0.000     4.000    sysclk
+    K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     7.568    sysclk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
+                         net (fo=424, routed)         1.677     9.346    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica/C  (IS_INVERTED)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.459     9.805 r  i2sLayer/filter/counter_reg[1]_replica/Q
+                         net (fo=132, routed)         1.080    10.885    i2sLayer/filter/delay_line_r_reg_0_15_0_0__46/A1
+    SLICE_X8Y33          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.157    11.042 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__46/SP/O
+                         net (fo=1, routed)           0.642    11.684    i2sLayer/filter/delay_line_r_reg_0_15_0_0__46_n_3
+    SLICE_X9Y34          LUT3 (Prop_lut3_I0_O)        0.355    12.039 r  i2sLayer/filter/p_1_out_i_1/O
+                         net (fo=7, routed)           0.760    12.799    i2sLayer/p_4_out[23]
+    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[27]_P[39])
+                                                      3.841    16.640 r  i2sLayer/p_1_out/P[39]
+                         net (fo=2, routed)           0.493    17.132    i2sLayer/filter/out_r_reg[39]_0[39]
+    SLICE_X9Y39          LUT2 (Prop_lut2_I1_O)        0.124    17.256 r  i2sLayer/filter/p_1_out_i_25/O
+                         net (fo=9, routed)           0.721    17.978    i2sLayer/filter_n_68
+    DSP48_X0Y14          DSP48E1                                      r  i2sLayer/p_1_out/C[40]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin fall edge)
+                                                     12.000    12.000 f  
+    K17                                               0.000    12.000 f  sysclk (IN)
+                         net (fo=0)                   0.000    12.000    sysclk
+    K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    15.301    sysclk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
+                         net (fo=424, routed)         1.595    16.987    i2sLayer/p_1_out_0
+    DSP48_X0Y14          DSP48E1                                      r  i2sLayer/p_1_out/CLK  (IS_INVERTED)
+                         clock pessimism              0.425    17.412    
+                         clock uncertainty           -0.035    17.377    
+    DSP48_X0Y14          DSP48E1 (Setup_dsp48e1_CLK_C[40])
+                                                     -0.233    17.144    i2sLayer/p_1_out
+  -------------------------------------------------------------------
+                         required time                         17.144    
+                         arrival time                         -17.978    
+  -------------------------------------------------------------------
+                         slack                                 -0.834    
+
+Slack (VIOLATED) :        -0.834ns  (required time - arrival time)
+  Source:                 i2sLayer/filter/counter_reg[1]_replica/C
+                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            i2sLayer/p_1_out/C[42]
+                            (falling edge-triggered cell DSP48E1 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
+  Data Path Delay:        8.632ns  (logic 4.936ns (57.183%)  route 3.696ns (42.817%))
+  Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
+  Clock Path Skew:        0.067ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.987ns = ( 16.987 - 12.000 ) 
+    Source Clock Delay      (SCD):    5.346ns = ( 9.346 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.425ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin fall edge)
+                                                      4.000     4.000 f  
+    K17                                               0.000     4.000 f  sysclk (IN)
+                         net (fo=0)                   0.000     4.000    sysclk
+    K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     7.568    sysclk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
+                         net (fo=424, routed)         1.677     9.346    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica/C  (IS_INVERTED)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.459     9.805 r  i2sLayer/filter/counter_reg[1]_replica/Q
+                         net (fo=132, routed)         1.080    10.885    i2sLayer/filter/delay_line_r_reg_0_15_0_0__46/A1
+    SLICE_X8Y33          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.157    11.042 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__46/SP/O
+                         net (fo=1, routed)           0.642    11.684    i2sLayer/filter/delay_line_r_reg_0_15_0_0__46_n_3
+    SLICE_X9Y34          LUT3 (Prop_lut3_I0_O)        0.355    12.039 r  i2sLayer/filter/p_1_out_i_1/O
+                         net (fo=7, routed)           0.760    12.799    i2sLayer/p_4_out[23]
+    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[27]_P[39])
+                                                      3.841    16.640 r  i2sLayer/p_1_out/P[39]
+                         net (fo=2, routed)           0.493    17.132    i2sLayer/filter/out_r_reg[39]_0[39]
+    SLICE_X9Y39          LUT2 (Prop_lut2_I1_O)        0.124    17.256 r  i2sLayer/filter/p_1_out_i_25/O
+                         net (fo=9, routed)           0.721    17.978    i2sLayer/filter_n_68
+    DSP48_X0Y14          DSP48E1                                      r  i2sLayer/p_1_out/C[42]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin fall edge)
+                                                     12.000    12.000 f  
+    K17                                               0.000    12.000 f  sysclk (IN)
+                         net (fo=0)                   0.000    12.000    sysclk
+    K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    15.301    sysclk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
+                         net (fo=424, routed)         1.595    16.987    i2sLayer/p_1_out_0
+    DSP48_X0Y14          DSP48E1                                      r  i2sLayer/p_1_out/CLK  (IS_INVERTED)
+                         clock pessimism              0.425    17.412    
+                         clock uncertainty           -0.035    17.377    
+    DSP48_X0Y14          DSP48E1 (Setup_dsp48e1_CLK_C[42])
+                                                     -0.233    17.144    i2sLayer/p_1_out
+  -------------------------------------------------------------------
+                         required time                         17.144    
+                         arrival time                         -17.978    
+  -------------------------------------------------------------------
+                         slack                                 -0.834    
+
+Slack (VIOLATED) :        -0.819ns  (required time - arrival time)
+  Source:                 i2sLayer/filter/counter_reg[1]_replica/C
+                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            i2sLayer/p_1_out/C[41]
+                            (falling edge-triggered cell DSP48E1 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
+  Data Path Delay:        8.617ns  (logic 4.936ns (57.282%)  route 3.681ns (42.718%))
+  Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
+  Clock Path Skew:        0.067ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.987ns = ( 16.987 - 12.000 ) 
+    Source Clock Delay      (SCD):    5.346ns = ( 9.346 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.425ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin fall edge)
+                                                      4.000     4.000 f  
+    K17                                               0.000     4.000 f  sysclk (IN)
+                         net (fo=0)                   0.000     4.000    sysclk
+    K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     7.568    sysclk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
+                         net (fo=424, routed)         1.677     9.346    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica/C  (IS_INVERTED)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.459     9.805 r  i2sLayer/filter/counter_reg[1]_replica/Q
+                         net (fo=132, routed)         1.080    10.885    i2sLayer/filter/delay_line_r_reg_0_15_0_0__46/A1
+    SLICE_X8Y33          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.157    11.042 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__46/SP/O
+                         net (fo=1, routed)           0.642    11.684    i2sLayer/filter/delay_line_r_reg_0_15_0_0__46_n_3
+    SLICE_X9Y34          LUT3 (Prop_lut3_I0_O)        0.355    12.039 r  i2sLayer/filter/p_1_out_i_1/O
+                         net (fo=7, routed)           0.760    12.799    i2sLayer/p_4_out[23]
+    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[27]_P[39])
+                                                      3.841    16.640 r  i2sLayer/p_1_out/P[39]
+                         net (fo=2, routed)           0.493    17.132    i2sLayer/filter/out_r_reg[39]_0[39]
+    SLICE_X9Y39          LUT2 (Prop_lut2_I1_O)        0.124    17.256 r  i2sLayer/filter/p_1_out_i_25/O
+                         net (fo=9, routed)           0.706    17.963    i2sLayer/filter_n_68
+    DSP48_X0Y14          DSP48E1                                      r  i2sLayer/p_1_out/C[41]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin fall edge)
+                                                     12.000    12.000 f  
+    K17                                               0.000    12.000 f  sysclk (IN)
+                         net (fo=0)                   0.000    12.000    sysclk
+    K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    15.301    sysclk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
+                         net (fo=424, routed)         1.595    16.987    i2sLayer/p_1_out_0
+    DSP48_X0Y14          DSP48E1                                      r  i2sLayer/p_1_out/CLK  (IS_INVERTED)
+                         clock pessimism              0.425    17.412    
+                         clock uncertainty           -0.035    17.377    
+    DSP48_X0Y14          DSP48E1 (Setup_dsp48e1_CLK_C[41])
+                                                     -0.233    17.144    i2sLayer/p_1_out
+  -------------------------------------------------------------------
+                         required time                         17.144    
+                         arrival time                         -17.963    
+  -------------------------------------------------------------------
+                         slack                                 -0.819    
+
+Slack (VIOLATED) :        -0.819ns  (required time - arrival time)
+  Source:                 i2sLayer/filter/counter_reg[1]_replica/C
+                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            i2sLayer/p_1_out/C[43]
+                            (falling edge-triggered cell DSP48E1 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
+  Data Path Delay:        8.617ns  (logic 4.936ns (57.282%)  route 3.681ns (42.718%))
+  Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
+  Clock Path Skew:        0.067ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.987ns = ( 16.987 - 12.000 ) 
+    Source Clock Delay      (SCD):    5.346ns = ( 9.346 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.425ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin fall edge)
+                                                      4.000     4.000 f  
+    K17                                               0.000     4.000 f  sysclk (IN)
+                         net (fo=0)                   0.000     4.000    sysclk
+    K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     7.568    sysclk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
+                         net (fo=424, routed)         1.677     9.346    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica/C  (IS_INVERTED)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.459     9.805 r  i2sLayer/filter/counter_reg[1]_replica/Q
+                         net (fo=132, routed)         1.080    10.885    i2sLayer/filter/delay_line_r_reg_0_15_0_0__46/A1
+    SLICE_X8Y33          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.157    11.042 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__46/SP/O
+                         net (fo=1, routed)           0.642    11.684    i2sLayer/filter/delay_line_r_reg_0_15_0_0__46_n_3
+    SLICE_X9Y34          LUT3 (Prop_lut3_I0_O)        0.355    12.039 r  i2sLayer/filter/p_1_out_i_1/O
+                         net (fo=7, routed)           0.760    12.799    i2sLayer/p_4_out[23]
+    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[27]_P[39])
+                                                      3.841    16.640 r  i2sLayer/p_1_out/P[39]
+                         net (fo=2, routed)           0.493    17.132    i2sLayer/filter/out_r_reg[39]_0[39]
+    SLICE_X9Y39          LUT2 (Prop_lut2_I1_O)        0.124    17.256 r  i2sLayer/filter/p_1_out_i_25/O
+                         net (fo=9, routed)           0.706    17.963    i2sLayer/filter_n_68
+    DSP48_X0Y14          DSP48E1                                      r  i2sLayer/p_1_out/C[43]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin fall edge)
+                                                     12.000    12.000 f  
+    K17                                               0.000    12.000 f  sysclk (IN)
+                         net (fo=0)                   0.000    12.000    sysclk
+    K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    15.301    sysclk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
+                         net (fo=424, routed)         1.595    16.987    i2sLayer/p_1_out_0
+    DSP48_X0Y14          DSP48E1                                      r  i2sLayer/p_1_out/CLK  (IS_INVERTED)
+                         clock pessimism              0.425    17.412    
+                         clock uncertainty           -0.035    17.377    
+    DSP48_X0Y14          DSP48E1 (Setup_dsp48e1_CLK_C[43])
+                                                     -0.233    17.144    i2sLayer/p_1_out
+  -------------------------------------------------------------------
+                         required time                         17.144    
+                         arrival time                         -17.963    
+  -------------------------------------------------------------------
+                         slack                                 -0.819    
+
+Slack (VIOLATED) :        -0.815ns  (required time - arrival time)
+  Source:                 i2sLayer/filter/counter_reg[1]_replica/C
+                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            i2sLayer/filter/p_1_out__0_i_47_psdsp/D
+                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
+  Data Path Delay:        8.682ns  (logic 4.936ns (56.856%)  route 3.746ns (43.144%))
+  Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
+  Clock Path Skew:        -0.054ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.900ns = ( 16.900 - 12.000 ) 
+    Source Clock Delay      (SCD):    5.346ns = ( 9.346 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.391ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin fall edge)
+                                                      4.000     4.000 f  
+    K17                                               0.000     4.000 f  sysclk (IN)
+                         net (fo=0)                   0.000     4.000    sysclk
+    K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     7.568    sysclk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
+                         net (fo=424, routed)         1.677     9.346    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica/C  (IS_INVERTED)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.459     9.805 r  i2sLayer/filter/counter_reg[1]_replica/Q
+                         net (fo=132, routed)         1.335    11.140    i2sLayer/filter/delay_line_l_reg_0_15_0_0__18/A1
+    SLICE_X8Y35          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.157    11.297 r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__18/SP/O
+                         net (fo=1, routed)           0.644    11.940    i2sLayer/filter/delay_line_l_reg_0_15_0_0__18_n_3
+    SLICE_X9Y35          LUT3 (Prop_lut3_I0_O)        0.355    12.295 r  i2sLayer/filter/p_1_out__0_i_15/O
+                         net (fo=1, routed)           0.658    12.953    i2sLayer/filter_n_17
+    DSP48_X0Y15          DSP48E1 (Prop_dsp48e1_A[9]_P[17])
+                                                      3.841    16.794 r  i2sLayer/p_1_out__0/P[17]
+                         net (fo=2, routed)           0.638    17.432    i2sLayer/filter/P[17]
+    SLICE_X11Y40         LUT2 (Prop_lut2_I1_O)        0.124    17.556 r  i2sLayer/filter/p_1_out__0_i_47/O
+                         net (fo=1, routed)           0.471    18.027    i2sLayer/filter/filter_n_50_alias
+    SLICE_X11Y39         FDRE                                         r  i2sLayer/filter/p_1_out__0_i_47_psdsp/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin fall edge)
+                                                     12.000    12.000 f  
+    K17                                               0.000    12.000 f  sysclk (IN)
+                         net (fo=0)                   0.000    12.000    sysclk
+    K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    15.301    sysclk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
+                         net (fo=424, routed)         1.508    16.900    i2sLayer/filter/p_1_out_0
+    SLICE_X11Y39         FDRE                                         r  i2sLayer/filter/p_1_out__0_i_47_psdsp/C  (IS_INVERTED)
                          clock pessimism              0.391    17.292    
                          clock uncertainty           -0.035    17.256    
-    SLICE_X7Y41          FDRE (Setup_fdre_C_D)       -0.040    17.216    i2sLayer/filter/p_1_out_i_26_psdsp
+    SLICE_X11Y39         FDRE (Setup_fdre_C_D)       -0.044    17.212    i2sLayer/filter/p_1_out__0_i_47_psdsp
   -------------------------------------------------------------------
-                         required time                         17.216    
-                         arrival time                         -17.965    
+                         required time                         17.212    
+                         arrival time                         -18.027    
   -------------------------------------------------------------------
-                         slack                                 -0.748    
-
-Slack (VIOLATED) :        -0.748ns  (required time - arrival time)
-  Source:                 i2sLayer/filter/counter_reg[2]/C
-                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/p_1_out_i_29_psdsp/D
-                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        8.643ns  (logic 4.922ns (56.949%)  route 3.721ns (43.051%))
-  Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
-  Clock Path Skew:        -0.059ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.898ns = ( 16.897 - 12.000 ) 
-    Source Clock Delay      (SCD):    5.348ns = ( 9.348 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.391ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin fall edge)
-                                                      4.000     4.000 f  
-    K17                                               0.000     4.000 f  sysclk (IN)
-                         net (fo=0)                   0.000     4.000    sysclk
-    K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           2.076     7.568    sysclk_IBUF
-    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.679     9.348    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X13Y36         FDRE                                         r  i2sLayer/filter/counter_reg[2]/C  (IS_INVERTED)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.459     9.807 r  i2sLayer/filter/counter_reg[2]/Q
-                         net (fo=309, routed)         1.239    11.046    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/A2
-    SLICE_X16Y36         RAMD32 (Prop_ramd32_RADR2_O)
-                                                      0.150    11.196 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/SP/O
-                         net (fo=1, routed)           0.822    12.018    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11_n_3
-    SLICE_X13Y36         LUT3 (Prop_lut3_I2_O)        0.348    12.366 r  i2sLayer/filter/p_1_out_i_18/O
-                         net (fo=1, routed)           0.535    12.901    i2sLayer/p_4_out[6]
-    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[6]_P[35])
-                                                      3.841    16.742 r  i2sLayer/p_1_out/P[35]
-                         net (fo=2, routed)           0.794    17.535    i2sLayer/filter/out_r_reg[39]_0[35]
-    SLICE_X6Y38          LUT2 (Prop_lut2_I1_O)        0.124    17.659 r  i2sLayer/filter/p_1_out_i_29/O
-                         net (fo=1, routed)           0.331    17.991    i2sLayer/filter/filter_n_72_alias
-    SLICE_X6Y37          FDRE                                         r  i2sLayer/filter/p_1_out_i_29_psdsp/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin fall edge)
-                                                     12.000    12.000 f  
-    K17                                               0.000    12.000 f  sysclk (IN)
-                         net (fo=0)                   0.000    12.000    sysclk
-    K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           1.880    15.301    sysclk_IBUF
-    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.505    16.897    i2sLayer/filter/p_1_out_0
-    SLICE_X6Y37          FDRE                                         r  i2sLayer/filter/p_1_out_i_29_psdsp/C  (IS_INVERTED)
-                         clock pessimism              0.391    17.289    
-                         clock uncertainty           -0.035    17.253    
-    SLICE_X6Y37          FDRE (Setup_fdre_C_D)       -0.011    17.242    i2sLayer/filter/p_1_out_i_29_psdsp
-  -------------------------------------------------------------------
-                         required time                         17.242    
-                         arrival time                         -17.991    
-  -------------------------------------------------------------------
-                         slack                                 -0.748    
-
-Slack (VIOLATED) :        -0.742ns  (required time - arrival time)
-  Source:                 i2sLayer/filter/counter_reg[2]/C
-                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/p_1_out_i_53_psdsp/D
-                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        8.640ns  (logic 4.922ns (56.970%)  route 3.718ns (43.030%))
-  Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
-  Clock Path Skew:        -0.059ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.898ns = ( 16.897 - 12.000 ) 
-    Source Clock Delay      (SCD):    5.348ns = ( 9.348 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.391ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin fall edge)
-                                                      4.000     4.000 f  
-    K17                                               0.000     4.000 f  sysclk (IN)
-                         net (fo=0)                   0.000     4.000    sysclk
-    K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           2.076     7.568    sysclk_IBUF
-    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.679     9.348    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X13Y36         FDRE                                         r  i2sLayer/filter/counter_reg[2]/C  (IS_INVERTED)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.459     9.807 r  i2sLayer/filter/counter_reg[2]/Q
-                         net (fo=309, routed)         1.239    11.046    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/A2
-    SLICE_X16Y36         RAMD32 (Prop_ramd32_RADR2_O)
-                                                      0.150    11.196 r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__11/SP/O
-                         net (fo=1, routed)           0.822    12.018    i2sLayer/filter/delay_line_r_reg_0_15_0_0__11_n_3
-    SLICE_X13Y36         LUT3 (Prop_lut3_I2_O)        0.348    12.366 r  i2sLayer/filter/p_1_out_i_18/O
-                         net (fo=1, routed)           0.535    12.901    i2sLayer/p_4_out[6]
-    DSP48_X0Y14          DSP48E1 (Prop_dsp48e1_A[6]_P[11])
-                                                      3.841    16.742 r  i2sLayer/p_1_out/P[11]
-                         net (fo=1, routed)           0.628    17.369    i2sLayer/filter/out_r_reg[39]_0[11]
-    SLICE_X8Y37          LUT2 (Prop_lut2_I1_O)        0.124    17.493 r  i2sLayer/filter/p_1_out_i_53/O
-                         net (fo=1, routed)           0.494    17.987    i2sLayer/filter/filter_n_96_alias
-    SLICE_X6Y37          FDRE                                         r  i2sLayer/filter/p_1_out_i_53_psdsp/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin fall edge)
-                                                     12.000    12.000 f  
-    K17                                               0.000    12.000 f  sysclk (IN)
-                         net (fo=0)                   0.000    12.000    sysclk
-    K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           1.880    15.301    sysclk_IBUF
-    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.505    16.897    i2sLayer/filter/p_1_out_0
-    SLICE_X6Y37          FDRE                                         r  i2sLayer/filter/p_1_out_i_53_psdsp/C  (IS_INVERTED)
-                         clock pessimism              0.391    17.289    
-                         clock uncertainty           -0.035    17.253    
-    SLICE_X6Y37          FDRE (Setup_fdre_C_D)       -0.008    17.245    i2sLayer/filter/p_1_out_i_53_psdsp
-  -------------------------------------------------------------------
-                         required time                         17.245    
-                         arrival time                         -17.987    
-  -------------------------------------------------------------------
-                         slack                                 -0.742    
-
-Slack (VIOLATED) :        -0.729ns  (required time - arrival time)
-  Source:                 i2sLayer/filter/counter_reg[2]/C
-                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/p_1_out__0/C[3]
-                            (falling edge-triggered cell DSP48E1 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        8.493ns  (logic 4.922ns (57.952%)  route 3.571ns (42.048%))
-  Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
-  Clock Path Skew:        0.033ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.989ns = ( 16.989 - 12.000 ) 
-    Source Clock Delay      (SCD):    5.348ns = ( 9.348 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.391ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin fall edge)
-                                                      4.000     4.000 f  
-    K17                                               0.000     4.000 f  sysclk (IN)
-                         net (fo=0)                   0.000     4.000    sysclk
-    K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           2.076     7.568    sysclk_IBUF
-    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.679     9.348    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X13Y36         FDRE                                         r  i2sLayer/filter/counter_reg[2]/C  (IS_INVERTED)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.459     9.807 r  i2sLayer/filter/counter_reg[2]/Q
-                         net (fo=309, routed)         1.231    11.037    i2sLayer/filter/delay_line_l_reg_0_15_0_0__41/A2
-    SLICE_X10Y31         RAMD32 (Prop_ramd32_RADR2_O)
-                                                      0.150    11.187 r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__41/SP/O
-                         net (fo=1, routed)           0.409    11.597    i2sLayer/filter/delay_line_l_reg_0_15_0_0__41_n_3
-    SLICE_X11Y33         LUT3 (Prop_lut3_I2_O)        0.348    11.945 r  i2sLayer/filter/p_1_out__0_i_3/O
-                         net (fo=1, routed)           0.701    12.646    i2sLayer/filter_n_5
-    DSP48_X0Y15          DSP48E1 (Prop_dsp48e1_A[21]_P[3])
-                                                      3.841    16.487 r  i2sLayer/p_1_out__0/P[3]
-                         net (fo=1, routed)           0.696    17.183    i2sLayer/filter/P[3]
-    SLICE_X8Y35          LUT2 (Prop_lut2_I1_O)        0.124    17.307 r  i2sLayer/filter/p_1_out__0_i_61/O
-                         net (fo=1, routed)           0.534    17.841    i2sLayer/filter_n_64
-    DSP48_X0Y15          DSP48E1                                      r  i2sLayer/p_1_out__0/C[3]
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin fall edge)
-                                                     12.000    12.000 f  
-    K17                                               0.000    12.000 f  sysclk (IN)
-                         net (fo=0)                   0.000    12.000    sysclk
-    K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           1.880    15.301    sysclk_IBUF
-    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.597    16.989    i2sLayer/p_1_out_0
-    DSP48_X0Y15          DSP48E1                                      r  i2sLayer/p_1_out__0/CLK  (IS_INVERTED)
-                         clock pessimism              0.391    17.380    
-                         clock uncertainty           -0.035    17.345    
-    DSP48_X0Y15          DSP48E1 (Setup_dsp48e1_CLK_C[3])
-                                                     -0.233    17.112    i2sLayer/p_1_out__0
-  -------------------------------------------------------------------
-                         required time                         17.112    
-                         arrival time                         -17.841    
-  -------------------------------------------------------------------
-                         slack                                 -0.729    
-
-Slack (VIOLATED) :        -0.720ns  (required time - arrival time)
-  Source:                 i2sLayer/filter/counter_reg[2]/C
-                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/p_1_out__0/C[42]
-                            (falling edge-triggered cell DSP48E1 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        8.485ns  (logic 4.922ns (58.012%)  route 3.563ns (41.988%))
-  Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
-  Clock Path Skew:        0.033ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.989ns = ( 16.989 - 12.000 ) 
-    Source Clock Delay      (SCD):    5.348ns = ( 9.348 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.391ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin fall edge)
-                                                      4.000     4.000 f  
-    K17                                               0.000     4.000 f  sysclk (IN)
-                         net (fo=0)                   0.000     4.000    sysclk
-    K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           2.076     7.568    sysclk_IBUF
-    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.679     9.348    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X13Y36         FDRE                                         r  i2sLayer/filter/counter_reg[2]/C  (IS_INVERTED)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.459     9.807 r  i2sLayer/filter/counter_reg[2]/Q
-                         net (fo=309, routed)         1.231    11.037    i2sLayer/filter/delay_line_l_reg_0_15_0_0__41/A2
-    SLICE_X10Y31         RAMD32 (Prop_ramd32_RADR2_O)
-                                                      0.150    11.187 r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__41/SP/O
-                         net (fo=1, routed)           0.409    11.597    i2sLayer/filter/delay_line_l_reg_0_15_0_0__41_n_3
-    SLICE_X11Y33         LUT3 (Prop_lut3_I2_O)        0.348    11.945 r  i2sLayer/filter/p_1_out__0_i_3/O
-                         net (fo=1, routed)           0.701    12.646    i2sLayer/filter_n_5
-    DSP48_X0Y15          DSP48E1 (Prop_dsp48e1_A[21]_P[39])
-                                                      3.841    16.487 r  i2sLayer/p_1_out__0/P[39]
-                         net (fo=2, routed)           0.491    16.978    i2sLayer/filter/P[39]
-    SLICE_X9Y39          LUT2 (Prop_lut2_I1_O)        0.124    17.102 r  i2sLayer/filter/p_1_out__0_i_25/O
-                         net (fo=9, routed)           0.730    17.832    i2sLayer/filter_n_28
-    DSP48_X0Y15          DSP48E1                                      r  i2sLayer/p_1_out__0/C[42]
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin fall edge)
-                                                     12.000    12.000 f  
-    K17                                               0.000    12.000 f  sysclk (IN)
-                         net (fo=0)                   0.000    12.000    sysclk
-    K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           1.880    15.301    sysclk_IBUF
-    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.597    16.989    i2sLayer/p_1_out_0
-    DSP48_X0Y15          DSP48E1                                      r  i2sLayer/p_1_out__0/CLK  (IS_INVERTED)
-                         clock pessimism              0.391    17.380    
-                         clock uncertainty           -0.035    17.345    
-    DSP48_X0Y15          DSP48E1 (Setup_dsp48e1_CLK_C[42])
-                                                     -0.233    17.112    i2sLayer/p_1_out__0
-  -------------------------------------------------------------------
-                         required time                         17.112    
-                         arrival time                         -17.832    
-  -------------------------------------------------------------------
-                         slack                                 -0.720    
-
-Slack (VIOLATED) :        -0.720ns  (required time - arrival time)
-  Source:                 i2sLayer/filter/counter_reg[2]/C
-                            (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/p_1_out__0/C[43]
-                            (falling edge-triggered cell DSP48E1 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            8.000ns  (sys_clk_pin fall@12.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        8.484ns  (logic 4.922ns (58.012%)  route 3.562ns (41.988%))
-  Logic Levels:           4  (DSP48E1=1 LUT2=1 LUT3=1 RAMD32=1)
-  Clock Path Skew:        0.033ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.989ns = ( 16.989 - 12.000 ) 
-    Source Clock Delay      (SCD):    5.348ns = ( 9.348 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.391ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin fall edge)
-                                                      4.000     4.000 f  
-    K17                                               0.000     4.000 f  sysclk (IN)
-                         net (fo=0)                   0.000     4.000    sysclk
-    K17                  IBUF (Prop_ibuf_I_O)         1.492     5.492 f  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           2.076     7.568    sysclk_IBUF
-    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     7.669 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.679     9.348    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X13Y36         FDRE                                         r  i2sLayer/filter/counter_reg[2]/C  (IS_INVERTED)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.459     9.807 r  i2sLayer/filter/counter_reg[2]/Q
-                         net (fo=309, routed)         1.231    11.037    i2sLayer/filter/delay_line_l_reg_0_15_0_0__41/A2
-    SLICE_X10Y31         RAMD32 (Prop_ramd32_RADR2_O)
-                                                      0.150    11.187 r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__41/SP/O
-                         net (fo=1, routed)           0.409    11.597    i2sLayer/filter/delay_line_l_reg_0_15_0_0__41_n_3
-    SLICE_X11Y33         LUT3 (Prop_lut3_I2_O)        0.348    11.945 r  i2sLayer/filter/p_1_out__0_i_3/O
-                         net (fo=1, routed)           0.701    12.646    i2sLayer/filter_n_5
-    DSP48_X0Y15          DSP48E1 (Prop_dsp48e1_A[21]_P[39])
-                                                      3.841    16.487 r  i2sLayer/p_1_out__0/P[39]
-                         net (fo=2, routed)           0.491    16.978    i2sLayer/filter/P[39]
-    SLICE_X9Y39          LUT2 (Prop_lut2_I1_O)        0.124    17.102 r  i2sLayer/filter/p_1_out__0_i_25/O
-                         net (fo=9, routed)           0.730    17.832    i2sLayer/filter_n_28
-    DSP48_X0Y15          DSP48E1                                      r  i2sLayer/p_1_out__0/C[43]
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin fall edge)
-                                                     12.000    12.000 f  
-    K17                                               0.000    12.000 f  sysclk (IN)
-                         net (fo=0)                   0.000    12.000    sysclk
-    K17                  IBUF (Prop_ibuf_I_O)         1.421    13.421 f  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           1.880    15.301    sysclk_IBUF
-    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    15.392 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         1.597    16.989    i2sLayer/p_1_out_0
-    DSP48_X0Y15          DSP48E1                                      r  i2sLayer/p_1_out__0/CLK  (IS_INVERTED)
-                         clock pessimism              0.391    17.380    
-                         clock uncertainty           -0.035    17.345    
-    DSP48_X0Y15          DSP48E1 (Setup_dsp48e1_CLK_C[43])
-                                                     -0.233    17.112    i2sLayer/p_1_out__0
-  -------------------------------------------------------------------
-                         required time                         17.112    
-                         arrival time                         -17.832    
-  -------------------------------------------------------------------
-                         slack                                 -0.720    
+                         slack                                 -0.815    
 
 
 
@@ -986,20 +989,20 @@ Slack (VIOLATED) :        -0.720ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.071ns  (arrival time - required time)
-  Source:                 i2sLayer/filter/counter_reg[1]_replica_2/C
+Slack (MET) :             0.098ns  (arrival time - required time)
+  Source:                 i2sLayer/filter/counter_reg[0]/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/DP/WADR1
+  Destination:            i2sLayer/filter/delay_line_r_reg_0_15_0_0__0/DP/WADR0
                             (falling edge-triggered cell RAMD32 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin fall@4.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        0.417ns  (logic 0.146ns (35.019%)  route 0.271ns (64.981%))
+  Data Path Delay:        0.425ns  (logic 0.146ns (34.334%)  route 0.279ns (65.666%))
   Logic Levels:           0  
-  Clock Path Skew:        0.033ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.990ns = ( 5.990 - 4.000 ) 
-    Source Clock Delay      (SCD):    1.477ns = ( 5.477 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.480ns
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.989ns = ( 5.989 - 4.000 ) 
+    Source Clock Delay      (SCD):    1.476ns = ( 5.476 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.500ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1010,12 +1013,12 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.259     4.260 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.627     4.887    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     4.913 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.565     5.477    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X7Y37          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica_2/C  (IS_INVERTED)
+                         net (fo=424, routed)         0.564     5.476    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[0]/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X7Y37          FDRE (Prop_fdre_C_Q)         0.146     5.623 r  i2sLayer/filter/counter_reg[1]_replica_2/Q
-                         net (fo=13, routed)          0.271     5.894    i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/A1
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/DP/WADR1
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.146     5.622 r  i2sLayer/filter/counter_reg[0]/Q
+                         net (fo=145, routed)         0.279     5.901    i2sLayer/filter/delay_line_r_reg_0_15_0_0__0/A0
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__0/DP/WADR0
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -1025,31 +1028,31 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.447     4.447 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.683     5.130    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     5.159 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.831     5.990    i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/WCLK
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/DP/CLK  (IS_INVERTED)
-                         clock pessimism             -0.480     5.510    
-    SLICE_X8Y36          RAMD32 (Hold_ramd32_CLK_WADR1)
-                                                      0.313     5.823    i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/DP
+                         net (fo=424, routed)         0.830     5.989    i2sLayer/filter/delay_line_r_reg_0_15_0_0__0/WCLK
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__0/DP/CLK  (IS_INVERTED)
+                         clock pessimism             -0.500     5.489    
+    SLICE_X8Y34          RAMD32 (Hold_ramd32_CLK_WADR0)
+                                                      0.314     5.803    i2sLayer/filter/delay_line_r_reg_0_15_0_0__0/DP
   -------------------------------------------------------------------
-                         required time                         -5.823    
-                         arrival time                           5.894    
+                         required time                         -5.803    
+                         arrival time                           5.901    
   -------------------------------------------------------------------
-                         slack                                  0.071    
+                         slack                                  0.098    
 
-Slack (MET) :             0.071ns  (arrival time - required time)
-  Source:                 i2sLayer/filter/counter_reg[1]_replica_2/C
+Slack (MET) :             0.098ns  (arrival time - required time)
+  Source:                 i2sLayer/filter/counter_reg[0]/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/SP/WADR1
+  Destination:            i2sLayer/filter/delay_line_r_reg_0_15_0_0__0/SP/WADR0
                             (falling edge-triggered cell RAMD32 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin fall@4.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        0.417ns  (logic 0.146ns (35.019%)  route 0.271ns (64.981%))
+  Data Path Delay:        0.425ns  (logic 0.146ns (34.334%)  route 0.279ns (65.666%))
   Logic Levels:           0  
-  Clock Path Skew:        0.033ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.990ns = ( 5.990 - 4.000 ) 
-    Source Clock Delay      (SCD):    1.477ns = ( 5.477 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.480ns
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.989ns = ( 5.989 - 4.000 ) 
+    Source Clock Delay      (SCD):    1.476ns = ( 5.476 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.500ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1060,12 +1063,12 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.259     4.260 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.627     4.887    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     4.913 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.565     5.477    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X7Y37          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica_2/C  (IS_INVERTED)
+                         net (fo=424, routed)         0.564     5.476    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[0]/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X7Y37          FDRE (Prop_fdre_C_Q)         0.146     5.623 r  i2sLayer/filter/counter_reg[1]_replica_2/Q
-                         net (fo=13, routed)          0.271     5.894    i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/A1
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/SP/WADR1
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.146     5.622 r  i2sLayer/filter/counter_reg[0]/Q
+                         net (fo=145, routed)         0.279     5.901    i2sLayer/filter/delay_line_r_reg_0_15_0_0__0/A0
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__0/SP/WADR0
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -1075,31 +1078,31 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.447     4.447 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.683     5.130    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     5.159 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.831     5.990    i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/WCLK
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/SP/CLK  (IS_INVERTED)
-                         clock pessimism             -0.480     5.510    
-    SLICE_X8Y36          RAMD32 (Hold_ramd32_CLK_WADR1)
-                                                      0.313     5.823    i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/SP
+                         net (fo=424, routed)         0.830     5.989    i2sLayer/filter/delay_line_r_reg_0_15_0_0__0/WCLK
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__0/SP/CLK  (IS_INVERTED)
+                         clock pessimism             -0.500     5.489    
+    SLICE_X8Y34          RAMD32 (Hold_ramd32_CLK_WADR0)
+                                                      0.314     5.803    i2sLayer/filter/delay_line_r_reg_0_15_0_0__0/SP
   -------------------------------------------------------------------
-                         required time                         -5.823    
-                         arrival time                           5.894    
+                         required time                         -5.803    
+                         arrival time                           5.901    
   -------------------------------------------------------------------
-                         slack                                  0.071    
+                         slack                                  0.098    
 
-Slack (MET) :             0.071ns  (arrival time - required time)
-  Source:                 i2sLayer/filter/counter_reg[1]_replica_2/C
+Slack (MET) :             0.098ns  (arrival time - required time)
+  Source:                 i2sLayer/filter/counter_reg[0]/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/delay_line_l_reg_0_15_0_0__17/DP/WADR1
+  Destination:            i2sLayer/filter/delay_line_r_reg_0_15_0_0__10/DP/WADR0
                             (falling edge-triggered cell RAMD32 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin fall@4.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        0.417ns  (logic 0.146ns (35.019%)  route 0.271ns (64.981%))
+  Data Path Delay:        0.425ns  (logic 0.146ns (34.334%)  route 0.279ns (65.666%))
   Logic Levels:           0  
-  Clock Path Skew:        0.033ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.990ns = ( 5.990 - 4.000 ) 
-    Source Clock Delay      (SCD):    1.477ns = ( 5.477 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.480ns
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.989ns = ( 5.989 - 4.000 ) 
+    Source Clock Delay      (SCD):    1.476ns = ( 5.476 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.500ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1110,12 +1113,12 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.259     4.260 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.627     4.887    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     4.913 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.565     5.477    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X7Y37          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica_2/C  (IS_INVERTED)
+                         net (fo=424, routed)         0.564     5.476    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[0]/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X7Y37          FDRE (Prop_fdre_C_Q)         0.146     5.623 r  i2sLayer/filter/counter_reg[1]_replica_2/Q
-                         net (fo=13, routed)          0.271     5.894    i2sLayer/filter/delay_line_l_reg_0_15_0_0__17/A1
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__17/DP/WADR1
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.146     5.622 r  i2sLayer/filter/counter_reg[0]/Q
+                         net (fo=145, routed)         0.279     5.901    i2sLayer/filter/delay_line_r_reg_0_15_0_0__10/A0
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__10/DP/WADR0
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -1125,31 +1128,31 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.447     4.447 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.683     5.130    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     5.159 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.831     5.990    i2sLayer/filter/delay_line_l_reg_0_15_0_0__17/WCLK
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__17/DP/CLK  (IS_INVERTED)
-                         clock pessimism             -0.480     5.510    
-    SLICE_X8Y36          RAMD32 (Hold_ramd32_CLK_WADR1)
-                                                      0.313     5.823    i2sLayer/filter/delay_line_l_reg_0_15_0_0__17/DP
+                         net (fo=424, routed)         0.830     5.989    i2sLayer/filter/delay_line_r_reg_0_15_0_0__10/WCLK
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__10/DP/CLK  (IS_INVERTED)
+                         clock pessimism             -0.500     5.489    
+    SLICE_X8Y34          RAMD32 (Hold_ramd32_CLK_WADR0)
+                                                      0.314     5.803    i2sLayer/filter/delay_line_r_reg_0_15_0_0__10/DP
   -------------------------------------------------------------------
-                         required time                         -5.823    
-                         arrival time                           5.894    
+                         required time                         -5.803    
+                         arrival time                           5.901    
   -------------------------------------------------------------------
-                         slack                                  0.071    
+                         slack                                  0.098    
 
-Slack (MET) :             0.071ns  (arrival time - required time)
-  Source:                 i2sLayer/filter/counter_reg[1]_replica_2/C
+Slack (MET) :             0.098ns  (arrival time - required time)
+  Source:                 i2sLayer/filter/counter_reg[0]/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/delay_line_l_reg_0_15_0_0__17/SP/WADR1
+  Destination:            i2sLayer/filter/delay_line_r_reg_0_15_0_0__10/SP/WADR0
                             (falling edge-triggered cell RAMD32 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin fall@4.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        0.417ns  (logic 0.146ns (35.019%)  route 0.271ns (64.981%))
+  Data Path Delay:        0.425ns  (logic 0.146ns (34.334%)  route 0.279ns (65.666%))
   Logic Levels:           0  
-  Clock Path Skew:        0.033ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.990ns = ( 5.990 - 4.000 ) 
-    Source Clock Delay      (SCD):    1.477ns = ( 5.477 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.480ns
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.989ns = ( 5.989 - 4.000 ) 
+    Source Clock Delay      (SCD):    1.476ns = ( 5.476 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.500ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1160,12 +1163,12 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.259     4.260 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.627     4.887    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     4.913 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.565     5.477    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X7Y37          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica_2/C  (IS_INVERTED)
+                         net (fo=424, routed)         0.564     5.476    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[0]/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X7Y37          FDRE (Prop_fdre_C_Q)         0.146     5.623 r  i2sLayer/filter/counter_reg[1]_replica_2/Q
-                         net (fo=13, routed)          0.271     5.894    i2sLayer/filter/delay_line_l_reg_0_15_0_0__17/A1
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__17/SP/WADR1
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.146     5.622 r  i2sLayer/filter/counter_reg[0]/Q
+                         net (fo=145, routed)         0.279     5.901    i2sLayer/filter/delay_line_r_reg_0_15_0_0__10/A0
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__10/SP/WADR0
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -1175,31 +1178,31 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.447     4.447 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.683     5.130    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     5.159 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.831     5.990    i2sLayer/filter/delay_line_l_reg_0_15_0_0__17/WCLK
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__17/SP/CLK  (IS_INVERTED)
-                         clock pessimism             -0.480     5.510    
-    SLICE_X8Y36          RAMD32 (Hold_ramd32_CLK_WADR1)
-                                                      0.313     5.823    i2sLayer/filter/delay_line_l_reg_0_15_0_0__17/SP
+                         net (fo=424, routed)         0.830     5.989    i2sLayer/filter/delay_line_r_reg_0_15_0_0__10/WCLK
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__10/SP/CLK  (IS_INVERTED)
+                         clock pessimism             -0.500     5.489    
+    SLICE_X8Y34          RAMD32 (Hold_ramd32_CLK_WADR0)
+                                                      0.314     5.803    i2sLayer/filter/delay_line_r_reg_0_15_0_0__10/SP
   -------------------------------------------------------------------
-                         required time                         -5.823    
-                         arrival time                           5.894    
+                         required time                         -5.803    
+                         arrival time                           5.901    
   -------------------------------------------------------------------
-                         slack                                  0.071    
+                         slack                                  0.098    
 
-Slack (MET) :             0.071ns  (arrival time - required time)
-  Source:                 i2sLayer/filter/counter_reg[1]_replica_2/C
+Slack (MET) :             0.098ns  (arrival time - required time)
+  Source:                 i2sLayer/filter/counter_reg[0]/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/delay_line_l_reg_0_15_0_0__19/DP/WADR1
+  Destination:            i2sLayer/filter/delay_line_r_reg_0_15_0_0__12/DP/WADR0
                             (falling edge-triggered cell RAMD32 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin fall@4.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        0.417ns  (logic 0.146ns (35.019%)  route 0.271ns (64.981%))
+  Data Path Delay:        0.425ns  (logic 0.146ns (34.334%)  route 0.279ns (65.666%))
   Logic Levels:           0  
-  Clock Path Skew:        0.033ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.990ns = ( 5.990 - 4.000 ) 
-    Source Clock Delay      (SCD):    1.477ns = ( 5.477 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.480ns
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.989ns = ( 5.989 - 4.000 ) 
+    Source Clock Delay      (SCD):    1.476ns = ( 5.476 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.500ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1210,12 +1213,12 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.259     4.260 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.627     4.887    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     4.913 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.565     5.477    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X7Y37          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica_2/C  (IS_INVERTED)
+                         net (fo=424, routed)         0.564     5.476    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[0]/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X7Y37          FDRE (Prop_fdre_C_Q)         0.146     5.623 r  i2sLayer/filter/counter_reg[1]_replica_2/Q
-                         net (fo=13, routed)          0.271     5.894    i2sLayer/filter/delay_line_l_reg_0_15_0_0__19/A1
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__19/DP/WADR1
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.146     5.622 r  i2sLayer/filter/counter_reg[0]/Q
+                         net (fo=145, routed)         0.279     5.901    i2sLayer/filter/delay_line_r_reg_0_15_0_0__12/A0
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__12/DP/WADR0
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -1225,31 +1228,31 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.447     4.447 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.683     5.130    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     5.159 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.831     5.990    i2sLayer/filter/delay_line_l_reg_0_15_0_0__19/WCLK
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__19/DP/CLK  (IS_INVERTED)
-                         clock pessimism             -0.480     5.510    
-    SLICE_X8Y36          RAMD32 (Hold_ramd32_CLK_WADR1)
-                                                      0.313     5.823    i2sLayer/filter/delay_line_l_reg_0_15_0_0__19/DP
+                         net (fo=424, routed)         0.830     5.989    i2sLayer/filter/delay_line_r_reg_0_15_0_0__12/WCLK
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__12/DP/CLK  (IS_INVERTED)
+                         clock pessimism             -0.500     5.489    
+    SLICE_X8Y34          RAMD32 (Hold_ramd32_CLK_WADR0)
+                                                      0.314     5.803    i2sLayer/filter/delay_line_r_reg_0_15_0_0__12/DP
   -------------------------------------------------------------------
-                         required time                         -5.823    
-                         arrival time                           5.894    
+                         required time                         -5.803    
+                         arrival time                           5.901    
   -------------------------------------------------------------------
-                         slack                                  0.071    
+                         slack                                  0.098    
 
-Slack (MET) :             0.071ns  (arrival time - required time)
-  Source:                 i2sLayer/filter/counter_reg[1]_replica_2/C
+Slack (MET) :             0.098ns  (arrival time - required time)
+  Source:                 i2sLayer/filter/counter_reg[0]/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/delay_line_l_reg_0_15_0_0__19/SP/WADR1
+  Destination:            i2sLayer/filter/delay_line_r_reg_0_15_0_0__12/SP/WADR0
                             (falling edge-triggered cell RAMD32 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin fall@4.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        0.417ns  (logic 0.146ns (35.019%)  route 0.271ns (64.981%))
+  Data Path Delay:        0.425ns  (logic 0.146ns (34.334%)  route 0.279ns (65.666%))
   Logic Levels:           0  
-  Clock Path Skew:        0.033ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.990ns = ( 5.990 - 4.000 ) 
-    Source Clock Delay      (SCD):    1.477ns = ( 5.477 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.480ns
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.989ns = ( 5.989 - 4.000 ) 
+    Source Clock Delay      (SCD):    1.476ns = ( 5.476 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.500ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1260,12 +1263,12 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.259     4.260 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.627     4.887    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     4.913 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.565     5.477    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X7Y37          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica_2/C  (IS_INVERTED)
+                         net (fo=424, routed)         0.564     5.476    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[0]/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X7Y37          FDRE (Prop_fdre_C_Q)         0.146     5.623 r  i2sLayer/filter/counter_reg[1]_replica_2/Q
-                         net (fo=13, routed)          0.271     5.894    i2sLayer/filter/delay_line_l_reg_0_15_0_0__19/A1
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__19/SP/WADR1
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.146     5.622 r  i2sLayer/filter/counter_reg[0]/Q
+                         net (fo=145, routed)         0.279     5.901    i2sLayer/filter/delay_line_r_reg_0_15_0_0__12/A0
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__12/SP/WADR0
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -1275,31 +1278,31 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.447     4.447 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.683     5.130    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     5.159 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.831     5.990    i2sLayer/filter/delay_line_l_reg_0_15_0_0__19/WCLK
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__19/SP/CLK  (IS_INVERTED)
-                         clock pessimism             -0.480     5.510    
-    SLICE_X8Y36          RAMD32 (Hold_ramd32_CLK_WADR1)
-                                                      0.313     5.823    i2sLayer/filter/delay_line_l_reg_0_15_0_0__19/SP
+                         net (fo=424, routed)         0.830     5.989    i2sLayer/filter/delay_line_r_reg_0_15_0_0__12/WCLK
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__12/SP/CLK  (IS_INVERTED)
+                         clock pessimism             -0.500     5.489    
+    SLICE_X8Y34          RAMD32 (Hold_ramd32_CLK_WADR0)
+                                                      0.314     5.803    i2sLayer/filter/delay_line_r_reg_0_15_0_0__12/SP
   -------------------------------------------------------------------
-                         required time                         -5.823    
-                         arrival time                           5.894    
+                         required time                         -5.803    
+                         arrival time                           5.901    
   -------------------------------------------------------------------
-                         slack                                  0.071    
+                         slack                                  0.098    
 
-Slack (MET) :             0.071ns  (arrival time - required time)
-  Source:                 i2sLayer/filter/counter_reg[1]_replica_2/C
+Slack (MET) :             0.098ns  (arrival time - required time)
+  Source:                 i2sLayer/filter/counter_reg[0]/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/delay_line_l_reg_0_15_0_0__21/DP/WADR1
+  Destination:            i2sLayer/filter/delay_line_r_reg_0_15_0_0__14/DP/WADR0
                             (falling edge-triggered cell RAMD32 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin fall@4.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        0.417ns  (logic 0.146ns (35.019%)  route 0.271ns (64.981%))
+  Data Path Delay:        0.425ns  (logic 0.146ns (34.334%)  route 0.279ns (65.666%))
   Logic Levels:           0  
-  Clock Path Skew:        0.033ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.990ns = ( 5.990 - 4.000 ) 
-    Source Clock Delay      (SCD):    1.477ns = ( 5.477 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.480ns
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.989ns = ( 5.989 - 4.000 ) 
+    Source Clock Delay      (SCD):    1.476ns = ( 5.476 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.500ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1310,12 +1313,12 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.259     4.260 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.627     4.887    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     4.913 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.565     5.477    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X7Y37          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica_2/C  (IS_INVERTED)
+                         net (fo=424, routed)         0.564     5.476    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[0]/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X7Y37          FDRE (Prop_fdre_C_Q)         0.146     5.623 r  i2sLayer/filter/counter_reg[1]_replica_2/Q
-                         net (fo=13, routed)          0.271     5.894    i2sLayer/filter/delay_line_l_reg_0_15_0_0__21/A1
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__21/DP/WADR1
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.146     5.622 r  i2sLayer/filter/counter_reg[0]/Q
+                         net (fo=145, routed)         0.279     5.901    i2sLayer/filter/delay_line_r_reg_0_15_0_0__14/A0
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__14/DP/WADR0
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -1325,31 +1328,31 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.447     4.447 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.683     5.130    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     5.159 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.831     5.990    i2sLayer/filter/delay_line_l_reg_0_15_0_0__21/WCLK
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__21/DP/CLK  (IS_INVERTED)
-                         clock pessimism             -0.480     5.510    
-    SLICE_X8Y36          RAMD32 (Hold_ramd32_CLK_WADR1)
-                                                      0.313     5.823    i2sLayer/filter/delay_line_l_reg_0_15_0_0__21/DP
+                         net (fo=424, routed)         0.830     5.989    i2sLayer/filter/delay_line_r_reg_0_15_0_0__14/WCLK
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__14/DP/CLK  (IS_INVERTED)
+                         clock pessimism             -0.500     5.489    
+    SLICE_X8Y34          RAMD32 (Hold_ramd32_CLK_WADR0)
+                                                      0.314     5.803    i2sLayer/filter/delay_line_r_reg_0_15_0_0__14/DP
   -------------------------------------------------------------------
-                         required time                         -5.823    
-                         arrival time                           5.894    
+                         required time                         -5.803    
+                         arrival time                           5.901    
   -------------------------------------------------------------------
-                         slack                                  0.071    
+                         slack                                  0.098    
 
-Slack (MET) :             0.071ns  (arrival time - required time)
-  Source:                 i2sLayer/filter/counter_reg[1]_replica_2/C
+Slack (MET) :             0.098ns  (arrival time - required time)
+  Source:                 i2sLayer/filter/counter_reg[0]/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/delay_line_l_reg_0_15_0_0__21/SP/WADR1
+  Destination:            i2sLayer/filter/delay_line_r_reg_0_15_0_0__14/SP/WADR0
                             (falling edge-triggered cell RAMD32 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin fall@4.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        0.417ns  (logic 0.146ns (35.019%)  route 0.271ns (64.981%))
+  Data Path Delay:        0.425ns  (logic 0.146ns (34.334%)  route 0.279ns (65.666%))
   Logic Levels:           0  
-  Clock Path Skew:        0.033ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.990ns = ( 5.990 - 4.000 ) 
-    Source Clock Delay      (SCD):    1.477ns = ( 5.477 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.480ns
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.989ns = ( 5.989 - 4.000 ) 
+    Source Clock Delay      (SCD):    1.476ns = ( 5.476 - 4.000 ) 
+    Clock Pessimism Removal (CPR):    0.500ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1360,12 +1363,12 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.259     4.260 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.627     4.887    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     4.913 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.565     5.477    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X7Y37          FDRE                                         r  i2sLayer/filter/counter_reg[1]_replica_2/C  (IS_INVERTED)
+                         net (fo=424, routed)         0.564     5.476    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X9Y34          FDRE                                         r  i2sLayer/filter/counter_reg[0]/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X7Y37          FDRE (Prop_fdre_C_Q)         0.146     5.623 r  i2sLayer/filter/counter_reg[1]_replica_2/Q
-                         net (fo=13, routed)          0.271     5.894    i2sLayer/filter/delay_line_l_reg_0_15_0_0__21/A1
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__21/SP/WADR1
+    SLICE_X9Y34          FDRE (Prop_fdre_C_Q)         0.146     5.622 r  i2sLayer/filter/counter_reg[0]/Q
+                         net (fo=145, routed)         0.279     5.901    i2sLayer/filter/delay_line_r_reg_0_15_0_0__14/A0
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__14/SP/WADR0
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -1375,31 +1378,31 @@ Slack (MET) :             0.071ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.447     4.447 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.683     5.130    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     5.159 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.831     5.990    i2sLayer/filter/delay_line_l_reg_0_15_0_0__21/WCLK
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__21/SP/CLK  (IS_INVERTED)
-                         clock pessimism             -0.480     5.510    
-    SLICE_X8Y36          RAMD32 (Hold_ramd32_CLK_WADR1)
-                                                      0.313     5.823    i2sLayer/filter/delay_line_l_reg_0_15_0_0__21/SP
+                         net (fo=424, routed)         0.830     5.989    i2sLayer/filter/delay_line_r_reg_0_15_0_0__14/WCLK
+    SLICE_X8Y34          RAMD32                                       r  i2sLayer/filter/delay_line_r_reg_0_15_0_0__14/SP/CLK  (IS_INVERTED)
+                         clock pessimism             -0.500     5.489    
+    SLICE_X8Y34          RAMD32 (Hold_ramd32_CLK_WADR0)
+                                                      0.314     5.803    i2sLayer/filter/delay_line_r_reg_0_15_0_0__14/SP
   -------------------------------------------------------------------
-                         required time                         -5.823    
-                         arrival time                           5.894    
+                         required time                         -5.803    
+                         arrival time                           5.901    
   -------------------------------------------------------------------
-                         slack                                  0.071    
+                         slack                                  0.098    
 
-Slack (MET) :             0.100ns  (arrival time - required time)
-  Source:                 i2sLayer/filter/counter_reg[0]_replica_2/C
+Slack (MET) :             0.113ns  (arrival time - required time)
+  Source:                 i2sLayer/filter/counter_reg[0]_replica/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/DP/WADR0
+  Destination:            i2sLayer/filter/delay_line_l_reg_0_15_0_0__37/DP/WADR0
                             (falling edge-triggered cell RAMD32 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin fall@4.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        0.448ns  (logic 0.146ns (32.616%)  route 0.302ns (67.383%))
+  Data Path Delay:        0.440ns  (logic 0.146ns (33.207%)  route 0.294ns (66.793%))
   Logic Levels:           0  
-  Clock Path Skew:        0.034ns (DCD - SCD - CPR)
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    1.990ns = ( 5.990 - 4.000 ) 
     Source Clock Delay      (SCD):    1.476ns = ( 5.476 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.480ns
+    Clock Pessimism Removal (CPR):    0.501ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1410,12 +1413,12 @@ Slack (MET) :             0.100ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.259     4.260 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.627     4.887    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     4.913 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.564     5.476    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X7Y35          FDRE                                         r  i2sLayer/filter/counter_reg[0]_replica_2/C  (IS_INVERTED)
+                         net (fo=424, routed)         0.564     5.476    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X13Y36         FDRE                                         r  i2sLayer/filter/counter_reg[0]_replica/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X7Y35          FDRE (Prop_fdre_C_Q)         0.146     5.622 r  i2sLayer/filter/counter_reg[0]_replica_2/Q
-                         net (fo=19, routed)          0.302     5.924    i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/A0
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/DP/WADR0
+    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.146     5.622 r  i2sLayer/filter/counter_reg[0]_replica/Q
+                         net (fo=161, routed)         0.294     5.916    i2sLayer/filter/delay_line_l_reg_0_15_0_0__37/A0
+    SLICE_X12Y36         RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__37/DP/WADR0
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -1425,31 +1428,31 @@ Slack (MET) :             0.100ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.447     4.447 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.683     5.130    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     5.159 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.831     5.990    i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/WCLK
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/DP/CLK  (IS_INVERTED)
-                         clock pessimism             -0.480     5.510    
-    SLICE_X8Y36          RAMD32 (Hold_ramd32_CLK_WADR0)
-                                                      0.314     5.824    i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/DP
+                         net (fo=424, routed)         0.831     5.990    i2sLayer/filter/delay_line_l_reg_0_15_0_0__37/WCLK
+    SLICE_X12Y36         RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__37/DP/CLK  (IS_INVERTED)
+                         clock pessimism             -0.501     5.489    
+    SLICE_X12Y36         RAMD32 (Hold_ramd32_CLK_WADR0)
+                                                      0.314     5.803    i2sLayer/filter/delay_line_l_reg_0_15_0_0__37/DP
   -------------------------------------------------------------------
-                         required time                         -5.824    
-                         arrival time                           5.924    
+                         required time                         -5.803    
+                         arrival time                           5.916    
   -------------------------------------------------------------------
-                         slack                                  0.100    
+                         slack                                  0.113    
 
-Slack (MET) :             0.100ns  (arrival time - required time)
-  Source:                 i2sLayer/filter/counter_reg[0]_replica_2/C
+Slack (MET) :             0.113ns  (arrival time - required time)
+  Source:                 i2sLayer/filter/counter_reg[0]_replica/C
                             (falling edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/SP/WADR0
+  Destination:            i2sLayer/filter/delay_line_l_reg_0_15_0_0__37/SP/WADR0
                             (falling edge-triggered cell RAMD32 clocked by sys_clk_pin  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin fall@4.000ns - sys_clk_pin fall@4.000ns)
-  Data Path Delay:        0.448ns  (logic 0.146ns (32.616%)  route 0.302ns (67.383%))
+  Data Path Delay:        0.440ns  (logic 0.146ns (33.207%)  route 0.294ns (66.793%))
   Logic Levels:           0  
-  Clock Path Skew:        0.034ns (DCD - SCD - CPR)
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    1.990ns = ( 5.990 - 4.000 ) 
     Source Clock Delay      (SCD):    1.476ns = ( 5.476 - 4.000 ) 
-    Clock Pessimism Removal (CPR):    0.480ns
+    Clock Pessimism Removal (CPR):    0.501ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1460,12 +1463,12 @@ Slack (MET) :             0.100ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.259     4.260 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.627     4.887    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     4.913 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.564     5.476    i2sLayer/filter/sysclk_IBUF_BUFG
-    SLICE_X7Y35          FDRE                                         r  i2sLayer/filter/counter_reg[0]_replica_2/C  (IS_INVERTED)
+                         net (fo=424, routed)         0.564     5.476    i2sLayer/filter/sysclk_IBUF_BUFG
+    SLICE_X13Y36         FDRE                                         r  i2sLayer/filter/counter_reg[0]_replica/C  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
-    SLICE_X7Y35          FDRE (Prop_fdre_C_Q)         0.146     5.622 r  i2sLayer/filter/counter_reg[0]_replica_2/Q
-                         net (fo=19, routed)          0.302     5.924    i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/A0
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/SP/WADR0
+    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.146     5.622 r  i2sLayer/filter/counter_reg[0]_replica/Q
+                         net (fo=161, routed)         0.294     5.916    i2sLayer/filter/delay_line_l_reg_0_15_0_0__37/A0
+    SLICE_X12Y36         RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__37/SP/WADR0
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin fall edge)
@@ -1475,16 +1478,16 @@ Slack (MET) :             0.100ns  (arrival time - required time)
     K17                  IBUF (Prop_ibuf_I_O)         0.447     4.447 f  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.683     5.130    sysclk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     5.159 f  sysclk_IBUF_BUFG_inst/O
-                         net (fo=425, routed)         0.831     5.990    i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/WCLK
-    SLICE_X8Y36          RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/SP/CLK  (IS_INVERTED)
-                         clock pessimism             -0.480     5.510    
-    SLICE_X8Y36          RAMD32 (Hold_ramd32_CLK_WADR0)
-                                                      0.314     5.824    i2sLayer/filter/delay_line_l_reg_0_15_0_0__15/SP
+                         net (fo=424, routed)         0.831     5.990    i2sLayer/filter/delay_line_l_reg_0_15_0_0__37/WCLK
+    SLICE_X12Y36         RAMD32                                       r  i2sLayer/filter/delay_line_l_reg_0_15_0_0__37/SP/CLK  (IS_INVERTED)
+                         clock pessimism             -0.501     5.489    
+    SLICE_X12Y36         RAMD32 (Hold_ramd32_CLK_WADR0)
+                                                      0.314     5.803    i2sLayer/filter/delay_line_l_reg_0_15_0_0__37/SP
   -------------------------------------------------------------------
-                         required time                         -5.824    
-                         arrival time                           5.924    
+                         required time                         -5.803    
+                         arrival time                           5.916    
   -------------------------------------------------------------------
-                         slack                                  0.100    
+                         slack                                  0.113    
 
 
 
@@ -1499,35 +1502,35 @@ Sources:            { sysclk }
 
 Check Type        Corner  Lib Pin     Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location        Pin
 Min Period        n/a     BUFG/I      n/a            2.155         8.000       5.845      BUFGCTRL_X0Y16  sysclk_IBUF_BUFG_inst/I
-Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X43Y13    clock/clk_mclk_reg/C
-Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X42Y13    clock/cntm_reg[0]/C
-Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X42Y13    clock/cntm_reg[1]/C
-Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X42Y13    clock/cntm_reg[2]/C
-Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X42Y13    clock/cntm_reg[3]/C
-Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X42Y13    clock/cntm_reg[4]/C
-Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X38Y22    i2cConf/FSM_sequential_i2c_sm_reg[0]/C
-Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X38Y22    i2cConf/FSM_sequential_i2c_sm_reg[1]/C
-Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X40Y23    i2cConf/FSM_sequential_i2c_sm_reg[2]/C
-Low Pulse Width   Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y30    i2sLayer/filter/delay_line_l_reg_0_15_0_0/DP/CLK
-Low Pulse Width   Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y30    i2sLayer/filter/delay_line_l_reg_0_15_0_0/DP/CLK
-Low Pulse Width   Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y30    i2sLayer/filter/delay_line_l_reg_0_15_0_0/SP/CLK
-Low Pulse Width   Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y30    i2sLayer/filter/delay_line_l_reg_0_15_0_0/SP/CLK
-Low Pulse Width   Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X12Y32    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/DP/CLK
-Low Pulse Width   Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X12Y32    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/DP/CLK
-Low Pulse Width   Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X12Y32    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/SP/CLK
-Low Pulse Width   Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X12Y32    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/SP/CLK
-Low Pulse Width   Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y30    i2sLayer/filter/delay_line_l_reg_0_15_0_0__1/DP/CLK
-Low Pulse Width   Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y30    i2sLayer/filter/delay_line_l_reg_0_15_0_0__1/DP/CLK
-High Pulse Width  Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y30    i2sLayer/filter/delay_line_l_reg_0_15_0_0/DP/CLK
-High Pulse Width  Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y30    i2sLayer/filter/delay_line_l_reg_0_15_0_0/DP/CLK
-High Pulse Width  Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y30    i2sLayer/filter/delay_line_l_reg_0_15_0_0/SP/CLK
-High Pulse Width  Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y30    i2sLayer/filter/delay_line_l_reg_0_15_0_0/SP/CLK
-High Pulse Width  Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X12Y32    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/DP/CLK
-High Pulse Width  Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X12Y32    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/DP/CLK
-High Pulse Width  Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X12Y32    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/SP/CLK
-High Pulse Width  Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X12Y32    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/SP/CLK
-High Pulse Width  Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y30    i2sLayer/filter/delay_line_l_reg_0_15_0_0__1/DP/CLK
-High Pulse Width  Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y30    i2sLayer/filter/delay_line_l_reg_0_15_0_0__1/DP/CLK
+Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X43Y11    clock/clk_mclk_reg/C
+Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X42Y11    clock/cntm_reg[0]/C
+Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X42Y11    clock/cntm_reg[1]/C
+Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X42Y11    clock/cntm_reg[2]/C
+Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X42Y11    clock/cntm_reg[3]/C
+Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X42Y11    clock/cntm_reg[4]/C
+Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X38Y23    i2cConf/FSM_sequential_i2c_sm_reg[0]/C
+Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X38Y23    i2cConf/FSM_sequential_i2c_sm_reg[1]/C
+Min Period        n/a     FDRE/C      n/a            1.000         8.000       7.000      SLICE_X38Y23    i2cConf/FSM_sequential_i2c_sm_reg[2]/C
+Low Pulse Width   Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X8Y37     i2sLayer/filter/delay_line_l_reg_0_15_0_0/DP/CLK
+Low Pulse Width   Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X8Y37     i2sLayer/filter/delay_line_l_reg_0_15_0_0/DP/CLK
+Low Pulse Width   Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X8Y37     i2sLayer/filter/delay_line_l_reg_0_15_0_0/SP/CLK
+Low Pulse Width   Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X8Y37     i2sLayer/filter/delay_line_l_reg_0_15_0_0/SP/CLK
+Low Pulse Width   Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y36    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/DP/CLK
+Low Pulse Width   Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y36    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/DP/CLK
+Low Pulse Width   Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y36    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/SP/CLK
+Low Pulse Width   Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y36    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/SP/CLK
+Low Pulse Width   Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X8Y37     i2sLayer/filter/delay_line_l_reg_0_15_0_0__1/DP/CLK
+Low Pulse Width   Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X8Y37     i2sLayer/filter/delay_line_l_reg_0_15_0_0__1/DP/CLK
+High Pulse Width  Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X8Y37     i2sLayer/filter/delay_line_l_reg_0_15_0_0/DP/CLK
+High Pulse Width  Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X8Y37     i2sLayer/filter/delay_line_l_reg_0_15_0_0/DP/CLK
+High Pulse Width  Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X8Y37     i2sLayer/filter/delay_line_l_reg_0_15_0_0/SP/CLK
+High Pulse Width  Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X8Y37     i2sLayer/filter/delay_line_l_reg_0_15_0_0/SP/CLK
+High Pulse Width  Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y36    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/DP/CLK
+High Pulse Width  Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y36    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/DP/CLK
+High Pulse Width  Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y36    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/SP/CLK
+High Pulse Width  Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X10Y36    i2sLayer/filter/delay_line_l_reg_0_15_0_0__0/SP/CLK
+High Pulse Width  Slow    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X8Y37     i2sLayer/filter/delay_line_l_reg_0_15_0_0__1/DP/CLK
+High Pulse Width  Fast    RAMD32/CLK  n/a            1.250         4.000       2.750      SLICE_X8Y37     i2sLayer/filter/delay_line_l_reg_0_15_0_0__1/DP/CLK
 
 
 

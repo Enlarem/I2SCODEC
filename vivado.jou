@@ -1,93 +1,16 @@
 #-----------------------------------------------------------
-# Vivado v2023.2.1 (64-bit)
-# SW Build 4081461 on Thu Dec 14 12:22:04 MST 2023
-# IP Build 4080415 on Thu Dec 14 21:01:57 MST 2023
-# SharedData Build 4077621 on Mon Dec 11 00:23:44 MST 2023
-# Start of session at: Thu Apr 18 08:14:25 2024
-# Process ID: 5407
-# Current directory: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC
-# Command line: vivado
-# Log file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/vivado.log
-# Journal file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/vivado.jou
-# Running On: remi-HP-ENVY-x360-Convertible-15-ds0xxx, OS: Linux, CPU Frequency: 2391.055 MHz, CPU Physical cores: 8, Host memory: 14509 MB
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Fri Apr 19 10:12:15 2024
+# Process ID: 22984
+# Current directory: C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent26644 C:\Users\Tonda\Desktop\School\ERASMUS\Embedded_system_design\Assignment_2\AudioCodecDemo.xpr
+# Log file: C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/vivado.log
+# Journal file: C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2\vivado.jou
+# Running On: DESKTOP-1LET3D7, OS: Windows, CPU Frequency: 2712 MHz, CPU Physical cores: 2, Host memory: 8483 MB
 #-----------------------------------------------------------
 start_gui
-open_project {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.xpr}
-launch_simulation -simset [get_filesets i2s_layer_sim ]
-launch_simulation -simset [get_filesets i2s_layer_sim ]
-launch_simulation -simset [get_filesets i2s_layer_sim ]
-source i2s_layer_tb.tcl
-restart
-run 600 us
-restart
-run 600 us
-relaunch_sim
-run 200 us
-restart
-run 200 us
-synth_design -rtl -rtl_skip_mlo -name rtl_1
-close_design
-open_run synth_1 -name synth_1
-launch_simulation -simset [get_filesets topsim ]
-source top_tb.tcl
-restart
-run 7 ms
-open_wave_config {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/Waveforms/top_simulation.wcfg}
-restart
-run 7 ms
-restart
-run 7 ms
-restart
-run 7 ms
-relaunch_sim
-relaunch_sim
-restart
-run 7 ms
-relaunch_sim
-restart
-run 7 ms
-relaunch_sim
-restart
-run 7 ms
-launch_simulation -simset [get_filesets sim_reciever ]
-source I2s_receiver_tb.tcl
-restart
-run 300 us
-current_sim simulation_1
-close_sim
-current_sim simulation_3
-close_sim
-restart
-run 7 ms
-restart
-run 7 ms
-relaunch_sim
-restart
-run 7 ms
-relaunch_sim
-restart
-run 7 ms
-relaunch_sim
-relaunch_sim
-restart
-run 7 ms
-relaunch_sim
-restart
-run 7 ms
-open_hw_manager
-connect_hw_server -allow_non_jtag
-open_hw_target
-set_property PROGRAM.FILE {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/impl_1/top.bit} [get_hw_devices xc7z010_1]
-current_hw_device [get_hw_devices xc7z010_1]
-refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z010_1] 0]
-reset_run synth_1
-launch_runs impl_1 -jobs 8
-wait_on_run impl_1
-launch_runs impl_1 -to_step write_bitstream -jobs 8
-wait_on_run impl_1
-open_run impl_1
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/impl_1/top.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
+open_project C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.xpr
+archive_project C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/AudioCodecDemoArch.xpr.zip -temp_dir C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/.Xil/Vivado-22984-DESKTOP-1LET3D7 -force -exclude_run_results -include_config_settings

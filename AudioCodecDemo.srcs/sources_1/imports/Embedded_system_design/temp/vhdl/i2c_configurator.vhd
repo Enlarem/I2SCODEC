@@ -68,7 +68,7 @@ architecture Behavioral of i2c_configurator is
         , R18 & B"0_1111_0011"
         , R09 & B"0_0000_0001"
         , R06 & B"0_0010_0000"
-        , R04 & B"0_0001_0100" -- to test bypass, change to 0_0001_1100
+        , R04 & B"0_0001_0000" -- to test bypass, change to 0_0001_1100
         , R05 & B"0_0000_0000"
         );
     

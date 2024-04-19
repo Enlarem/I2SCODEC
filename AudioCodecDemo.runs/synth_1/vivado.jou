@@ -1,14 +1,14 @@
 #-----------------------------------------------------------
-# Vivado v2023.2.1 (64-bit)
-# SW Build 4081461 on Thu Dec 14 12:22:04 MST 2023
-# IP Build 4080415 on Thu Dec 14 21:01:57 MST 2023
-# SharedData Build 4077621 on Mon Dec 11 00:23:44 MST 2023
-# Start of session at: Thu Apr 18 15:51:09 2024
-# Process ID: 99758
-# Current directory: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/synth_1
-# Command line: vivado -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
-# Log file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/synth_1/top.vds
-# Journal file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/synth_1/vivado.jou
-# Running On: remi-HP-ENVY-x360-Convertible-15-ds0xxx, OS: Linux, CPU Frequency: 2216.340 MHz, CPU Physical cores: 8, Host memory: 14509 MB
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Fri Apr 19 09:38:30 2024
+# Process ID: 16508
+# Current directory: C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.runs/synth_1
+# Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
+# Log file: C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.runs/synth_1/top.vds
+# Journal file: C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.runs/synth_1\vivado.jou
+# Running On: DESKTOP-1LET3D7, OS: Windows, CPU Frequency: 2712 MHz, CPU Physical cores: 2, Host memory: 8483 MB
 #-----------------------------------------------------------
 source top.tcl -notrace
