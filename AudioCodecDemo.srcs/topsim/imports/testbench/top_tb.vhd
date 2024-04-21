@@ -245,7 +245,7 @@ begin
     wait on finish_send;
     toggle_receive <= not toggle_receive;
     wait until s_ac_pblrc = '0';
-    for i in 3 downto 0 loop 
+    for i in 2 downto 0 loop 
         wait until falling_edge(s_ac_bclk);
     end loop;
 
