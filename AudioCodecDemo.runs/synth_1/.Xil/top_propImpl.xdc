@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:{/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/constrs_1/imports/Xilinx_stuff/Zybo-Z7-Master.xdc} rfile:../../../AudioCodecDemo.srcs/constrs_1/imports/Xilinx_stuff/Zybo-Z7-Master.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.srcs/constrs_1/imports/Xilinx_stuff/Zybo-Z7-Master.xdc rfile:../../../AudioCodecDemo.srcs/constrs_1/imports/Xilinx_stuff/Zybo-Z7-Master.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:8 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict {PACKAGE_PIN K17 IOSTANDARD LVCMOS33} [get_ports sysclk]
 set_property src_info {type:XDC file:1 line:13 export:INPUT save:INPUT read:READ} [current_design]

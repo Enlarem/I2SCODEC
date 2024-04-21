@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.runs/synth_1/top.tcl"
+  variable script "C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.runs/synth_1/top.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,33 +70,30 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param xicom.use_bs_reader 1
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
+set_param chipscope.maxJobs 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.cache/wt} [current_project]
-set_property parent.project_path {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.xpr} [current_project]
+set_property webtalk.parent_dir C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.cache/wt [current_project]
+set_property parent.project_path C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part digilentinc.com:zybo-z7-10:part0:1.2 [current_project]
-set_property ip_output_repo {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.cache/ip} [current_project]
+set_property ip_output_repo c:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd}
-  {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd}
-  {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2c_configurator.vhd}
-  {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd}
-  {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/mclk_comp.vhd}
-  {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd}
-  {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/sources_1/new/FIR.vhd}
+  C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/top.vhd
+  C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2s_layer.vhd
+  C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.srcs/sources_1/imports/Embedded_system_design/temp/vhdl/i2c_configurator.vhd
+  C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.srcs/sources_1/new/i2s_transmitter.vhd
+  C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.srcs/sources_1/new/mclk_comp.vhd
+  C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.srcs/sources_1/new/I2s_receiver.vhd
+  C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.srcs/sources_1/new/FIR.vhd
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -107,8 +104,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc {{/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/constrs_1/imports/Xilinx_stuff/Zybo-Z7-Master.xdc}}
-set_property used_in_implementation false [get_files {{/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.srcs/constrs_1/imports/Xilinx_stuff/Zybo-Z7-Master.xdc}}]
+read_xdc C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.srcs/constrs_1/imports/Xilinx_stuff/Zybo-Z7-Master.xdc
+set_property used_in_implementation false [get_files C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.srcs/constrs_1/imports/Xilinx_stuff/Zybo-Z7-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

@@ -1,7 +1,7 @@
 -------------------------------------
-| Tool Version : Vivado v.2023.2.1
-| Date         : Thu Apr 18 15:53:16 2024
-| Host         : remi-HP-ENVY-x360-Convertible-15-ds0xxx
+| Tool Version : Vivado v.2023.2
+| Date         : Fri Apr 19 09:41:44 2024
+| Host         : DESKTOP-1LET3D7
 | Design       : design_1
 | Device       : xc7z010-clg400-1--
 -------------------------------------
