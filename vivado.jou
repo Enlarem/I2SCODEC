@@ -1,39 +1,18 @@
 #-----------------------------------------------------------
-<<<<<<< HEAD
 # Vivado v2023.2.1 (64-bit)
 # SW Build 4081461 on Thu Dec 14 12:22:04 MST 2023
 # IP Build 4080415 on Thu Dec 14 21:01:57 MST 2023
 # SharedData Build 4077621 on Mon Dec 11 00:23:44 MST 2023
-# Start of session at: Thu Apr 18 23:16:46 2024
-# Process ID: 5606
+# Start of session at: Sun Apr 21 10:34:06 2024
+# Process ID: 21101
 # Current directory: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC
 # Command line: vivado
 # Log file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/vivado.log
 # Journal file: /home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/vivado.jou
-# Running On: remi-HP-ENVY-x360-Convertible-15-ds0xxx, OS: Linux, CPU Frequency: 1197.594 MHz, CPU Physical cores: 8, Host memory: 14509 MB
+# Running On: remi-HP-ENVY-x360-Convertible-15-ds0xxx, OS: Linux, CPU Frequency: 3791.740 MHz, CPU Physical cores: 8, Host memory: 14509 MB
 #-----------------------------------------------------------
 start_gui
 open_project {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC/AudioCodecDemo.xpr}
-launch_simulation -simset [get_filesets topsim ]
-source top_tb.tcl
-restart
-run 7 ms
-relaunch_sim
-close_sim
-=======
-# Vivado v2023.2 (64-bit)
-# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
-# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
-# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Fri Apr 19 10:12:15 2024
-# Process ID: 22984
-# Current directory: C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent26644 C:\Users\Tonda\Desktop\School\ERASMUS\Embedded_system_design\Assignment_2\AudioCodecDemo.xpr
-# Log file: C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/vivado.log
-# Journal file: C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2\vivado.jou
-# Running On: DESKTOP-1LET3D7, OS: Windows, CPU Frequency: 2712 MHz, CPU Physical cores: 2, Host memory: 8483 MB
-#-----------------------------------------------------------
-start_gui
-open_project C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/AudioCodecDemo.xpr
-archive_project C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/AudioCodecDemoArch.xpr.zip -temp_dir C:/Users/Tonda/Desktop/School/ERASMUS/Embedded_system_design/Assignment_2/.Xil/Vivado-22984-DESKTOP-1LET3D7 -force -exclude_run_results -include_config_settings
->>>>>>> 78eb7d784289e9bb634c86a1ca296781add1e59e
+save_project_as I2SCODEC_Antonin_Remi {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC_Antonin_Remi} -exclude_run_results -force
+import_files
+archive_project {/home/remi/Documents/Etudes/S8/Embedded System Design/I2SCODEC_Antonin_Remi.xpr.zip} -force -exclude_run_results -include_config_settings
